@@ -1,17 +1,17 @@
 <form>
-    <div class="sheet-body exaltedthird">
+    <div class="sheet-body exalteddemake">
         {{#if data.addingCharms }}
-        {{> systems/exaltedthird/templates/dialogues/add-roll-charm.html}}
+        {{> systems/exalteddemake/templates/dialogues/add-roll-charm.html}}
         {{else}}  
-        {{> systems/exaltedthird/templates/dialogues/ability-base.html}}
+        {{> systems/exalteddemake/templates/dialogues/ability-base.html}}
         {{#ifEquals data.rollType 'craft'}}
         <div class="resource grid grid-2col flex-center">
             <div>
-                <label class="resource-label">{{localize "Ex3.Intervals"}}</label>
+                <label class="resource-label">{{localize "ExD.Intervals"}}</label>
                 <input type="number" name="object.intervals" value="{{data.intervals}}" >
             </div>
             <div>
-                <label class="resource-label">{{localize "Ex3.ObjectivesCompleted"}} </label>
+                <label class="resource-label">{{localize "ExD.ObjectivesCompleted"}} </label>
                 <input type="number" name="object.objectivesCompleted" value="{{data.objectivesCompleted}}" >
             </div>
         </div>
@@ -19,7 +19,7 @@
         {{#ifEquals data.rollType 'working'}}
         <div class="resource flex-center mb-2">
             <div>
-                <label class="resource-label">{{localize "Ex3.Intervals"}}</label>
+                <label class="resource-label">{{localize "ExD.Intervals"}}</label>
                 <input type="number" name="object.intervals" value="{{data.intervals}}" >
             </div>
         </div>

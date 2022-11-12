@@ -1,10 +1,10 @@
 // Import Modules
-import { exaltedthird } from "./config.js";
+import { exalteddemake } from "./config.js";
 
-import { ExaltedThirdActor } from "./actor/actor.js";
-import { ExaltedThirdActorSheet } from "./actor/actor-sheet.js";
-import { ExaltedThirdItem } from "./item/item.js";
-import { ExaltedThirdItemSheet } from "./item/item-sheet.js";
+import { ExaltedDemakeActor } from "./actor/actor.js";
+import { ExaltedDemakeActorSheet } from "./actor/actor-sheet.js";
+import { ExaltedDemakeItem } from "./item/item.js";
+import { ExaltedDemakeItemSheet } from "./item/item-sheet.js";
 
 import { RollForm } from "./apps/dice-roller.js";
 import TraitSelector from "./apps/trait-selector.js";
@@ -17,7 +17,7 @@ Hooks.once('init', async function() {
 
   registerSettings();
 
-  game.exaltedthird = {
+  game.exalteddemake = {
     applications: {
       TraitSelector,
       ItemSearch,
@@ -25,10 +25,10 @@ Hooks.once('init', async function() {
       Importer,
     },
     entities: {
-      ExaltedThirdActor,
-      ExaltedThirdItem
+      ExaltedDemakeActor,
+      ExaltedDemakeItem
     },
-    config: exaltedthird,
+    config: exalteddemake,
     rollItemMacro: rollItemMacro,
     roll: roll,
     RollForm
@@ -43,29 +43,29 @@ Hooks.once('init', async function() {
   // };
 
   // Define custom Entity classes
-  CONFIG.exaltedthird = exaltedthird;
-  CONFIG.statusEffects = exaltedthird.statusEffects;
+  CONFIG.exalteddemake = exalteddemake;
+  CONFIG.statusEffects = exalteddemake.statusEffects;
 
-  CONFIG.Actor.documentClass = ExaltedThirdActor;
-  CONFIG.Item.documentClass = ExaltedThirdItem;
+  CONFIG.Actor.documentClass = ExaltedDemakeActor;
+  CONFIG.Item.documentClass = ExaltedDemakeItem;
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("exaltedthird", ExaltedThirdActorSheet, { makeDefault: true });
+  Actors.registerSheet("exalteddemake", ExaltedDemakeActorSheet, { makeDefault: true });
   Items.unregisterSheet("core", ItemSheet);
-  Items.registerSheet("exaltedthird", ExaltedThirdItemSheet, { makeDefault: true });
+  Items.registerSheet("exalteddemake", ExaltedDemakeItemSheet, { makeDefault: true });
 
   // Pre-load templates
   loadTemplates([
-    "systems/exaltedthird/templates/dialogues/ability-base.html",
-    "systems/exaltedthird/templates/dialogues/add-roll-charm.html",
-    "systems/exaltedthird/templates/dialogues/accuracy-roll.html",
-    "systems/exaltedthird/templates/dialogues/damage-roll.html",
-    "systems/exaltedthird/templates/actor/active-effects.html",
-    "systems/exaltedthird/templates/actor/equipment-list.html",
-    "systems/exaltedthird/templates/actor/combat-tab.html",
-    "systems/exaltedthird/templates/actor/charm-list.html",
-    "systems/exaltedthird/templates/actor/social-tab.html",
+    "systems/exalteddemake/templates/dialogues/ability-base.html",
+    "systems/exalteddemake/templates/dialogues/add-roll-charm.html",
+    "systems/exalteddemake/templates/dialogues/accuracy-roll.html",
+    "systems/exalteddemake/templates/dialogues/damage-roll.html",
+    "systems/exalteddemake/templates/actor/active-effects.html",
+    "systems/exalteddemake/templates/actor/equipment-list.html",
+    "systems/exalteddemake/templates/actor/combat-tab.html",
+    "systems/exalteddemake/templates/actor/charm-list.html",
+    "systems/exalteddemake/templates/actor/social-tab.html",
   ]);
 
   Combatant.prototype._getInitiativeFormula = function() {
@@ -197,7 +197,7 @@ Hooks.on('updateCombat', (async (combat, update, diff, userId) => {
 
 Hooks.once("ready", async function() {
   // Wait to register hotbar drop hook on ready so that modules could register earlier if they want to
-  Hooks.on("hotbarDrop", (bar, data, slot) => createexaltedthirdMacro(data, slot));
+  Hooks.on("hotbarDrop", (bar, data, slot) => createexalteddemakeMacro(data, slot));
 
   $("#chat-log").on("click", " .item-row", ev => {
     const li = $(ev.currentTarget).next();
@@ -217,13 +217,13 @@ Hooks.once("ready", async function() {
  * @param {number} slot     The hotbar slot to use
  * @returns {Promise}
  */
-async function createexaltedthirdMacro(data, slot) {
+async function createexalteddemakeMacro(data, slot) {
   if (data.type !== "Item") return;
   if (!("data" in data)) return ui.notifications.warn("You can only create macro buttons for owned Items");
   const item = data.data;
 
   // Create the macro command
-  const command = `game.exaltedthird.rollItemMacro("${item.name}");`;
+  const command = `game.exalteddemake.rollItemMacro("${item.name}");`;
   let macro = game.macros.entities.find(m => (m.name === item.name) && (m.command === command));
   if (!macro) {
     macro = await Macro.create({
@@ -231,7 +231,7 @@ async function createexaltedthirdMacro(data, slot) {
       type: "script",
       img: item.img,
       command: command,
-      flags: { "exaltedthird.itemMacro": true }
+      flags: { "exalteddemake.itemMacro": true }
     });
   }
   game.user.assignHotbarMacro(macro, slot);
@@ -258,7 +258,7 @@ function rollItemMacro(itemName) {
 
 /**
  * 
- * @param {ExaltedThirdActor} actor 
+ * @param {ExaltedDemakeActor} actor 
  * @param {object} object 
  * @param {object} data 
  * @returns {Promise}

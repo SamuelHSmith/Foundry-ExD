@@ -1,58 +1,58 @@
 {{#ifEquals data.rollType 'base'}}
-<label class="resource-label">{{localize "Ex3.Dice"}}</label>
+<label class="resource-label">{{localize "ExD.Dice"}}</label>
 <div class="form-group"><input name="object.dice" value="{{data.dice}}" type="number"></div>
 {{else}}
 <div class="resource grid grid-2col flex-center">
     {{#ifEquals data.characterType 'character'}}
 
-    <label class="resource-label">{{localize "Ex3.Attribute"}}: </label>
+    <label class="resource-label">{{localize "ExD.Attribute"}}: </label>
     <select class="update-roller" name="object.attribute" value="{{data.attribute}}" data-type="String">
         {{#select data.attribute}}
-        <option value="strength">{{localize "Ex3.Strength"}}</option>
-        <option value="dexterity">{{localize "Ex3.Dexterity"}}</option>
-        <option value="stamina">{{localize "Ex3.Stamina"}}</option>
-        <option value="charisma">{{localize "Ex3.Charisma"}}</option>
-        <option value="manipulation">{{localize "Ex3.Manipulation"}}</option>
-        <option value="appearance">{{localize "Ex3.Appearance"}}</option>
-        <option value="perception">{{localize "Ex3.Perception"}}</option>
-        <option value="intelligence">{{localize "Ex3.Intelligence"}}</option>
-        <option value="wits">{{localize "Ex3.Wits"}}</option>
+        <option value="strength">{{localize "ExD.Strength"}}</option>
+        <option value="dexterity">{{localize "ExD.Dexterity"}}</option>
+        <option value="stamina">{{localize "ExD.Stamina"}}</option>
+        <option value="charisma">{{localize "ExD.Charisma"}}</option>
+        <option value="manipulation">{{localize "ExD.Manipulation"}}</option>
+        <option value="appearance">{{localize "ExD.Appearance"}}</option>
+        <option value="perception">{{localize "ExD.Perception"}}</option>
+        <option value="intelligence">{{localize "ExD.Intelligence"}}</option>
+        <option value="wits">{{localize "ExD.Wits"}}</option>
         {{/select}}
     </select>
 
-    <label class="resource-label">{{localize "Ex3.Ability"}}: </label>
+    <label class="resource-label">{{localize "ExD.Ability"}}: </label>
     <select class="update-roller update-specialties" name="object.ability" value="{{data.ability}}" data-type="String">
         {{#select data.ability}}
-        <option value="archery">{{localize "Ex3.Archery"}}</option>
-        <option value="athletics">{{localize "Ex3.Athletics"}}</option>
-        <option value="awareness">{{localize "Ex3.Awareness"}}</option>
-        <option value="brawl">{{localize "Ex3.Brawl"}}</option>
-        <option value="bureaucracy">{{localize "Ex3.Bureaucracy"}}</option>
-        <option value="craft">{{localize "Ex3.Craft"}}</option>
-        <option value="dodge">{{localize "Ex3.Dodge"}}</option>
-        <option value="integrity">{{localize "Ex3.Integrity"}}</option>
-        <option value="investigation">{{localize "Ex3.Investigation"}}</option>
-        <option value="larceny">{{localize "Ex3.Larceny"}}</option>
-        <option value="linguistics">{{localize "Ex3.Linguistics"}}</option>
-        <option value="lore">{{localize "Ex3.Lore"}}</option>
-        <option value="martialarts">{{localize "Ex3.MartialArts"}}</option>
-        <option value="medicine">{{localize "Ex3.Medicine"}}</option>
-        <option value="melee">{{localize "Ex3.Melee"}}</option>
-        <option value="occult">{{localize "Ex3.Occult"}}</option>
-        <option value="performance">{{localize "Ex3.Performance"}}</option>
-        <option value="presence">{{localize "Ex3.Presence"}}</option>
-        <option value="resistance">{{localize "Ex3.Resistance"}}</option>
-        <option value="ride">{{localize "Ex3.Ride"}}</option>
-        <option value="sail">{{localize "Ex3.Sail"}}</option>
-        <option value="socialize">{{localize "Ex3.Socialize"}}</option>
-        <option value="stealth">{{localize "Ex3.Stealth"}}</option>
-        <option value="survival">{{localize "Ex3.Survival"}}</option>
-        <option value="thrown">{{localize "Ex3.Thrown"}}</option>
-        <option value="war">{{localize "Ex3.War"}}</option>
+        <option value="archery">{{localize "ExD.Archery"}}</option>
+        <option value="athletics">{{localize "ExD.Athletics"}}</option>
+        <option value="awareness">{{localize "ExD.Awareness"}}</option>
+        <option value="brawl">{{localize "ExD.Brawl"}}</option>
+        <option value="bureaucracy">{{localize "ExD.Bureaucracy"}}</option>
+        <option value="craft">{{localize "ExD.Craft"}}</option>
+        <option value="dodge">{{localize "ExD.Dodge"}}</option>
+        <option value="integrity">{{localize "ExD.Integrity"}}</option>
+        <option value="investigation">{{localize "ExD.Investigation"}}</option>
+        <option value="larceny">{{localize "ExD.Larceny"}}</option>
+        <option value="linguistics">{{localize "ExD.Linguistics"}}</option>
+        <option value="lore">{{localize "ExD.Lore"}}</option>
+        <option value="martialarts">{{localize "ExD.MartialArts"}}</option>
+        <option value="medicine">{{localize "ExD.Medicine"}}</option>
+        <option value="melee">{{localize "ExD.Melee"}}</option>
+        <option value="occult">{{localize "ExD.Occult"}}</option>
+        <option value="performance">{{localize "ExD.Performance"}}</option>
+        <option value="presence">{{localize "ExD.Presence"}}</option>
+        <option value="resistance">{{localize "ExD.Resistance"}}</option>
+        <option value="ride">{{localize "ExD.Ride"}}</option>
+        <option value="sail">{{localize "ExD.Sail"}}</option>
+        <option value="socialize">{{localize "ExD.Socialize"}}</option>
+        <option value="stealth">{{localize "ExD.Stealth"}}</option>
+        <option value="survival">{{localize "ExD.Survival"}}</option>
+        <option value="thrown">{{localize "ExD.Thrown"}}</option>
+        <option value="war">{{localize "ExD.War"}}</option>
         {{/select}}
     </select>
 
-    <label class="resource-label">{{localize "Ex3.Specialty"}}: </label>
+    <label class="resource-label">{{localize "ExD.Specialty"}}: </label>
     <select class="update-roller" name="object.specialty" value="{{data.specialty}}" data-type="String">
         {{#select data.specialty}}
         <option value=""></option>
@@ -69,7 +69,7 @@
     {{#ifEquals data.characterType 'npc'}}
 
     {{#if data.actionRoll}}
-    <label class="resource-label">{{localize "Ex3.Action"}}: </label>
+    <label class="resource-label">{{localize "ExD.Action"}}: </label>
     <select name="object.actionId" value="{{data.actionId}}" data-type="String">
         {{#select data.actionId}}
         {{#each actor.actions as |action key|}}
@@ -78,27 +78,27 @@
         {{/select}}
     </select>
     {{else}}
-    <label class="resource-label">{{localize "Ex3.Pool"}}: </label>
+    <label class="resource-label">{{localize "ExD.Pool"}}: </label>
     <select name="object.pool" value="{{data.pool}}" data-type="String">
         {{#select data.pool}}
-        <option value="administration">{{localize "Ex3.Administration"}}</option>
-        <option value="command">{{localize "Ex3.Command"}}</option>
-        <option value="craft">{{localize "Ex3.Craft"}}</option>
-        <option value="investigation">{{localize "Ex3.Investigation"}}</option>
-        <option value="joinbattle">{{localize "Ex3.JoinBattle"}}</option>
-        <option value="larceny">{{localize "Ex3.Larceny"}}</option>
-        <option value="medicine">{{localize "Ex3.Medicine"}}</option>
-        <option value="movement">{{localize "Ex3.Movement"}}</option>
-        <option value="readintentions">{{localize "Ex3.ReadIntentions"}}</option>
-        <option value="resistpoison">{{localize "Ex3.ResistPoison"}}</option>
-        <option value="senses">{{localize "Ex3.Senses"}}</option>
-        <option value="social">{{localize "Ex3.Social"}}</option>
-        <option value="sorcery">{{localize "Ex3.Sorcery"}}</option>
-        <option value="strength">{{localize "Ex3.Strength"}}</option>
-        <option value="strategy">{{localize "Ex3.Strength"}}</option>
-        <option value="stealth">{{localize "Ex3.Strategy"}}</option>
-        <option value="tracking">{{localize "Ex3.Tracking"}}</option>
-        <option value="other">{{localize "Ex3.Other"}}</option>
+        <option value="administration">{{localize "ExD.Administration"}}</option>
+        <option value="command">{{localize "ExD.Command"}}</option>
+        <option value="craft">{{localize "ExD.Craft"}}</option>
+        <option value="investigation">{{localize "ExD.Investigation"}}</option>
+        <option value="joinbattle">{{localize "ExD.JoinBattle"}}</option>
+        <option value="larceny">{{localize "ExD.Larceny"}}</option>
+        <option value="medicine">{{localize "ExD.Medicine"}}</option>
+        <option value="movement">{{localize "ExD.Movement"}}</option>
+        <option value="readintentions">{{localize "ExD.ReadIntentions"}}</option>
+        <option value="resistpoison">{{localize "ExD.ResistPoison"}}</option>
+        <option value="senses">{{localize "ExD.Senses"}}</option>
+        <option value="social">{{localize "ExD.Social"}}</option>
+        <option value="sorcery">{{localize "ExD.Sorcery"}}</option>
+        <option value="strength">{{localize "ExD.Strength"}}</option>
+        <option value="strategy">{{localize "ExD.Strength"}}</option>
+        <option value="stealth">{{localize "ExD.Strategy"}}</option>
+        <option value="tracking">{{localize "ExD.Tracking"}}</option>
+        <option value="other">{{localize "ExD.Other"}}</option>
         {{/select}}
     </select>
     {{/if}}
@@ -106,7 +106,7 @@
     {{/if}}
 
 
-    <label class="resource-label">{{localize "Ex3.StuntLevel"}}:</label>
+    <label class="resource-label">{{localize "ExD.StuntLevel"}}:</label>
     <select name="object.stunt" value="{{data.stunt}}" data-type="String">
         {{#select data.stunt}}
         <option value="none">None</option>
@@ -120,29 +120,29 @@
 
 <div class="resource grid grid-2col flex-center">
     <div>
-        <label class="resource-label">{{localize "Ex3.TargetNumber"}} </label>
+        <label class="resource-label">{{localize "ExD.TargetNumber"}} </label>
         <input name="object.targetNumber" value="{{data.targetNumber}}" type="number">
     </div>
     <div>
-        <label class="resource-label">{{localize "Ex3.SuccessModifier"}} </label>
+        <label class="resource-label">{{localize "ExD.SuccessModifier"}} </label>
         <input name="object.successModifier" value="{{data.successModifier}}" type="number">
     </div>
     <div>
-        <label class="resource-label">{{localize "Ex3.DoubleSuccess"}} + </label>
+        <label class="resource-label">{{localize "ExD.DoubleSuccess"}} + </label>
         <input name="object.doubleSuccess" value="{{data.doubleSuccess}}" type="number">
     </div>
 
     {{#ifEquals data.rollType 'base'}}
     {{else}}
     <div>
-        <label class="resource-label">{{localize "Ex3.DiceModifier"}} </label>
+        <label class="resource-label">{{localize "ExD.DiceModifier"}} </label>
         <input name="object.diceModifier" value="{{data.diceModifier}}" type="number">
     </div>
     {{/ifEquals}}
 
 </div>
 <div class="resource flex-center">
-    <label class="resource-label">{{localize "Ex3.Reroll"}}</label>
+    <label class="resource-label">{{localize "ExD.Reroll"}}</label>
 </div>
 <div class="resource d-flex flex-center">
     <div>
@@ -190,16 +190,16 @@
 {{#ifEquals data.rollType 'base'}}
 {{else}}
 <div class="resource grid grid-4col flex-center">
-    <label class="resource-label">{{localize "Ex3.WoundPenalty"}}: </label>
+    <label class="resource-label">{{localize "ExD.WoundPenalty"}}: </label>
     <input type="checkbox" name="object.woundPenalty" value="{{data.woundPenalty}}" {{checked data.woundPenalty}}>
 
-    <label class="resource-label">{{localize "Ex3.Flurry"}}: </label>
+    <label class="resource-label">{{localize "ExD.Flurry"}}: </label>
     <input type="checkbox" name="object.isFlurry" value="{{data.isFlurry}}" {{checked data.isFlurry}}>
 
-    <label class="resource-label">{{localize "Ex3.ArmorPenalty"}}: </label>
+    <label class="resource-label">{{localize "ExD.ArmorPenalty"}}: </label>
     <input type="checkbox" name="object.armorPenalty" value="{{data.armorPenalty}}" {{checked data.armorPenalty}}>
 
-    <label class="resource-label">{{localize "Ex3.Willpower"}}: </label>
+    <label class="resource-label">{{localize "ExD.Willpower"}}: </label>
     <input type="checkbox" name="object.willpower" value="{{data.willpower}}" {{checked data.willpower}}>
 </div>
 {{/ifEquals}}
@@ -207,7 +207,7 @@
 {{#ifNotEquals data.rollType 'base'}}
 <div class="d-flex flex-between mb-1 collapsable cursor-pointer">
     <div class="resource-label">
-        {{localize "Ex3.Charms"}} {{#ifNotEquals data.diceCap ''}} ({{localize "Ex3.DiceCap"}}: {{data.diceCap}}) {{/ifNotEquals}}
+        {{localize "ExD.Charms"}} {{#ifNotEquals data.diceCap ''}} ({{localize "ExD.DiceCap"}}: {{data.diceCap}}) {{/ifNotEquals}}
     </div>
     <div>
         <i class="fas fa-caret-down"></i>
@@ -226,65 +226,65 @@
         {{/each}}
     </ol>
     <div class="resource flex-center">
-        <label class="resource-label">{{localize "Ex3.Cost"}}</label>
+        <label class="resource-label">{{localize "ExD.Cost"}}</label>
     </div>
     <div class="resource grid grid-3col flex-center">
         <div>
-            <label class="resource-label">{{localize "Ex3.Motes"}}</label>
+            <label class="resource-label">{{localize "ExD.Motes"}}</label>
             <input type="number" name="object.cost.motes" value="{{data.cost.motes}}">
         </div>
         <div>
-            <label class="resource-label">{{localize "Ex3.MuteMotes"}} </label>
+            <label class="resource-label">{{localize "ExD.MuteMotes"}} </label>
             <input type="number" name="object.cost.muteMotes" value="{{data.cost.muteMotes}}">
         </div>
         <div>
-            <label class="resource-label">{{localize "Ex3.Initiative"}} </label>
+            <label class="resource-label">{{localize "ExD.Initiative"}} </label>
             <input type="number" name="object.cost.initiative" value="{{data.cost.initiative}}">
         </div>
         <div>
-            <label class="resource-label">{{localize "Ex3.Anima"}} </label>
+            <label class="resource-label">{{localize "ExD.Anima"}} </label>
             <input type="number" name="object.cost.anima" value="{{data.cost.anima}}">
         </div>
         <div>
-            <label class="resource-label">{{localize "Ex3.Willpower"}} </label>
+            <label class="resource-label">{{localize "ExD.Willpower"}} </label>
             <input type="number" name="object.cost.willpower" value="{{data.cost.willpower}}">
         </div>
         <div>
-            <div class="resource-label">{{localize "Ex3.Aura"}}</div>
+            <div class="resource-label">{{localize "ExD.Aura"}}</div>
             <select name="object.cost.aura" data-type="String">
                 {{#select data.cost.aura}}
                 <option value=""></option>
-                <option value="any">{{localize "Ex3.Any"}}</option>
-                <option value="air">{{localize "Ex3.Air"}}</option>
-                <option value="earth">{{localize "Ex3.Earth"}}</option>
-                <option value="fire">{{localize "Ex3.Fire"}}</option>
-                <option value="water">{{localize "Ex3.Water"}}</option>
-                <option value="wood">{{localize "Ex3.Wood"}}</option>
+                <option value="any">{{localize "ExD.Any"}}</option>
+                <option value="air">{{localize "ExD.Air"}}</option>
+                <option value="earth">{{localize "ExD.Earth"}}</option>
+                <option value="fire">{{localize "ExD.Fire"}}</option>
+                <option value="water">{{localize "ExD.Water"}}</option>
+                <option value="wood">{{localize "ExD.Wood"}}</option>
                 {{/select}}
             </select>
         </div>
         <div>
-            <div class="resource-label">{{localize "Ex3.Health"}}(b)</div>
+            <div class="resource-label">{{localize "ExD.Health"}}(b)</div>
             <input type="number" name="object.cost.healthbashing" value="{{data.cost.healthbashing}}" data-dtype="Number" />
         </div>
         <div>
-            <div class="resource-label">{{localize "Ex3.Health"}}(l)</div>
+            <div class="resource-label">{{localize "ExD.Health"}}(l)</div>
             <input type="number" name="object.cost.healthlethal" value="{{data.cost.healthlethal}}" data-dtype="Number" />
         </div>
         <div>
-            <div class="resource-label">{{localize "Ex3.Health"}}(a)</div>
+            <div class="resource-label">{{localize "ExD.Health"}}(a)</div>
             <input type="number" name="object.cost.healthaggravated" value="{{data.cost.healthaggravated}}" data-dtype="Number" />
         </div>
         <div>
-            <div class="resource-label">{{localize "Ex3.Silver"}}</div>
+            <div class="resource-label">{{localize "ExD.Silver"}}</div>
             <input type="number" name="object.cost.silverxp" value="{{data.cost.silverxp}}" data-dtype="Number" />
         </div>
         <div>
-            <div class="resource-label">{{localize "Ex3.Gold"}}</div>
+            <div class="resource-label">{{localize "ExD.Gold"}}</div>
             <input type="number" name="object.cost.goldxp" value="{{data.cost.goldxp}}" data-dtype="Number" />
         </div>
         <div>
-            <div class="resource-label">{{localize "Ex3.White"}}</div>
+            <div class="resource-label">{{localize "ExD.White"}}</div>
             <input type="number" name="object.cost.whitexp" value="{{data.cost.whitexp}}" data-dtype="Number" />
         </div>
     </div>
@@ -292,7 +292,7 @@
 {{/ifNotEquals}}
 <div class="d-flex flex-between mb-1 collapsable cursor-pointer">
     <div class="resource-label">
-        {{localize "Ex3.OtherModifiers"}}
+        {{localize "ExD.OtherModifiers"}}
     </div>
     <div>
         <i class="fas fa-caret-down"></i>
@@ -300,18 +300,18 @@
 </div>
 <div style="display:none;">
     <div class="resource grid grid-2col flex-center">
-        <label class="resource-label">{{localize "Ex3.RerollNumDice"}} </label>
+        <label class="resource-label">{{localize "ExD.RerollNumDice"}} </label>
         <input name="object.rerollNumber" value="{{data.rerollNumber}}" type="number">
-        <label class="resource-label">{{localize "Ex3.DicetoSuccesses"}} </label>
+        <label class="resource-label">{{localize "ExD.DicetoSuccesses"}} </label>
         <input type="number" name="object.diceToSuccesses" value="{{data.diceToSuccesses}}">
-        <label class="resource-label">{{localize "Ex3.RerollFailed"}} </label>
+        <label class="resource-label">{{localize "ExD.RerollFailed"}} </label>
         <input type="checkbox" name="object.rerollFailed" value="{{data.rerollFailed}}" {{checked data.rerollFailed}}>
     </div>
 </div>
 {{#ifNotEquals data.rollType 'base'}}
 <div class="d-flex flex-between mb-1 collapsable cursor-pointer">
     <div class="resource-label">
-        {{localize "Ex3.Conditions"}}
+        {{localize "ExD.Conditions"}}
     </div>
     <div>
         <i class="fas fa-caret-down"></i>
@@ -329,24 +329,24 @@
 {{#ifEquals data.rollType 'social'}}
 <div class="resource grid grid-2col flex-center">
     <div>
-        <label class="resource-label">{{localize "Ex3.SupportingIntimacy"}}</label>
+        <label class="resource-label">{{localize "ExD.SupportingIntimacy"}}</label>
         <select name="object.supportedIntimacy" value="{{data.supportedIntimacy}}" data-type="String">
             {{#select data.supportedIntimacy}}
-            <option value="0">{{localize "Ex3.None"}}</option>
-            <option value="1">{{localize "Ex3.Minor"}}</option>
-            <option value="2">{{localize "Ex3.Major"}}</option>
-            <option value="3">{{localize "Ex3.Defining"}}</option>
+            <option value="0">{{localize "ExD.None"}}</option>
+            <option value="1">{{localize "ExD.Minor"}}</option>
+            <option value="2">{{localize "ExD.Major"}}</option>
+            <option value="3">{{localize "ExD.Defining"}}</option>
             {{/select}}
         </select>
     </div>
     <div>
-        <label class="resource-label">{{localize "Ex3.OpposedIntimacy"}} </label>
+        <label class="resource-label">{{localize "ExD.OpposedIntimacy"}} </label>
         <select name="object.opposedIntimacy" value="{{data.opposedIntimacy}}" data-type="String">
             {{#select data.opposedIntimacy}}
-            <option value="0">{{localize "Ex3.None"}}</option>
-            <option value="2">{{localize "Ex3.Minor"}}</option>
-            <option value="3">{{localize "Ex3.Major"}}</option>
-            <option value="4">{{localize "Ex3.Defining"}}</option>
+            <option value="0">{{localize "ExD.None"}}</option>
+            <option value="2">{{localize "ExD.Minor"}}</option>
+            <option value="3">{{localize "ExD.Major"}}</option>
+            <option value="4">{{localize "ExD.Defining"}}</option>
             {{/select}}
         </select>
     </div>
@@ -356,23 +356,23 @@
 {{#ifEquals data.rollType 'working'}}
 <div class="resource grid grid-2col flex-center">
     <div>
-        <div class="resource-label">{{localize "Ex3.Ambition"}}</div>
+        <div class="resource-label">{{localize "ExD.Ambition"}}</div>
         <select id="working-ambition" name="object.ambition" value="{{data.ambition}}" data-type="String">
             {{#select data.ambition}}
-            <option value="5">{{localize "Ex3.Terrestrial"}} 1</option>
-            <option value="10">{{localize "Ex3.Terrestrial"}} 2</option>
-            <option value="20">{{localize "Ex3.Terrestrial"}} 3</option>
-            <option value="25">{{localize "Ex3.Celestial"}} 1</option>
-            <option value="30">{{localize "Ex3.Celestial"}} 2</option>
-            <option value="35">{{localize "Ex3.Celestial"}} 3</option>
-            <option value="40">{{localize "Ex3.Solar"}} 1</option>
-            <option value="50">{{localize "Ex3.Solar"}} 2</option>
-            <option value="75">{{localize "Ex3.Solar"}} 3</option>
+            <option value="5">{{localize "ExD.Terrestrial"}} 1</option>
+            <option value="10">{{localize "ExD.Terrestrial"}} 2</option>
+            <option value="20">{{localize "ExD.Terrestrial"}} 3</option>
+            <option value="25">{{localize "ExD.Celestial"}} 1</option>
+            <option value="30">{{localize "ExD.Celestial"}} 2</option>
+            <option value="35">{{localize "ExD.Celestial"}} 3</option>
+            <option value="40">{{localize "ExD.Solar"}} 1</option>
+            <option value="50">{{localize "ExD.Solar"}} 2</option>
+            <option value="75">{{localize "ExD.Solar"}} 3</option>
             {{/select}}
         </select>
     </div>
     <div>
-        <div class="resource-label">{{localize "Ex3.Finesse"}} </div>
+        <div class="resource-label">{{localize "ExD.Finesse"}} </div>
         <select id="working-finesse" name="object.finesse" value="{{data.finesse}}" data-type="String">
             {{#select data.finesse}}
             <option value="1">1</option>
@@ -391,7 +391,7 @@
         <input type="number" name="object.difficulty" value="{{data.difficulty}}">
     </div>
     <div>
-        <label class="resource-label">{{localize "Ex3.GoalNumber"}} </label>
+        <label class="resource-label">{{localize "ExD.GoalNumber"}} </label>
         <input type="number" name="object.goalNumber" value="{{data.goalNumber}}">
     </div>
 </div>

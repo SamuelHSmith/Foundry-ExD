@@ -1,21 +1,21 @@
-export const exaltedthird = {};
+export const exalteddemake = {};
 
 //Localization doesn't work here for some reason
-// exaltedthird.languages = {
-//     "lowrealm": "Ex3.LowRealm",
-//     "highrealm": "Ex3.HighRealm",
-//     "oldrealm": "Ex3.OldRealm",
-//     "dragontongue": "Ex3.Dragontongue",
-//     "riverspeak": "Ex3.Riverspeak",
-//     "skytongue": "Ex3.Skytongue",
-//     "flametongue": "Ex3.Flametongue",
-//     "foresttongue": "Ex3.Foresttongue",
-//     "seatongue": "Ex3.Seatongue",
-//     "guildcant": "Ex3.GuildCant",
-//     "localtongue": "Ex3.LocalTongue",
+// exalteddemake.languages = {
+//     "lowrealm": "ExD.LowRealm",
+//     "highrealm": "ExD.HighRealm",
+//     "oldrealm": "ExD.OldRealm",
+//     "dragontongue": "ExD.Dragontongue",
+//     "riverspeak": "ExD.Riverspeak",
+//     "skytongue": "ExD.Skytongue",
+//     "flametongue": "ExD.Flametongue",
+//     "foresttongue": "ExD.Foresttongue",
+//     "seatongue": "ExD.Seatongue",
+//     "guildcant": "ExD.GuildCant",
+//     "localtongue": "ExD.LocalTongue",
 // };
 
-exaltedthird.languages = {
+exalteddemake.languages = {
     "lowrealm": "Low Realm",
     "highrealm": "High Realm",
     "oldrealm": "Old Realm",
@@ -29,40 +29,40 @@ exaltedthird.languages = {
     "localtongue": "Local Tongue",
 };
 
-exaltedthird.statusEffects = [
+exalteddemake.statusEffects = [
     {
         icon: 'icons/svg/falling.svg',
         id: 'prone',
-        label: 'Ex3.Prone',
+        label: 'ExD.Prone',
         name: 'prone'
     },
     {
         icon: 'icons/svg/ruins.svg',
         id: 'lightcover',
-        label: 'Ex3.LightCover',
+        label: 'ExD.LightCover',
         name: 'lightcover'
     },
     {
         icon: 'icons/svg/castle.svg',
         id: 'heavycover',
-        label: 'Ex3.HeavyCover',
+        label: 'ExD.HeavyCover',
         name: 'heavycover'
     },
     {
-        icon: 'systems/exaltedthird/assets/icons/grab.svg',
+        icon: 'systems/exalteddemake/assets/icons/grab.svg',
         id: 'grappled',
-        label: 'Ex3.Grappled',
+        label: 'ExD.Grappled',
         name: 'grappled'
     },
     {
         icon: 'icons/skills/social/diplomacy-handshake-gray.webp',
         id: 'grappling',
-        label: 'Ex3.Grappling',
+        label: 'ExD.Grappling',
         name: 'grappling'
     },
     {
-        icon: 'systems/exaltedthird/assets/icons/drop-weapon.svg',
+        icon: 'systems/exalteddemake/assets/icons/drop-weapon.svg',
         id: 'disarmed',
-        label: 'Ex3.Disarmed',
+        label: 'ExD.Disarmed',
     },
 ]

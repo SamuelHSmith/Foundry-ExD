@@ -4,7 +4,7 @@ import { onManageActiveEffect, prepareActiveEffectCategories } from "../effects.
  * Extend the basic ItemSheet with some very simple modifications
  * @extends {ItemSheet}
  */
-export class ExaltedThirdItemSheet extends ItemSheet {
+export class ExaltedDemakeItemSheet extends ItemSheet {
 
   constructor(...args) {
     super(...args);
@@ -17,7 +17,7 @@ export class ExaltedThirdItemSheet extends ItemSheet {
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      classes: ["exaltedthird", "sheet", "item"],
+      classes: ["exalteddemake", "sheet", "item"],
       width: 520,
       height: 480,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
@@ -26,7 +26,7 @@ export class ExaltedThirdItemSheet extends ItemSheet {
 
   /** @override */
   get template() {
-    const path = "systems/exaltedthird/templates/item";
+    const path = "systems/exalteddemake/templates/item";
     // Return a single sheet for all item types.
     // return `${path}/item-sheet.html`;
 
@@ -77,7 +77,7 @@ export class ExaltedThirdItemSheet extends ItemSheet {
     });
 
     html.find(".show-keywords").click(async ev => {
-      const html = await renderTemplate("systems/exaltedthird/templates/dialogues/keywords.html");
+      const html = await renderTemplate("systems/exalteddemake/templates/dialogues/keywords.html");
       new Dialog({
         title: `Keywords`,
         content: html,

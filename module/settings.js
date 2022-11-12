@@ -1,25 +1,25 @@
 export function registerSettings() {
-    game.settings.register('exaltedthird', 'calculateOnslaught', {
-        name: game.i18n.localize('Ex3.Onslaught'),
-        hint: game.i18n.localize('Ex3.ShowOnslaughtDescription'),
+    game.settings.register('exalteddemake', 'calculateOnslaught', {
+        name: game.i18n.localize('ExD.Onslaught'),
+        hint: game.i18n.localize('ExD.ShowOnslaughtDescription'),
         default: true,
         scope: 'world',
         type: Boolean,
         config: true,
     });
 
-    game.settings.register('exaltedthird', 'defenseOnDamage', {
-        name: game.i18n.localize('Ex3.DefenseOnDamage'),
-        hint: game.i18n.localize('Ex3.DefenseOnDamageDescription'),
+    game.settings.register('exalteddemake', 'defenseOnDamage', {
+        name: game.i18n.localize('ExD.DefenseOnDamage'),
+        hint: game.i18n.localize('ExD.DefenseOnDamageDescription'),
         default: false,
         scope: 'world',
         type: Boolean,
         config: true,
     });
 
-    game.settings.register('exaltedthird', 'autoDecisiveDamage', {
-        name: game.i18n.localize('Ex3.AutoDecisiveDamage'),
-        hint: game.i18n.localize('Ex3.AutoDecisiveDamageDescription'),
+    game.settings.register('exalteddemake', 'autoDecisiveDamage', {
+        name: game.i18n.localize('ExD.AutoDecisiveDamage'),
+        hint: game.i18n.localize('ExD.AutoDecisiveDamageDescription'),
         default: true,
         scope: 'world',
         type: Boolean,

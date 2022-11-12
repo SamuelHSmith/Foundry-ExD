@@ -4,15 +4,15 @@
             <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100"
                 width="100" />
             <div class="flex-center">
-                <label class="resource-label">{{localize "Ex3.Essence"}}</label>
+                <label class="resource-label">{{localize "ExD.Essence"}}</label>
                 <input type="number" name="system.essence.value" value="{{system.essence.value}}" data-dtype="Number" />
             </div>
             <div class="check-button">
-                <label class="resource-label">{{localize "Ex3.Battlegroup"}}:</label>
+                <label class="resource-label">{{localize "ExD.Battlegroup"}}:</label>
                 <input data-dtype="Boolean" name="system.battlegroup" type="checkbox" {{checked system.battlegroup}}>
             </div>
             <div class="check-button">
-                <label class="resource-label">{{localize "Ex3.LegendarySize"}}:</label>
+                <label class="resource-label">{{localize "ExD.LegendarySize"}}:</label>
                 <input data-dtype="Boolean" name="system.legendarysize" type="checkbox" {{checked
                     system.legendarysize}}>
             </div>
@@ -20,32 +20,32 @@
         <div class="header-fields">
             <div>
                 <h1 class="charname"><input name="name" type="text" value="{{actor.name}}"
-                        placeholder="{{localize 'Ex3.NameTitle'}}" /></h1>
+                        placeholder="{{localize 'ExD.NameTitle'}}" /></h1>
             </div>
             <div class="grid grid-3col flexrow">
                 <h1 class="charname"> <select name="system.creaturetype" data-type="String">
                         {{#select system.creaturetype}}
-                        <option value="animal">{{localize "Ex3.Animal"}}</option>
-                        <option value="behemoth">{{localize "Ex3.Behemoth"}}</option>
-                        <option value="construct">{{localize "Ex3.Construct"}}</option>
-                        <option value="demon">{{localize "Ex3.Demon"}}</option>
-                        <option value="elemental">{{localize "Ex3.Elemental"}}</option>
-                        <option value="exalt">{{localize "Ex3.Exalt"}}</option>
-                        <option value="fae">{{localize "Ex3.Fae"}}</option>
-                        <option value="god">{{localize "Ex3.God"}}</option>
-                        <option value="magiccreature">{{localize "Ex3.MagicCreature"}}</option>
-                        <option value="mortal">{{localize "Ex3.Mortal"}}</option>
-                        <option value="undead">{{localize "Ex3.Undead"}}</option>
-                        <option value="wyldmonster">{{localize "Ex3.WyldMonster"}}</option>
-                        <option value="other">{{localize "Ex3.Other"}}</option>
+                        <option value="animal">{{localize "ExD.Animal"}}</option>
+                        <option value="behemoth">{{localize "ExD.Behemoth"}}</option>
+                        <option value="construct">{{localize "ExD.Construct"}}</option>
+                        <option value="demon">{{localize "ExD.Demon"}}</option>
+                        <option value="elemental">{{localize "ExD.Elemental"}}</option>
+                        <option value="exalt">{{localize "ExD.Exalt"}}</option>
+                        <option value="fae">{{localize "ExD.Fae"}}</option>
+                        <option value="god">{{localize "ExD.God"}}</option>
+                        <option value="magiccreature">{{localize "ExD.MagicCreature"}}</option>
+                        <option value="mortal">{{localize "ExD.Mortal"}}</option>
+                        <option value="undead">{{localize "ExD.Undead"}}</option>
+                        <option value="wyldmonster">{{localize "ExD.WyldMonster"}}</option>
+                        <option value="other">{{localize "ExD.Other"}}</option>
                         {{/select}}
                     </select></h1>
                 {{#ifEquals system.creaturetype 'demon'}}
                 <h1 class="charname"> <select name="system.details.exalt" data-type="String">
                         {{#select system.details.exalt}}
-                        <option value="first">{{localize "Ex3.First"}} {{localize "Ex3.Circle"}}</option>
-                        <option value="second">{{localize "Ex3.Second"}} {{localize "Ex3.Circle"}}</option>
-                        <option value="third">{{localize "Ex3.Third"}} {{localize "Ex3.Circle"}}</option>
+                        <option value="first">{{localize "ExD.First"}} {{localize "ExD.Circle"}}</option>
+                        <option value="second">{{localize "ExD.Second"}} {{localize "ExD.Circle"}}</option>
+                        <option value="demake">{{localize "ExD.Demake"}} {{localize "ExD.Circle"}}</option>
                         {{/select}}
                     </select></h1>
                 {{/ifEquals}}
@@ -53,31 +53,31 @@
                 {{#ifEquals system.creaturetype 'exalt'}}
                 <h1 class="charname"> <select name="system.details.exalt" data-type="String">
                         {{#select system.details.exalt}}
-                        <option value="abyssal">{{localize "Ex3.Abyssal"}}</option>
-                        <option value="alchemical">{{localize "Ex3.Alchemical"}}</option>
-                        <option value="dragonblooded">{{localize "Ex3.Dragonblooded"}}</option>
-                        <option value="dreamsouled">{{localize "Ex3.DreamSouled"}}</option>
-                        <option value="exigent">{{localize "Ex3.Exigent"}}</option>
-                        <option value="getimian">{{localize "Ex3.Getimian"}}</option>
-                        <option value="hearteater">{{localize "Ex3.Hearteater"}}</option>
-                        <option value="infernal">{{localize "Ex3.Infernal"}}</option>
-                        <option value="liminal">{{localize "Ex3.Liminal"}}</option>
-                        <option value="lunar">{{localize "Ex3.Lunar"}}</option>
-                        <option value="sidereal">{{localize "Ex3.Sidereal"}}</option>
-                        <option value="solar">{{localize "Ex3.Solar"}}</option>
-                        <option value="umbral">{{localize "Ex3.Umbral"}}</option>
-                        <option value="other">{{localize "Ex3.Other"}}</option>
+                        <option value="abyssal">{{localize "ExD.Abyssal"}}</option>
+                        <option value="alchemical">{{localize "ExD.Alchemical"}}</option>
+                        <option value="dragonblooded">{{localize "ExD.Dragonblooded"}}</option>
+                        <option value="dreamsouled">{{localize "ExD.DreamSouled"}}</option>
+                        <option value="exigent">{{localize "ExD.Exigent"}}</option>
+                        <option value="getimian">{{localize "ExD.Getimian"}}</option>
+                        <option value="hearteater">{{localize "ExD.Hearteater"}}</option>
+                        <option value="infernal">{{localize "ExD.Infernal"}}</option>
+                        <option value="liminal">{{localize "ExD.Liminal"}}</option>
+                        <option value="lunar">{{localize "ExD.Lunar"}}</option>
+                        <option value="sidereal">{{localize "ExD.Sidereal"}}</option>
+                        <option value="solar">{{localize "ExD.Solar"}}</option>
+                        <option value="umbral">{{localize "ExD.Umbral"}}</option>
+                        <option value="other">{{localize "ExD.Other"}}</option>
                         {{/select}}
                     </select></h1>
                 <h1 class="charname"><input name="system.details.caste" type="text" value="{{system.details.caste}}"
-                        placeholder="{{localize 'Ex3.CasteAspect'}}" /></h1>
+                        placeholder="{{localize 'ExD.CasteAspect'}}" /></h1>
                 {{/ifEquals}}
 
                 {{#ifEquals system.creaturetype 'fae'}}
                 <h1 class="charname"> <select name="system.details.exalt" data-type="String">
                         {{#select system.details.exalt}}
-                        <option value="creature">{{localize "Ex3.Creature"}}</option>
-                        <option value="raksha">{{localize "Ex3.Raksha"}}</option>
+                        <option value="creature">{{localize "ExD.Creature"}}</option>
+                        <option value="raksha">{{localize "ExD.Raksha"}}</option>
                         {{/select}}
                     </select></h1>
                 {{/ifEquals}}
@@ -85,7 +85,7 @@
             <div class="resources grid grid-4col">
                 <div class="flex-center">
                     <div style="margin-bottom:3px;">
-                        <label class="resource-label">{{localize "Ex3.Personal"}} {{#ifEquals system.creaturetype
+                        <label class="resource-label">{{localize "ExD.Personal"}} {{#ifEquals system.creaturetype
                             'exalt'}} <i class="fas fa-calculator calculate-personal-motes cursor-pointer"
                                 title="Auto Set Motes"></i> {{/ifEquals}}</label>
                         <div class="resource-content flexrow flex-center flex-between">
@@ -97,14 +97,14 @@
                         </div>
                     </div>
                     <div>
-                        <label class="resource-label">{{localize "Ex3.Committed"}}</label>
+                        <label class="resource-label">{{localize "ExD.Committed"}}</label>
                         <input type="number" name="system.motes.personal.committed"
                             value="{{system.motes.personal.committed}}" data-dtype="Number" />
                     </div>
                 </div>
                 <div class="flex-center">
                     <div style="margin-bottom:3px;">
-                        <label class="resource-label">{{localize "Ex3.Peripheral"}} {{#ifEquals system.creaturetype
+                        <label class="resource-label">{{localize "ExD.Peripheral"}} {{#ifEquals system.creaturetype
                             'exalt'}} <i class="fas fa-calculator calculate-peripheral-motes cursor-pointer"
                                 title="Auto Set Motes"></i> {{/ifEquals}}</label>
                         <div class="resource-content flexrow flex-center flex-between">
@@ -116,7 +116,7 @@
                         </div>
                     </div>
                     <div>
-                        <label class="resource-label">{{localize "Ex3.Committed"}}</label>
+                        <label class="resource-label">{{localize "ExD.Committed"}}</label>
                         <input type="number" name="system.motes.peripheral.committed"
                             value="{{system.motes.peripheral.committed}}" data-dtype="Number" />
                     </div>
@@ -125,14 +125,14 @@
                     <div>
                         <i id="anima-down" class="fas fa-caret-down cursor-pointer"></i><label
                             class="resource-label">{{localize
-                            "Ex3.Anima"}}</label><i id="anima-up" class="fas fa-caret-up cursor-pointer"></i>
+                            "ExD.Anima"}}</label><i id="anima-up" class="fas fa-caret-up cursor-pointer"></i>
                         <div>{{system.anima.level}}</div>
                     </div>
                 </div>
                 <div class="resource-content flexrow flex-center flex-between">
                     {{#ifEquals system.details.exalt 'getimian'}}
                     <div>
-                        <label class="resource-label">{{localize "Ex3.Flowing"}}</label>
+                        <label class="resource-label">{{localize "ExD.Flowing"}}</label>
                         <div class="resource-content flexrow flex-center flex-between">
                             <input type="number" name="system.flowing.value" value="{{system.flowing.value}}"
                                 data-dtype="Number" />
@@ -142,7 +142,7 @@
                         </div>
                     </div>
                     <div>
-                        <label class="resource-label">{{localize "Ex3.Still"}}</label>
+                        <label class="resource-label">{{localize "ExD.Still"}}</label>
                         <div class="resource-content flexrow flex-center flex-between">
                             <input type="number" name="system.still.value" value="{{system.still.value}}"
                                 data-dtype="Number" />
@@ -154,34 +154,34 @@
                     {{/ifEquals}}
                     {{#ifEquals system.details.exalt 'solar'}}
                     <div>
-                        <label class="resource-label">{{localize "Ex3.Supernal"}}</label>
+                        <label class="resource-label">{{localize "ExD.Supernal"}}</label>
                         <input type="text" name="system.details.supernal" value="{{system.details.supernal}}" />
                     </div>
                     {{/ifEquals}}
                     {{#ifEquals system.details.exalt 'lunar'}}
                     <div>
-                        <label class="resource-label">{{localize "Ex3.Tell"}}</label>
+                        <label class="resource-label">{{localize "ExD.Tell"}}</label>
                         <input type="text" name="system.details.tell" value="{{system.details.tell}}" />
                     </div>
                     {{/ifEquals}}
                     {{#ifEquals system.details.exalt 'dragonblooded'}}
                     <div>
-                        <div class="resource-label">{{localize "Ex3.Aura"}}</div>
+                        <div class="resource-label">{{localize "ExD.Aura"}}</div>
                         <select name="system.details.aura" data-type="String">
                             {{#select system.details.aura}}
-                            <option value="none">{{localize "Ex3.None"}}</option>
-                            <option value="air">{{localize "Ex3.Air"}}</option>
-                            <option value="earth">{{localize "Ex3.Earth"}}</option>
-                            <option value="fire">{{localize "Ex3.Fire"}}</option>
-                            <option value="water">{{localize "Ex3.Water"}}</option>
-                            <option value="wood">{{localize "Ex3.Wood"}}</option>
+                            <option value="none">{{localize "ExD.None"}}</option>
+                            <option value="air">{{localize "ExD.Air"}}</option>
+                            <option value="earth">{{localize "ExD.Earth"}}</option>
+                            <option value="fire">{{localize "ExD.Fire"}}</option>
+                            <option value="water">{{localize "ExD.Water"}}</option>
+                            <option value="wood">{{localize "ExD.Wood"}}</option>
                             {{/select}}
                         </select>
                     </div>
                     {{/ifEquals}}
                     {{#ifEquals system.details.exalt 'umbral'}}
                     <div>
-                        <label class="resource-label">{{localize "Ex3.Penumbra"}}</label>
+                        <label class="resource-label">{{localize "ExD.Penumbra"}}</label>
                         <input type="number" name="system.details.penumbra.value"
                             value="{{system.details.penumbra.value}}" />
                     </div>
@@ -190,7 +190,7 @@
             </div>
             <div class="resources flex-center">
                 <div>
-                    <label class="resource-label">{{localize "Ex3.Willpower"}}</label>
+                    <label class="resource-label">{{localize "ExD.Willpower"}}</label>
                     <div class="resource-content flexrow flex-center flex-between">
                         <input type="number" name="system.willpower.value" value="{{system.willpower.value}}"
                             data-dtype="Number" />/
@@ -203,18 +203,18 @@
     </header>
 
     <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="stats">{{localize "Ex3.Stats"}}</a>
-        <a class="item" data-tab="combat">{{localize "Ex3.Combat"}}</a>
-        <a class="item" data-tab="social">{{localize "Ex3.Social"}}</a>
-        <a class="item" data-tab="charms">{{localize "Ex3.Charms"}}/{{localize "Ex3.Spells"}}</a>
-        <a class="item" data-tab="effects">{{localize "Ex3.Effects"}}</a>
-        <a class="item" data-tab="description">{{localize "Ex3.Description"}}</a>
+        <a class="item" data-tab="stats">{{localize "ExD.Stats"}}</a>
+        <a class="item" data-tab="combat">{{localize "ExD.Combat"}}</a>
+        <a class="item" data-tab="social">{{localize "ExD.Social"}}</a>
+        <a class="item" data-tab="charms">{{localize "ExD.Charms"}}/{{localize "ExD.Spells"}}</a>
+        <a class="item" data-tab="effects">{{localize "ExD.Effects"}}</a>
+        <a class="item" data-tab="description">{{localize "ExD.Description"}}</a>
     </nav>
 
     <section class="sheet-body">
         <div class="tab flex-center" data-group="primary" data-tab="stats">
             <div style="padding-top:10px;">
-                <label class="resource-label">{{localize "Ex3.Actions"}}</label>
+                <label class="resource-label">{{localize "ExD.Actions"}}</label>
                 <a class="item-control item-create" title="Create action" data-type="action"><i
                         class="fas fa-plus"></i></a>
             </div>
@@ -252,26 +252,26 @@
             </div>
             {{#if system.settings.showescort}}
             <div>
-                <label class="resource-label">{{localize "Ex3.Escort"}}</label>
+                <label class="resource-label">{{localize "ExD.Escort"}}</label>
                 <textarea type="text" name="system.escort" rows="6">{{system.escort}}</textarea>
             </div>
             {{/if}}
             <div>
-                <label class="resource-label">{{localize "Ex3.Qualities"}}</label>
+                <label class="resource-label">{{localize "ExD.Qualities"}}</label>
                 <textarea type="text" name="system.qualities" rows="12">{{system.qualities}}</textarea>
             </div>
         </div>
 
         {{!-- Combat Tab --}}
         <div class="tab flex-center" data-group="primary" data-tab="combat">
-            {{> systems/exaltedthird/templates/actor/combat-tab.html}}
+            {{> systems/exalteddemake/templates/actor/combat-tab.html}}
         </div>
         {{!-- Charms Tab --}}
         <div class="tab items" data-group="primary" data-tab="charms">
             <ol class="items-list">
                 <div class="resource-label list-section-header d-flex flex-between">
                     <div>
-                        {{localize "Ex3.SpecialAbilities"}}
+                        {{localize "ExD.SpecialAbilities"}}
                     </div>
                     <a class="item-control item-create" title="Create specialability" data-type="specialability"><i
                             class="fas fa-plus"></i>Add S-Ability</a>
@@ -294,10 +294,10 @@
                     </div>
                 </li>
                 {{/each}}
-                {{> systems/exaltedthird/templates/actor/charm-list.html}}
+                {{> systems/exalteddemake/templates/actor/charm-list.html}}
                 <div class="resource-label list-section-header d-flex flex-between">
                     <div>
-                        {{localize "Ex3.Initiations"}}
+                        {{localize "ExD.Initiations"}}
                     </div>
                     <a class="item-control item-create" title="Create initiation" data-type="initiation"><i
                             class="fas fa-plus"></i>Add Initiation</a>
@@ -322,7 +322,7 @@
                 {{/each}}
                 <div class="resource-label list-section-header d-flex flex-between">
                     <div>
-                        {{localize "Ex3.Merits"}}
+                        {{localize "ExD.Merits"}}
                     </div>
                     <a class="item-control item-create" title="Create merit" data-type="merit"><i
                             class="fas fa-plus"></i>Add Merit</a>
@@ -351,7 +351,7 @@
         <div class="tab effects" data-group="primary" data-tab="effects">
             <div class="resource-label list-section-header d-flex flex-between">
                 <div>
-                    {{localize "Ex3.SavedRolls"}}
+                    {{localize "ExD.SavedRolls"}}
                 </div>
             </div>
             <ol class="items-list">
@@ -369,12 +369,12 @@
                 </li>
                 {{/each}}
             </ol>
-            {{> systems/exaltedthird/templates/actor/active-effects.html}}
+            {{> systems/exalteddemake/templates/actor/active-effects.html}}
         </div>
 
         {{!-- Intimacy Tab --}}
         <div class="tab social" data-group="primary" data-tab="social">
-            {{> systems/exaltedthird/templates/actor/social-tab.html}}
+            {{> systems/exalteddemake/templates/actor/social-tab.html}}
         </div>
 
         {{!-- Biography Tab --}}
@@ -382,7 +382,7 @@
             <ol class="items-list">
                 <div class="resource-label list-section-header d-flex flex-between">
                     <div>
-                        {{localize "Ex3.Items"}}
+                        {{localize "ExD.Items"}}
                     </div>
                     <a class="item-control item-create" title="Create item" data-type="item"><i
                             class="fas fa-plus"></i>Add
@@ -406,7 +406,7 @@
                 </li>
                 {{/each}}
             </ol>
-            <div class="resource-label flex-center">{{localize "Ex3.CharacterNotes"}}</div>
+            <div class="resource-label flex-center">{{localize "ExD.CharacterNotes"}}</div>
             {{editor system.biography target="system.biography" button=true owner=owner editable=true}}
         </div>
     </section>

@@ -2,7 +2,7 @@
  * Extend the basic Item with some very simple modifications.
  * @extends {Item}
  */
-export class ExaltedThirdItem extends Item {
+export class ExaltedDemakeItem extends Item {
   /**
    * Augment the basic Item data model with additional dynamic data.
    */
@@ -18,10 +18,10 @@ export class ExaltedThirdItem extends Item {
 
   getImageUrl(type) {
     if (type === 'intimacy') {
-      return "systems/exaltedthird/assets/icons/hearts.svg";
+      return "systems/exalteddemake/assets/icons/hearts.svg";
     }
     if (type === 'spell') {
-      return "systems/exaltedthird/assets/icons/magic-swirl.svg";
+      return "systems/exalteddemake/assets/icons/magic-swirl.svg";
     }
     if (type === 'initiation') {
       return "icons/svg/book.svg";
@@ -33,7 +33,7 @@ export class ExaltedThirdItem extends Item {
       return "icons/svg/sword.svg";
     }
     if (type === 'armor') {
-      return "systems/exaltedthird/assets/icons/breastplate.svg";
+      return "systems/exalteddemake/assets/icons/breastplate.svg";
     }
     if (type === 'charm' || type === 'action') {
       return "icons/svg/explosion.svg";
@@ -42,7 +42,7 @@ export class ExaltedThirdItem extends Item {
       return "icons/svg/aura.svg";
     }
     if (type === 'craftproject') {
-      return "systems/exaltedthird/assets/icons/anvil-impact.svg";
+      return "systems/exalteddemake/assets/icons/anvil-impact.svg";
     }
   }
 }

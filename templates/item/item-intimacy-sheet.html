@@ -4,19 +4,19 @@
         <div class="header-fields">
             <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name" /></h1>
             <div class="d-flex flex-center">
-                <label class="resource-label">{{localize "Ex3.Strength"}}: </label>
+                <label class="resource-label">{{localize "ExD.Strength"}}: </label>
                 <select name="system.strength" data-type="String">
                     {{#select system.strength}}
-                    <option value="minor">{{localize "Ex3.Minor"}}</option>
-                    <option value="major">{{localize "Ex3.Major"}}</option>
-                    <option value="defining">{{localize "Ex3.Defining"}}</option>
+                    <option value="minor">{{localize "ExD.Minor"}}</option>
+                    <option value="major">{{localize "ExD.Major"}}</option>
+                    <option value="defining">{{localize "ExD.Defining"}}</option>
                     {{/select}}
                 </select>
-                <label class="resource-label">{{localize "Ex3.Type"}}: </label>
+                <label class="resource-label">{{localize "ExD.Type"}}: </label>
                 <select name="system.intimacytype" data-type="String">
                     {{#select system.intimacytype}}
-                    <option value="tie">{{localize "Ex3.Tie"}}</option>
-                    <option value="principle">{{localize "Ex3.Principle"}}</option>
+                    <option value="tie">{{localize "ExD.Tie"}}</option>
+                    <option value="principle">{{localize "ExD.Principle"}}</option>
                     {{/select}}
                 </select>
             </div>
@@ -24,8 +24,8 @@
     </header>
 
     <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="description">{{localize "Ex3.Description"}}</a>
-        <a class="item" data-tab="effects">{{localize "Ex3.Effects"}}</a>
+        <a class="item" data-tab="description">{{localize "ExD.Description"}}</a>
+        <a class="item" data-tab="effects">{{localize "ExD.Effects"}}</a>
     </nav>
 
     {{!-- Sheet Body --}}
@@ -36,7 +36,7 @@
         </div>
 
         <div class="tab" data-group="primary" data-tab="effects">
-            {{> systems/exaltedthird/templates/actor/active-effects.html}}
+            {{> systems/exalteddemake/templates/actor/active-effects.html}}
         </div>
 
     </section>

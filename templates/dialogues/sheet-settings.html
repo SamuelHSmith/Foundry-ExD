@@ -1,40 +1,40 @@
 <form>
-    <div class="sheet-body exaltedthird">
+    <div class="sheet-body exalteddemake">
         <div class="mb-1">
             <label className="resource-label">Choose pool used for charm spending:</label>
             <select id="charmMotePool" name="charmmotepool" data-type="String">
                 {{#select charmmotepool}}
-                <option value="personal">{{localize "Ex3.Personal"}}</option>
-                <option value="peripheral">{{localize "Ex3.Peripheral"}}</option>
+                <option value="personal">{{localize "ExD.Personal"}}</option>
+                <option value="peripheral">{{localize "ExD.Peripheral"}}</option>
                 {{/select}}
             </select>
         </div>
         <div class="mb-1">
-            <label className="resource-label">{{localize "Ex3.ShowWarstrider"}}:</label>
+            <label className="resource-label">{{localize "ExD.ShowWarstrider"}}:</label>
             <input id="showWarstrider" name="showWarstrider" type="checkbox" {{checked showWarstrider}}>
         </div>
         <div class="mb-1">
-            <label className="resource-label">{{localize "Ex3.ShowShip"}}:</label>
+            <label className="resource-label">{{localize "ExD.ShowShip"}}:</label>
             <input id="showShip" name="showShip" type="checkbox" {{checked showShip}}>
         </div>
         <div class="mb-1">
-            <label className="resource-label">{{localize "Ex3.ShowEscort"}}(NPC only):</label>
+            <label className="resource-label">{{localize "ExD.ShowEscort"}}(NPC only):</label>
             <input id="showEscort" name="showEscort" type="checkbox" {{checked showEscort}}>
         </div>
         <div class="mb-1">
-            <label className="resource-label">{{localize "Ex3.ShowZeroValues"}}(NPC only):</label>
+            <label className="resource-label">{{localize "ExD.ShowZeroValues"}}(NPC only):</label>
             <input id="showZeroValues" name="showZeroValues" type="checkbox" {{checked showZeroValues}}>
         </div>
         <div class="mb-1">
-            <label className="resource-label">{{localize "Ex3.UseTenForAttributes"}}:</label>
+            <label className="resource-label">{{localize "ExD.UseTenForAttributes"}}:</label>
             <input id="useTenAttributes" name="useTenAttributes" type="checkbox" {{checked useTenAttributes}}>
         </div>
         <div class="mb-1">
-            <label className="resource-label">{{localize "Ex3.MaxAnima"}}:</label>
+            <label className="resource-label">{{localize "ExD.MaxAnima"}}:</label>
             <select id="maxAnima" name="maxAnima" data-type="String">
                 {{#select maxAnima}}
-                <option value="3">{{localize "Ex3.Bonfire"}}</option>
-                <option value="4">{{localize "Ex3.Transcendent"}}</option>
+                <option value="3">{{localize "ExD.Bonfire"}}</option>
+                <option value="4">{{localize "ExD.Transcendent"}}</option>
                 {{/select}}
             </select>
         </div>

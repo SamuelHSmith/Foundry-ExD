@@ -24,8 +24,8 @@ export default class ItemSearch extends Application {
 
   static get defaultOptions() {
     const options = super.defaultOptions;
-    options.id = "ex3-item-search";
-    options.template = "systems/exaltedthird/templates/dialogues/item-search.html"
+    options.id = "ExD-item-search";
+    options.template = "systems/exalteddemake/templates/dialogues/item-search.html"
     options.resizable = true;
     options.height = 900;
     options.width = 631;
@@ -172,7 +172,7 @@ export default class ItemSearch extends Application {
 }
 
 Hooks.on("renderCompendiumDirectory", (app, html, data) => {
-  const button = $(`<button class="item-search"><i class="fas fa-suitcase"></i>${game.i18n.localize("Ex3.ItemSearch")}</button>`);
+  const button = $(`<button class="item-search"><i class="fas fa-suitcase"></i>${game.i18n.localize("ExD.ItemSearch")}</button>`);
   html.find(".directory-footer").append(button);
 
   button.click(ev => {

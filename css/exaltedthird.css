@@ -120,12 +120,12 @@
   justify-content: space-between;
 }
 
-/* Styles limited to exaltedthird sheets */
-.exaltedthird .item-form {
+/* Styles limited to exalteddemake sheets */
+.exalteddemake .item-form {
   font-family: "Roboto", sans-serif;
 }
 
-.exaltedthird .sheet-header {
+.exalteddemake .sheet-header {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 277px;
   flex: 0 0 277px;
@@ -145,7 +145,7 @@
   margin-bottom: 10px;
 }
 
-.exaltedthird .sheet-header .profile-img-wrapper {
+.exalteddemake .sheet-header .profile-img-wrapper {
   max-width: 110px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -163,7 +163,7 @@
   margin-right: 10px;
 }
 
-.exaltedthird .sheet-header .profile-img {
+.exalteddemake .sheet-header .profile-img {
   background: black;
   -webkit-box-flex: 0;
   -ms-flex: 0 0 100px;
@@ -171,75 +171,75 @@
   height: 100px;
 }
 
-.exaltedthird .sheet-header .header-fields {
+.exalteddemake .sheet-header .header-fields {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
 
-.exaltedthird .sheet-header h1.charname {
+.exalteddemake .sheet-header h1.charname {
   height: 50px;
   padding: 0px;
   margin: 5px 0;
   border-bottom: 0;
 }
 
-.exaltedthird .sheet-header h1.charname input {
+.exalteddemake .sheet-header h1.charname input {
   width: 100%;
   height: 100%;
   margin: 0;
 }
 
-.exaltedthird .sheet-header h1.charname select {
+.exalteddemake .sheet-header h1.charname select {
   width: 100%;
   height: 100%;
   font-size: 29px;
 }
 
-.exaltedthird .pool {
+.exalteddemake .pool {
   border: none;
 }
 
-.exaltedthird .pool-value-input {
+.exalteddemake .pool-value-input {
   width: 15%;
   margin-right: 5px;
 }
 
-.exaltedthird .roll-button {
+.exalteddemake .roll-button {
   height: 26px;
   line-height: 22px;
 }
 
-.exaltedthird textarea {
+.exalteddemake textarea {
   font-family: inherit;
   font-size: inherit;
 }
 
-.exaltedthird .margin-right {
+.exalteddemake .margin-right {
   margin-right: 10px;
 }
 
-.exaltedthird .sheet-tabs {
+.exalteddemake .sheet-tabs {
   -webkit-box-flex: 0;
   -ms-flex: 0;
   flex: 0;
 }
 
-.exaltedthird .sheet-body,
-.exaltedthird .sheet-body .tab,
-.exaltedthird .sheet-body .tab .editor {
+.exalteddemake .sheet-body,
+.exalteddemake .sheet-body .tab,
+.exalteddemake .sheet-body .tab .editor {
   height: 100%;
 }
 
-.exaltedthird .tox .tox-editor-container {
+.exalteddemake .tox .tox-editor-container {
   background: #fff;
 }
 
-.exaltedthird .tox .tox-edit-area {
+.exalteddemake .tox .tox-edit-area {
   padding: 0 8px;
 }
 
-.exaltedthird .check-button {
+.exalteddemake .check-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -248,7 +248,7 @@
   align-items: center;
 }
 
-.exaltedthird .tag {
+.exalteddemake .tag {
   display: inline-block;
   margin: 0 2px 0 0;
   padding: 0 3px;
@@ -259,108 +259,108 @@
   background: rgba(0, 0, 0, 0.05);
 }
 
-.exaltedthird .mt-1 {
+.exalteddemake .mt-1 {
   margin-top: 10px;
 }
 
-.exaltedthird .mt-2 {
+.exalteddemake .mt-2 {
   margin-top: 20px;
 }
 
-.exaltedthird .mb-1 {
+.exalteddemake .mb-1 {
   margin-bottom: 10px;
 }
 
-.exaltedthird .mb-2 {
+.exalteddemake .mb-2 {
   margin-bottom: 20px;
 }
 
-.exaltedthird .ml-1 {
+.exalteddemake .ml-1 {
   margin-left: 10px;
 }
 
-.exaltedthird .ml-2 {
+.exalteddemake .ml-2 {
   margin-left: 20px;
 }
 
-.exaltedthird .mr-1 {
+.exalteddemake .mr-1 {
   margin-right: 10px;
 }
 
-.exaltedthird .mr-2 {
+.exalteddemake .mr-2 {
   margin-right: 20px;
 }
 
-.exaltedthird .resource-label {
+.exalteddemake .resource-label {
   font-weight: bold;
 }
 
-.exaltedthird .resource-calculated-value {
+.exalteddemake .resource-calculated-value {
   font-size: 35px;
 }
 
-.exaltedthird .resource-calculated-value-small {
+.exalteddemake .resource-calculated-value-small {
   font-size: 19px;
 }
 
-.exaltedthird .resource-label::first-letter {
+.exalteddemake .resource-label::first-letter {
   text-transform: uppercase;
 }
 
-.exaltedthird .resource-table-value::first-letter {
+.exalteddemake .resource-table-value::first-letter {
   text-transform: uppercase;
 }
 
-.exaltedthird .tabs {
+.exalteddemake .tabs {
   height: 40px;
   border-top: 1px solid #AAA;
   border-bottom: 1px solid #AAA;
 }
 
-.exaltedthird .tabs .item {
+.exalteddemake .tabs .item {
   line-height: 40px;
   font-weight: bold;
 }
 
-.exaltedthird .tabs .item.active {
+.exalteddemake .tabs .item.active {
   text-decoration: underline;
   text-shadow: none;
 }
 
-.exaltedthird .items-list {
+.exalteddemake .items-list {
   list-style: none;
   margin: 7px 0;
   padding: 0;
   overflow-y: auto;
 }
 
-.exaltedthird .items-list .item-header {
+.exalteddemake .items-list .item-header {
   font-weight: bold;
 }
 
-.exaltedthird .items-list .item {
+.exalteddemake .items-list .item {
   height: 30px;
   line-height: 24px;
   padding: 3px 0;
   border-bottom: 1px solid #BBB;
 }
 
-.exaltedthird .items-list .item .item-image {
+.exalteddemake .items-list .item .item-image {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 24px;
   flex: 0 0 24px;
   margin-right: 5px;
 }
 
-.exaltedthird .items-list .item .list-item-image {
+.exalteddemake .items-list .item .list-item-image {
   background: black;
 }
 
-.exaltedthird .items-list .item img {
+.exalteddemake .items-list .item img {
   display: block;
 }
 
-.exaltedthird .items-list .item-large {
+.exalteddemake .items-list .item-large {
   height: 40px;
   text-align: center;
   -webkit-box-align: center;
@@ -368,14 +368,14 @@
   align-items: center;
 }
 
-.exaltedthird .items-list .item-large .item-name {
+.exalteddemake .items-list .item-large .item-name {
   white-space: nowrap;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-.exaltedthird .items-list .item-name {
+.exalteddemake .items-list .item-name {
   margin: 0;
   white-space: nowrap;
   -o-text-overflow: ellipsis;
@@ -383,39 +383,39 @@
   overflow: hidden;
 }
 
-.exaltedthird .items-list .item-controls {
+.exalteddemake .items-list .item-controls {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 86px;
   flex: 0 0 86px;
   text-align: right;
 }
 
-.exaltedthird .items-list .items-controls {
+.exalteddemake .items-list .items-controls {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 172px;
   flex: 0 0 172px;
   text-align: right;
 }
 
-.exaltedthird .items-list .merits-controls {
+.exalteddemake .items-list .merits-controls {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 200px;
   flex: 0 0 200px;
   text-align: right;
 }
 
-.exaltedthird .items-list .qualities-controls {
+.exalteddemake .items-list .qualities-controls {
   -webkit-box-flex: 0;
   -ms-flex: 0 0 97px;
   flex: 0 0 97px;
   text-align: right;
 }
 
-.exaltedthird .items-list .item-description {
+.exalteddemake .items-list .item-description {
   display: none;
 }
 
-.exaltedthird .items-list .effects-list {
+.exalteddemake .items-list .effects-list {
   padding: 0;
 }
 
@@ -426,7 +426,7 @@
   src: url("../fonts/MinionPro.otf") format("truetype");
 }
 
-.exaltedthird .window-content {
+.exalteddemake .window-content {
   background: url("../assets/backgrounds/solar-background.jpg");
 }
 
@@ -435,14 +435,14 @@
   background-size: cover;
 }
 
-.exaltedthird .window-content .abilities,
-.exaltedthird.sheet.actor .window-content .abilities {
+.exalteddemake .window-content .abilities,
+.exalteddemake.sheet.actor .window-content .abilities {
   border: none;
   border-bottom: 1px solid #b5b3a4;
 }
 
 /* Resource boxes CSS */
-.exaltedthird .resource-value .resource-value-step {
+.exalteddemake .resource-value .resource-value-step {
   height: 14px;
   width: 14px;
   border: 1px solid black;
@@ -451,7 +451,7 @@
   cursor: pointer;
 }
 
-.exaltedthird .resource-value-static .resource-value-static-step {
+.exalteddemake .resource-value-static .resource-value-static-step {
   height: 14px;
   width: 14px;
   border: 1px solid black;
@@ -459,12 +459,12 @@
   border-radius: 50%;
 }
 
-.exaltedthird .augment-attribute {
+.exalteddemake .augment-attribute {
   margin-left: 5px;
   cursor: pointer;
 }
 
-.exaltedthird .augment-attribute-active {
+.exalteddemake .augment-attribute-active {
   color: #147c14;
 }
 
@@ -486,7 +486,7 @@
   margin: 0px 10px 0px 0px;
 }
 
-.exaltedthird .resource-value .resource-value-empty {
+.exalteddemake .resource-value .resource-value-empty {
   height: 14px;
   width: 14px;
   border: 1px solid black;
@@ -497,7 +497,7 @@
   background: linear-gradient(45deg, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%), linear-gradient(135deg, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%);
 }
 
-.exaltedthird .resource-counter .resource-counter-step {
+.exalteddemake .resource-counter .resource-counter-step {
   height: 14px;
   width: 14px;
   border: 1px solid black;
@@ -505,26 +505,26 @@
   cursor: pointer;
 }
 
-.exaltedthird .resource-counter .resource-counter-step[data-state="-"] {
+.exalteddemake .resource-counter .resource-counter-step[data-state="-"] {
   background-color: #147c14;
 }
 
-.exaltedthird .resource-counter .resource-counter-step[data-state="/"] {
+.exalteddemake .resource-counter .resource-counter-step[data-state="/"] {
   background: -o-linear-gradient(315deg, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%);
   background: linear-gradient(135deg, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%);
 }
 
-.exaltedthird .resource-counter .resource-counter-step[data-state="x"] {
+.exalteddemake .resource-counter .resource-counter-step[data-state="x"] {
   background: -o-linear-gradient(45deg, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%), -o-linear-gradient(315deg, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%);
   background: linear-gradient(45deg, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%), linear-gradient(135deg, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%);
 }
 
-.exaltedthird .query-results {
+.exalteddemake .query-results {
   height: 66%;
   overflow: scroll;
 }
 
-.exaltedthird .query-results .search-item-row {
+.exalteddemake .query-results .search-item-row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -536,17 +536,17 @@
   align-items: center;
 }
 
-.exaltedthird .resource-counter .resource-counter-step[data-state="*"] {
+.exalteddemake .resource-counter .resource-counter-step[data-state="*"] {
   background: -o-linear-gradient(45deg, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%), -o-linear-gradient(left, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%), -o-linear-gradient(top, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%), -o-linear-gradient(315deg, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%);
   background: linear-gradient(45deg, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%), linear-gradient(90deg, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%), linear-gradient(180deg, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%), linear-gradient(135deg, transparent 0%, transparent 43%, black 45%, black 55%, transparent 57%, transparent 100%);
 }
 
-.exaltedthird .flex-group-center:not(.flexrow) .resource-value,
-.exaltedthird .flex-group-center:not(.flexrow) .resource-counter {
+.exalteddemake .flex-group-center:not(.flexrow) .resource-value,
+.exalteddemake .flex-group-center:not(.flexrow) .resource-counter {
   margin-top: 5px;
 }
 
-.exaltedthird .tab.disciplines .resource-value {
+.exalteddemake .tab.disciplines .resource-value {
   margin-top: 2px;
 }
 
@@ -555,7 +555,7 @@
   border-bottom: 1px solid black;
 }
 
-.exaltedthird .cursor-pointer {
+.exalteddemake .cursor-pointer {
   cursor: pointer;
 }
 

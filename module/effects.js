@@ -11,7 +11,7 @@ export function onManageActiveEffect(event, owner) {
   switch ( a.dataset.action ) {
     case "create":
       return owner.createEmbeddedDocuments("ActiveEffect", [{
-        label: game.i18n.localize("Ex3.EffectNew"),
+        label: game.i18n.localize("ExD.EffectNew"),
         icon: "icons/svg/aura.svg",
         origin: owner.uuid,
         "duration.rounds": li.dataset.effectType === "temporary" ? 1 : undefined,
@@ -37,17 +37,17 @@ export function prepareActiveEffectCategories(effects) {
     const categories = {
       temporary: {
         type: "temporary",
-        label: game.i18n.localize("Ex3.EffectTemporary"),
+        label: game.i18n.localize("ExD.EffectTemporary"),
         effects: []
       },
       passive: {
         type: "passive",
-        label: game.i18n.localize("Ex3.EffectPassive"),
+        label: game.i18n.localize("ExD.EffectPassive"),
         effects: []
       },
       inactive: {
         type: "inactive",
-        label: game.i18n.localize("Ex3.EffectInactive"),
+        label: game.i18n.localize("ExD.EffectInactive"),
         effects: []
       }
     };

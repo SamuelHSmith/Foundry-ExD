@@ -9,8 +9,8 @@ export default class TemplateImporter extends Application {
 
   static get defaultOptions() {
     const options = super.defaultOptions;
-    options.id = "ex3-template-importer";
-    options.template = "systems/exaltedthird/templates/dialogues/template-importer.html"
+    options.id = "ExD-template-importer";
+    options.template = "systems/exalteddemake/templates/dialogues/template-importer.html"
     options.resizable = true;
     options.height = 900;
     options.width = 860;
@@ -22,12 +22,12 @@ export default class TemplateImporter extends Application {
   _getHeaderButtons() {
     let buttons = super._getHeaderButtons();
     const helpButton = {
-      label: game.i18n.localize('Ex3.Help'),
+      label: game.i18n.localize('ExD.Help'),
       class: 'help-dialogue',
       icon: 'fas fa-question',
       onclick: async () => {
         let confirmed = false;
-        const template = "systems/exaltedthird/templates/dialogues/help-dialogue.html"
+        const template = "systems/exalteddemake/templates/dialogues/help-dialogue.html"
         const html = await renderTemplate(template);
         new Dialog({
           title: `ReadMe`,
@@ -49,16 +49,16 @@ export default class TemplateImporter extends Application {
     data.showError = this.showError;
     data.error = this.error;
     if (this.type === 'charm') {
-      data.templateHint = game.i18n.localize("Ex3.CharmImportHint");
+      data.templateHint = game.i18n.localize("ExD.CharmImportHint");
     }
     if (this.type === 'spell') {
-      data.templateHint = game.i18n.localize("Ex3.SpellImportHint");
+      data.templateHint = game.i18n.localize("ExD.SpellImportHint");
     }
     if (this.type === 'adversary') {
-      data.templateHint = game.i18n.localize("Ex3.AdversaryImportHint");
+      data.templateHint = game.i18n.localize("ExD.AdversaryImportHint");
     }
     if (this.type === 'qc') {
-      data.templateHint = game.i18n.localize("Ex3.QCImportHint");
+      data.templateHint = game.i18n.localize("ExD.QCImportHint");
     }
     return data;
   }
@@ -230,179 +230,179 @@ export default class TemplateImporter extends Application {
             "strength": {
               "favored": false,
               "value": 1,
-              "name": "Ex3.Strength"
+              "name": "ExD.Strength"
             },
             "charisma": {
               "favored": false,
               "value": 1,
-              "name": "Ex3.Charisma"
+              "name": "ExD.Charisma"
             },
             "perception": {
               "favored": false,
               "value": 1,
-              "name": "Ex3.Perception"
+              "name": "ExD.Perception"
             },
             "dexterity": {
               "favored": false,
               "value": 1,
-              "name": "Ex3.Dexterity"
+              "name": "ExD.Dexterity"
             },
             "manipulation": {
               "favored": false,
               "value": 1,
-              "name": "Ex3.Manipulation"
+              "name": "ExD.Manipulation"
             },
             "intelligence": {
               "favored": false,
               "value": 1,
-              "name": "Ex3.Intelligence"
+              "name": "ExD.Intelligence"
             },
             "stamina": {
               "favored": false,
               "value": 1,
-              "name": "Ex3.Stamina"
+              "name": "ExD.Stamina"
             },
             "appearance": {
               "favored": false,
               "value": 1,
-              "name": "Ex3.Appearance"
+              "name": "ExD.Appearance"
             },
             "wits": {
               "favored": false,
               "value": 1,
-              "name": "Ex3.Wits"
+              "name": "ExD.Wits"
             }
           },
           "abilities": {
             "archery": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Archery"
+              "name": "ExD.Archery"
             },
             "athletics": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Athletics"
+              "name": "ExD.Athletics"
             },
             "awareness": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Awareness"
+              "name": "ExD.Awareness"
             },
             "brawl": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Brawl"
+              "name": "ExD.Brawl"
             },
             "bureaucracy": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Bureaucracy"
+              "name": "ExD.Bureaucracy"
             },
             "craft": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Craft"
+              "name": "ExD.Craft"
             },
             "dodge": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Dodge"
+              "name": "ExD.Dodge"
             },
             "integrity": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Integrity"
+              "name": "ExD.Integrity"
             },
             "investigation": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Investigation"
+              "name": "ExD.Investigation"
             },
             "larceny": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Larceny"
+              "name": "ExD.Larceny"
             },
             "linguistics": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Linguistics"
+              "name": "ExD.Linguistics"
             },
             "lore": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Lore"
+              "name": "ExD.Lore"
             },
             "martialarts": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.MartialArts"
+              "name": "ExD.MartialArts"
             },
             "medicine": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Medicine"
+              "name": "ExD.Medicine"
             },
             "melee": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Melee"
+              "name": "ExD.Melee"
             },
             "occult": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Occult"
+              "name": "ExD.Occult"
             },
             "performance": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Performance"
+              "name": "ExD.Performance"
             },
             "presence": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Presence"
+              "name": "ExD.Presence"
             },
             "resistance": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Resistance"
+              "name": "ExD.Resistance"
             },
             "ride": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Ride"
+              "name": "ExD.Ride"
             },
             "sail": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Sail"
+              "name": "ExD.Sail"
             },
             "socialize": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Socialize"
+              "name": "ExD.Socialize"
             },
             "stealth": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Stealth"
+              "name": "ExD.Stealth"
             },
             "survival": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Survival"
+              "name": "ExD.Survival"
             },
             "thrown": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.Thrown"
+              "name": "ExD.Thrown"
             },
             "war": {
               "favored": false,
               "value": 0,
-              "name": "Ex3.War"
+              "name": "ExD.War"
             }
           },
           "health": {
@@ -543,83 +543,83 @@ export default class TemplateImporter extends Application {
       system: {
         "pools": {
           "administration": {
-            "name": "Ex3.Administration",
+            "name": "ExD.Administration",
             "value": 0
           },
           "command": {
-            "name": "Ex3.Command",
+            "name": "ExD.Command",
             "value": 0
           },
           "craft": {
-            "name": "Ex3.Craft",
+            "name": "ExD.Craft",
             "value": 0
           },
           "strength": {
-            "name": "Ex3.FeatsofStrength",
+            "name": "ExD.FeatsofStrength",
             "value": 0
           },
           "grapple": {
-            "name": "Ex3.GrappleControl",
+            "name": "ExD.GrappleControl",
             "value": 0
           },
           "investigation": {
-            "name": "Ex3.Investigation",
+            "name": "ExD.Investigation",
             "value": 0
           },
           "joinbattle": {
-            "name": "Ex3.JoinBattle",
+            "name": "ExD.JoinBattle",
             "value": 0
           },
           "larceny": {
-            "name": "Ex3.Larceny",
+            "name": "ExD.Larceny",
             "value": 0
           },
           "medicine": {
-            "name": "Ex3.Medicine",
+            "name": "ExD.Medicine",
             "value": 0
           },
           "movement": {
-            "name": "Ex3.Movement",
+            "name": "ExD.Movement",
             "value": 0
           },
           "readintentions": {
-            "name": "Ex3.ReadIntentions",
+            "name": "ExD.ReadIntentions",
             "value": 0
           },
           "resistpoison": {
-            "name": "Ex3.ResistPoison",
+            "name": "ExD.ResistPoison",
             "value": 0
           },
           "sail": {
-            "name": "Ex3.Sail",
+            "name": "ExD.Sail",
             "value": 0
           },
           "senses": {
-            "name": "Ex3.Senses",
+            "name": "ExD.Senses",
             "value": 0
           },
           "social": {
-            "name": "Ex3.Social",
+            "name": "ExD.Social",
             "value": 0
           },
           "sorcery": {
-            "name": "Ex3.Sorcery",
+            "name": "ExD.Sorcery",
             "value": 0
           },
           "strategy": {
-            "name": "Ex3.Strategy",
+            "name": "ExD.Strategy",
             "value": 0
           },
           "stealth": {
-            "name": "Ex3.Stealth",
+            "name": "ExD.Stealth",
             "value": 0
           },
           "tracking": {
-            "name": "Ex3.Tracking",
+            "name": "ExD.Tracking",
             "value": 0
           },
           "other": {
-            "name": "Ex3.Other",
+            "name": "ExD.Other",
             "value": 0
           }
         },
@@ -1741,10 +1741,10 @@ export default class TemplateImporter extends Application {
 
   getImageUrl(type) {
     if (type === 'intimacy') {
-      return "systems/exaltedthird/assets/icons/hearts.svg";
+      return "systems/exalteddemake/assets/icons/hearts.svg";
     }
     if (type === 'spell') {
-      return "systems/exaltedthird/assets/icons/magic-swirl.svg";
+      return "systems/exalteddemake/assets/icons/magic-swirl.svg";
     }
     if (type === 'initiation') {
       return "icons/svg/book.svg";
@@ -1756,7 +1756,7 @@ export default class TemplateImporter extends Application {
       return "icons/svg/sword.svg";
     }
     if (type === 'armor') {
-      return "systems/exaltedthird/assets/icons/breastplate.svg";
+      return "systems/exalteddemake/assets/icons/breastplate.svg";
     }
     if (type === 'charm') {
       return "icons/svg/explosion.svg";
@@ -1765,7 +1765,7 @@ export default class TemplateImporter extends Application {
       return "icons/svg/aura.svg";
     }
     if (type === 'craftproject') {
-      return "systems/exaltedthird/assets/icons/anvil-impact.svg";
+      return "systems/exalteddemake/assets/icons/anvil-impact.svg";
     }
   }
 
@@ -1803,7 +1803,7 @@ export default class TemplateImporter extends Application {
 }
 
 Hooks.on("renderItemDirectory", (app, html, data) => {
-  const button = $(`<button class="tempalte-importer">${game.i18n.localize("Ex3.CharmImport")}(BETA)</button>`);
+  const button = $(`<button class="tempalte-importer">${game.i18n.localize("ExD.CharmImport")}(BETA)</button>`);
   html.find(".directory-footer").append(button);
 
   button.click(ev => {
@@ -1813,7 +1813,7 @@ Hooks.on("renderItemDirectory", (app, html, data) => {
 })
 
 Hooks.on("renderActorDirectory", (app, html, data) => {
-  const button = $(`<button class="tempalte-importer">${game.i18n.localize("Ex3.NPCImport")}(BETA)</button>`);
+  const button = $(`<button class="tempalte-importer">${game.i18n.localize("ExD.NPCImport")}(BETA)</button>`);
   html.find(".directory-footer").append(button);
 
   button.click(ev => {

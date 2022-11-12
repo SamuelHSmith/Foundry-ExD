@@ -1,11 +1,11 @@
-// new game.exaltedthird.applications.Importer().render(true);
+// new game.exalteddemake.applications.Importer().render(true);
 export default class Importer extends FormApplication {
     /** @override */
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             id: "importer",
             title: "Importer",
-            template: "systems/exaltedthird/templates/dialogues/importer.html",
+            template: "systems/exalteddemake/templates/dialogues/importer.html",
         });
     }
 

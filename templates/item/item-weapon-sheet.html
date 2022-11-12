@@ -4,27 +4,27 @@
         <div class="header-fields">
             <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
             <div class="check-button">
-                <label class="resource-label">{{localize "Ex3.Equipped"}}: </label>
+                <label class="resource-label">{{localize "ExD.Equipped"}}: </label>
                 <input name="system.equiped" type="checkbox" value="system.equiped" {{checked system.equiped}}>
-                <label class="resource-label mr-1">{{localize "Ex3.Type"}}: </label>
+                <label class="resource-label mr-1">{{localize "ExD.Type"}}: </label>
                 <select name="system.weapontype" data-type="String">
                     {{#select system.weapontype}}
-                    <option value="melee">{{localize "Ex3.Melee"}}</option>
-                    <option value="bolt">{{localize "Ex3.Bolt"}}</option>
-                    <option value="ranged">{{localize "Ex3.Ranged"}}</option>
-                    <option value="siege">{{localize "Ex3.Siege"}}</option>
-                    <option value="thrown">{{localize "Ex3.Thrown"}}</option>
+                    <option value="melee">{{localize "ExD.Melee"}}</option>
+                    <option value="bolt">{{localize "ExD.Bolt"}}</option>
+                    <option value="ranged">{{localize "ExD.Ranged"}}</option>
+                    <option value="siege">{{localize "ExD.Siege"}}</option>
+                    <option value="thrown">{{localize "ExD.Thrown"}}</option>
                     {{/select}}
                 </select>
-                <label class="resource-label ml-1">{{localize "Ex3.Magic"}}: </label>
+                <label class="resource-label ml-1">{{localize "ExD.Magic"}}: </label>
                 <input name="system.magic" type="checkbox" value="system.magic" {{checked system.magic}}>
             </div>
         </div>
     </header>
 
     <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="description">{{localize "Ex3.Description"}}</a>
-        <a class="item" data-tab="effects">{{localize "Ex3.Effects"}}</a>
+        <a class="item" data-tab="description">{{localize "ExD.Description"}}</a>
+        <a class="item" data-tab="effects">{{localize "ExD.Effects"}}</a>
     </nav>
 
     {{!-- Sheet Body --}}
@@ -33,61 +33,61 @@
         {{!-- Description Tab --}}
         <div class="tab" data-group="primary" data-tab="description">
             <div class="d-flex flex-center resources">
-                <label class="resource-label mr-1">{{localize "Ex3.Attribute"}}: </label>
+                <label class="resource-label mr-1">{{localize "ExD.Attribute"}}: </label>
                 <select name="system.attribute" data-type="String">
                     {{#select system.attribute}}
-                    <option value="strength">{{localize "Ex3.Strength"}}</option>
-                    <option value="dexterity">{{localize "Ex3.Dexterity"}}</option>
-                    <option value="stamina">{{localize "Ex3.Stamina"}}</option>
-                    <option value="charisma">{{localize "Ex3.Charisma"}}</option>
-                    <option value="manipulation">{{localize "Ex3.Manipulation"}}</option>
-                    <option value="appearance">{{localize "Ex3.Appearance"}}</option>
-                    <option value="perception">{{localize "Ex3.Perception"}}</option>
-                    <option value="intelligence">{{localize "Ex3.Intelligence"}}</option>
-                    <option value="wits">{{localize "Ex3.Wits"}}</option>
-                    <option value="none">{{localize "Ex3.None"}}</option>
+                    <option value="strength">{{localize "ExD.Strength"}}</option>
+                    <option value="dexterity">{{localize "ExD.Dexterity"}}</option>
+                    <option value="stamina">{{localize "ExD.Stamina"}}</option>
+                    <option value="charisma">{{localize "ExD.Charisma"}}</option>
+                    <option value="manipulation">{{localize "ExD.Manipulation"}}</option>
+                    <option value="appearance">{{localize "ExD.Appearance"}}</option>
+                    <option value="perception">{{localize "ExD.Perception"}}</option>
+                    <option value="intelligence">{{localize "ExD.Intelligence"}}</option>
+                    <option value="wits">{{localize "ExD.Wits"}}</option>
+                    <option value="none">{{localize "ExD.None"}}</option>
                     {{/select}}
                 </select>
-                <label class="resource-label ml-1 mr-1">{{localize "Ex3.Ability"}}: </label>
+                <label class="resource-label ml-1 mr-1">{{localize "ExD.Ability"}}: </label>
                 <select name="system.ability" data-type="String">
                     {{#select system.ability}}
-                    <option value="archery">{{localize "Ex3.Archery"}}</option>
-                    <option value="athletics">{{localize "Ex3.Athletics"}}</option>
-                    <option value="awareness">{{localize "Ex3.Awareness"}}</option>
-                    <option value="brawl">{{localize "Ex3.Brawl"}}</option>
-                    <option value="bureaucracy">{{localize "Ex3.Bureaucracy"}}</option>
-                    <option value="craft">{{localize "Ex3.Craft"}}</option>
-                    <option value="dodge">{{localize "Ex3.Dodge"}}</option>
-                    <option value="integrity">{{localize "Ex3.Integrity"}}</option>
-                    <option value="investigation">{{localize "Ex3.Investigation"}}</option>
-                    <option value="larceny">{{localize "Ex3.Larceny"}}</option>
-                    <option value="linguistics">{{localize "Ex3.Linguistics"}}</option>
-                    <option value="lore">{{localize "Ex3.Lore"}}</option>
-                    <option value="martialarts">{{localize "Ex3.MartialArts"}}</option>
-                    <option value="medicine">{{localize "Ex3.Medicine"}}</option>
-                    <option value="melee">{{localize "Ex3.Melee"}}</option>
-                    <option value="occult">{{localize "Ex3.Occult"}}</option>
-                    <option value="performance">{{localize "Ex3.Performance"}}</option>
-                    <option value="presence">{{localize "Ex3.Presence"}}</option>
-                    <option value="resistance">{{localize "Ex3.Resistance"}}</option>
-                    <option value="ride">{{localize "Ex3.Ride"}}</option>
-                    <option value="sail">{{localize "Ex3.Sail"}}</option>
-                    <option value="socialize">{{localize "Ex3.Socialize"}}</option>
-                    <option value="stealth">{{localize "Ex3.Stealth"}}</option>
-                    <option value="survival">{{localize "Ex3.Survival"}}</option>
-                    <option value="thrown">{{localize "Ex3.Thrown"}}</option>
-                    <option value="war">{{localize "Ex3.War"}}</option>
-                    <option value="none">{{localize "Ex3.None"}}</option>
+                    <option value="archery">{{localize "ExD.Archery"}}</option>
+                    <option value="athletics">{{localize "ExD.Athletics"}}</option>
+                    <option value="awareness">{{localize "ExD.Awareness"}}</option>
+                    <option value="brawl">{{localize "ExD.Brawl"}}</option>
+                    <option value="bureaucracy">{{localize "ExD.Bureaucracy"}}</option>
+                    <option value="craft">{{localize "ExD.Craft"}}</option>
+                    <option value="dodge">{{localize "ExD.Dodge"}}</option>
+                    <option value="integrity">{{localize "ExD.Integrity"}}</option>
+                    <option value="investigation">{{localize "ExD.Investigation"}}</option>
+                    <option value="larceny">{{localize "ExD.Larceny"}}</option>
+                    <option value="linguistics">{{localize "ExD.Linguistics"}}</option>
+                    <option value="lore">{{localize "ExD.Lore"}}</option>
+                    <option value="martialarts">{{localize "ExD.MartialArts"}}</option>
+                    <option value="medicine">{{localize "ExD.Medicine"}}</option>
+                    <option value="melee">{{localize "ExD.Melee"}}</option>
+                    <option value="occult">{{localize "ExD.Occult"}}</option>
+                    <option value="performance">{{localize "ExD.Performance"}}</option>
+                    <option value="presence">{{localize "ExD.Presence"}}</option>
+                    <option value="resistance">{{localize "ExD.Resistance"}}</option>
+                    <option value="ride">{{localize "ExD.Ride"}}</option>
+                    <option value="sail">{{localize "ExD.Sail"}}</option>
+                    <option value="socialize">{{localize "ExD.Socialize"}}</option>
+                    <option value="stealth">{{localize "ExD.Stealth"}}</option>
+                    <option value="survival">{{localize "ExD.Survival"}}</option>
+                    <option value="thrown">{{localize "ExD.Thrown"}}</option>
+                    <option value="war">{{localize "ExD.War"}}</option>
+                    <option value="none">{{localize "ExD.None"}}</option>
                     {{/select}}
                 </select>
             </div>
             <div class="d-flex flex-center resources">
                 <div>
-                    <div class="resource-label">{{localize "Ex3.Accuracy"}} </div>
+                    <div class="resource-label">{{localize "ExD.Accuracy"}} </div>
                     <input type="number" name="system.witheringaccuracy" value="{{system.witheringaccuracy}}" data-dtype="Number" />
                 </div>
                 <div>
-                    <div class="resource-label">{{localize "Ex3.Damage"}}</div>
+                    <div class="resource-label">{{localize "ExD.Damage"}}</div>
                     <input type="number" name="system.witheringdamage" value="{{system.witheringdamage}}" data-dtype="Number" />
                 </div>
             </div>
@@ -96,11 +96,11 @@
             </div>
             <div class="d-flex flex-center resources">
                 <div>
-                    <div class="resource-label">{{localize "Ex3.Defense"}}</div>
+                    <div class="resource-label">{{localize "ExD.Defense"}}</div>
                     <input type="number" name="system.defence" value="{{system.defence}}" data-dtype="Number" />
                 </div>
                 <div>
-                    <div class="resource-label">{{localize "Ex3.Overwhelming"}}</div>
+                    <div class="resource-label">{{localize "ExD.Overwhelming"}}</div>
                     <input type="number" name="system.overwhelming" value="{{system.overwhelming}}" data-dtype="Number" />
                 </div>
             </div>
@@ -108,7 +108,7 @@
         </div>
 
         <div class="tab" data-group="primary" data-tab="effects">
-            {{> systems/exaltedthird/templates/actor/active-effects.html}}
+            {{> systems/exalteddemake/templates/actor/active-effects.html}}
         </div>
 
     </section>

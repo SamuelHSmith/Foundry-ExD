@@ -9,8 +9,8 @@
 @import 'global/grid';
 @import 'global/flex';
 
-/* Styles limited to exaltedthird sheets */
-.exaltedthird {
+/* Styles limited to exalteddemake sheets */
+.exalteddemake {
   @import 'components/forms';
   @import 'components/resource';
   @import 'components/tabs';
@@ -29,7 +29,7 @@
 //   font-family: "MinionPro";
 // }
 
-.exaltedthird .window-content {
+.exalteddemake .window-content {
   background: url('../assets/backgrounds/solar-background.jpg');
 }
 
@@ -40,15 +40,15 @@
   }
 }
 
-.exaltedthird .window-content .abilities,
-.exaltedthird.sheet.actor .window-content .abilities {
+.exalteddemake .window-content .abilities,
+.exalteddemake.sheet.actor .window-content .abilities {
   border: none;
   border-bottom: 1px solid #b5b3a4;
 }
 
 /* Resource boxes CSS */
 
-.exaltedthird .resource-value .resource-value-step {
+.exalteddemake .resource-value .resource-value-step {
   height: 14px;
   width: 14px;
   border: 1px solid black;
@@ -57,7 +57,7 @@
   cursor: pointer;
 }
 
-.exaltedthird .resource-value-static .resource-value-static-step {
+.exalteddemake .resource-value-static .resource-value-static-step {
   height: 14px;
   width: 14px;
   border: 1px solid black;
@@ -65,12 +65,12 @@
   border-radius: 50%;
 }
 
-.exaltedthird .augment-attribute {
+.exalteddemake .augment-attribute {
   margin-left: 5px;
   cursor: pointer;
 }
 
-.exaltedthird .augment-attribute-active {
+.exalteddemake .augment-attribute-active {
   color: #147c14;
 }
 
@@ -90,7 +90,7 @@
   margin: 0px 10px 0px 0px;
 }
 
-.exaltedthird .resource-value .resource-value-empty {
+.exalteddemake .resource-value .resource-value-empty {
   height: 14px;
   width: 14px;
   border: 1px solid black;
@@ -114,7 +114,7 @@
       transparent 100%);
 }
 
-.exaltedthird .resource-counter .resource-counter-step {
+.exalteddemake .resource-counter .resource-counter-step {
   height: 14px;
   width: 14px;
   border: 1px solid black;
@@ -122,11 +122,11 @@
   cursor: pointer;
 }
 
-.exaltedthird .resource-counter .resource-counter-step[data-state="-"] {
+.exalteddemake .resource-counter .resource-counter-step[data-state="-"] {
   background-color: #147c14;
 }
 
-.exaltedthird .resource-counter .resource-counter-step[data-state="/"] {
+.exalteddemake .resource-counter .resource-counter-step[data-state="/"] {
   background:
     linear-gradient(135deg,
       transparent 0%,
@@ -137,7 +137,7 @@
       transparent 100%);
 }
 
-.exaltedthird .resource-counter .resource-counter-step[data-state="x"] {
+.exalteddemake .resource-counter .resource-counter-step[data-state="x"] {
   background:
     linear-gradient(45deg,
       transparent 0%,
@@ -155,7 +155,7 @@
       transparent 100%);
 }
 
-.exaltedthird .query-results {
+.exalteddemake .query-results {
   height: 66%;
   overflow: scroll;
 
@@ -168,7 +168,7 @@
   }
 }
 
-.exaltedthird .resource-counter .resource-counter-step[data-state="*"] {
+.exalteddemake .resource-counter .resource-counter-step[data-state="*"] {
   background:
     linear-gradient(45deg,
       transparent 0%,
@@ -200,12 +200,12 @@
       transparent 100%);
 }
 
-.exaltedthird .flex-group-center:not(.flexrow) .resource-value,
-.exaltedthird .flex-group-center:not(.flexrow) .resource-counter {
+.exalteddemake .flex-group-center:not(.flexrow) .resource-value,
+.exalteddemake .flex-group-center:not(.flexrow) .resource-counter {
   margin-top: 5px;
 }
 
-.exaltedthird .tab.disciplines .resource-value {
+.exalteddemake .tab.disciplines .resource-value {
   margin-top: 2px;
 }
 
@@ -214,7 +214,7 @@
   border-bottom: 1px solid black;
 }
 
-.exaltedthird .cursor-pointer {
+.exalteddemake .cursor-pointer {
   cursor: pointer;
 }
 

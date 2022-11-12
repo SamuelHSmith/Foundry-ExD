@@ -4,24 +4,24 @@
         <div class="header-fields">
             <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
             <div>
-                <label class="resource-label">{{localize "Ex3.Type"}}: </label>
+                <label class="resource-label">{{localize "ExD.Type"}}: </label>
                 <select name="system.type" data-type="String">
                     {{#select system.type}}
-                    <option value="basic">{{localize "Ex3.Basic"}}</option>
-                    <option value="major">{{localize "Ex3.Major"}}</option>
-                    <option value="superior">{{localize "Ex3.Superior"}}</option>
-                    <option value="legendary">{{localize "Ex3.Legendary"}}</option>
+                    <option value="basic">{{localize "ExD.Basic"}}</option>
+                    <option value="major">{{localize "ExD.Major"}}</option>
+                    <option value="superior">{{localize "ExD.Superior"}}</option>
+                    <option value="legendary">{{localize "ExD.Legendary"}}</option>
                     {{/select}}
                 </select>
-                <label class="resource-label">{{localize "Ex3.Rating"}}: </label>
+                <label class="resource-label">{{localize "ExD.Rating"}}: </label>
                 <input type="number" name="system.rating" value="{{system.rating}}" style="width:55px;" />
             </div>
         </div>
     </header>
 
     <nav class="sheet-tabs tabs" data-group="primary">
-        <a class="item" data-tab="description">{{localize "Ex3.Description"}}</a>
-        <a class="item" data-tab="effects">{{localize "Ex3.Effects"}}</a>
+        <a class="item" data-tab="description">{{localize "ExD.Description"}}</a>
+        <a class="item" data-tab="effects">{{localize "ExD.Effects"}}</a>
     </nav>
 
     {{!-- Sheet Body --}}
@@ -32,7 +32,7 @@
         </div>
 
         <div class="tab" data-group="primary" data-tab="effects">
-            {{> systems/exaltedthird/templates/actor/active-effects.html}}
+            {{> systems/exalteddemake/templates/actor/active-effects.html}}
         </div>
 
     </section>

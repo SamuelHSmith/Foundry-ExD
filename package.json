@@ -1,7 +1,7 @@
 {
-  "name": "exaltedthird",
+  "name": "exalteddemake",
   "version": "1.0.0",
-  "description": "CSS compiler for the Exalted Third system",
+  "description": "CSS compiler for the Exalted Demake system",
   "scripts": {
     "build": "gulp",
     "compile": "gulp css",

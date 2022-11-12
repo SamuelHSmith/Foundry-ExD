@@ -111,12 +111,12 @@ export class RollForm extends FormApplication {
                     }
                     this.object.appearance = this.actor.system.appearance.value;
                 }
-                this.object.difficultyString = 'Ex3.Difficulty';
+                this.object.difficultyString = 'ExD.Difficulty';
                 if (this.object.rollType === 'readIntentions') {
-                    this.object.difficultyString = 'Ex3.Guile';
+                    this.object.difficultyString = 'ExD.Guile';
                 }
                 if (this.object.rollType === 'social') {
-                    this.object.difficultyString = 'Ex3.Resolve';
+                    this.object.difficultyString = 'ExD.Resolve';
                 }
 
                 if (this.object.rollType === 'craft') {
@@ -201,7 +201,7 @@ export class RollForm extends FormApplication {
             this.object.specialtyList = this.actor.specialties.filter((specialty) => specialty.system.ability === this.object.ability);
             this.object.target = Array.from(game.user.targets)[0] || null;
             this.object.targetCombatant = game.combat?.combatants?.find(c => c.actorId == this.object.target?.actor.id) || null;
-            this.object.showDefenseOnDamage = game.settings.get("exaltedthird", "defenseOnDamage");
+            this.object.showDefenseOnDamage = game.settings.get("exalteddemake", "defenseOnDamage");
 
             let combat = game.combat;
             if (combat) {
@@ -262,12 +262,12 @@ export class RollForm extends FormApplication {
    * @type {String}
    */
     get template() {
-        var template = "systems/exaltedthird/templates/dialogues/ability-roll.html";
+        var template = "systems/exalteddemake/templates/dialogues/ability-roll.html";
         if (this.object.rollType === 'base') {
-            template = "systems/exaltedthird/templates/dialogues/dice-roll.html";
+            template = "systems/exalteddemake/templates/dialogues/dice-roll.html";
         }
         else if (this._isAttackRoll()) {
-            template = "systems/exaltedthird/templates/dialogues/attack-roll.html";
+            template = "systems/exalteddemake/templates/dialogues/attack-roll.html";
         }
         return template;
     }
@@ -277,7 +277,7 @@ export class RollForm extends FormApplication {
         // Token Configuration
         if (this.object.rollType !== 'base') {
             const charmsButton = {
-                label: game.i18n.localize('Ex3.AddCharm'),
+                label: game.i18n.localize('ExD.AddCharm'),
                 class: 'add-charm',
                 id: "add-charm",
                 icon: 'fas fa-bolt',
@@ -294,10 +294,10 @@ export class RollForm extends FormApplication {
                         }
                     }
                     if (this.object.addingCharms) {
-                        ev.currentTarget.innerHTML = `<i class="fas fa-bolt"></i> ${game.i18n.localize('Ex3.AddCharm')}`;
+                        ev.currentTarget.innerHTML = `<i class="fas fa-bolt"></i> ${game.i18n.localize('ExD.AddCharm')}`;
                     }
                     else {
-                        ev.currentTarget.innerHTML = `<i class="fas fa-bolt"></i> ${game.i18n.localize('Ex3.Done')}`;
+                        ev.currentTarget.innerHTML = `<i class="fas fa-bolt"></i> ${game.i18n.localize('ExD.Done')}`;
                     }
                     this.object.addingCharms = !this.object.addingCharms;
                     this.render();
@@ -305,7 +305,7 @@ export class RollForm extends FormApplication {
             };
             buttons = [charmsButton, ...buttons];
             const rollButton = {
-                label: this.object.id ? game.i18n.localize('Ex3.Update') : game.i18n.localize('Ex3.Save'),
+                label: this.object.id ? game.i18n.localize('ExD.Update') : game.i18n.localize('ExD.Save'),
                 class: 'roll-dice',
                 icon: 'fas fa-dice-d6',
                 onclick: (ev) => {
@@ -322,7 +322,7 @@ export class RollForm extends FormApplication {
         return mergeObject(super.defaultOptions, {
             classes: ["dialog", `solar-background`],
             popOut: true,
-            template: "systems/exaltedthird/templates/dialogues/dice-roll.html",
+            template: "systems/exalteddemake/templates/dialogues/dice-roll.html",
             id: "roll-form",
             title: `Roll`,
             width: 350,
@@ -363,7 +363,7 @@ export class RollForm extends FormApplication {
     }
 
     async _saveRoll(rollData) {
-        let html = await renderTemplate("systems/exaltedthird/templates/dialogues/save-roll.html", { 'name': this.object.name || 'New Roll' });
+        let html = await renderTemplate("systems/exalteddemake/templates/dialogues/save-roll.html", { 'name': this.object.name || 'New Roll' });
         new Dialog({
             title: "Save Roll",
             content: html,
@@ -851,7 +851,7 @@ export class RollForm extends FormApplication {
             type: CONST.CHAT_MESSAGE_TYPES.ROLL,
             roll: this.object.roll,
             flags: {
-                "exaltedthird": {
+                "exalteddemake": {
                     dice: this.object.dice,
                     successModifier: this.object.successModifier,
                     total: this.object.total
@@ -925,7 +925,7 @@ export class RollForm extends FormApplication {
                     content: messageContent,
                     type: CONST.CHAT_MESSAGE_TYPES.ROLL, roll: this.object.roll,
                     flags: {
-                        "exaltedthird": {
+                        "exalteddemake": {
                             dice: this.object.dice,
                             successModifier: this.object.successModifier,
                             total: this.object.total,
@@ -969,7 +969,7 @@ export class RollForm extends FormApplication {
                 type: CONST.CHAT_MESSAGE_TYPES.ROLL,
                 roll: this.object.roll,
                 flags: {
-                    "exaltedthird": {
+                    "exalteddemake": {
                         dice: this.object.dice,
                         successModifier: this.object.successModifier,
                         total: this.object.total,
@@ -992,7 +992,7 @@ export class RollForm extends FormApplication {
     async _damageRoll() {
         let baseDamage = this.object.damage.damageDice;
         let dice = this.object.damage.damageDice;
-        if (this.object.rollType === 'damage' && this.object.attackType === 'withering' && game.settings.get("exaltedthird", "defenseOnDamage")) {
+        if (this.object.rollType === 'damage' && this.object.attackType === 'withering' && game.settings.get("exalteddemake", "defenseOnDamage")) {
             dice += this.object.attackSuccesses;
             dice -= this.object.defense;
         }
@@ -1188,7 +1188,7 @@ export class RollForm extends FormApplication {
             type: CONST.CHAT_MESSAGE_TYPES.ROLL,
             roll: this.object.roll || roll,
             flags: {
-                "exaltedthird": {
+                "exalteddemake": {
                     dice: this.object.dice,
                     successModifier: this.object.successModifier,
                     total: this.object.total,
@@ -1227,7 +1227,7 @@ export class RollForm extends FormApplication {
     }
 
     async _addOnslaught() {
-        if (this.object.target && game.settings.get("exaltedthird", "calculateOnslaught")) {
+        if (this.object.target && game.settings.get("exalteddemake", "calculateOnslaught")) {
             if (!this._useLegendarySize('onslaught')) {
                 const onslaught = this.object.target.actor.effects.find(i => i.label == "Onslaught");
                 if (onslaught) {
@@ -1243,7 +1243,7 @@ export class RollForm extends FormApplication {
                 else {
                     this.object.target.actor.createEmbeddedDocuments('ActiveEffect', [{
                         label: 'Onslaught',
-                        icon: 'systems/exaltedthird/assets/icons/surrounded-shield.svg',
+                        icon: 'systems/exalteddemake/assets/icons/surrounded-shield.svg',
                         origin: this.object.target.actor.uuid,
                         disabled: false,
                         "changes": [
@@ -1265,7 +1265,7 @@ export class RollForm extends FormApplication {
     }
 
     dealHealthDamage(characterDamage, targetBattlegroup = false) {
-        if (this.object.target && game.combat && game.settings.get("exaltedthird", "autoDecisiveDamage") && characterDamage > 0) {
+        if (this.object.target && game.combat && game.settings.get("exalteddemake", "autoDecisiveDamage") && characterDamage > 0) {
             let totalHealth = 0;
             const targetActorData = duplicate(this.object.target.actor);
             for (let [key, health_level] of Object.entries(targetActorData.system.health.levels)) {
@@ -1420,7 +1420,7 @@ export class RollForm extends FormApplication {
             type: CONST.CHAT_MESSAGE_TYPES.ROLL,
             roll: this.object.roll,
             flags: {
-                "exaltedthird": {
+                "exalteddemake": {
                     dice: this.object.dice,
                     successModifier: this.object.successModifier,
                     total: this.object.total

@@ -4,7 +4,7 @@ import { RollForm } from "../apps/dice-roller.js";
  * Extend the base Actor entity by defining a custom roll data structure which is ideal for the Simple system.
  * @extends {Actor}
  */
-export class ExaltedThirdActor extends Actor {
+export class ExaltedDemakeActor extends Actor {
 
   /**
    * Augment the basic actor data with additional dynamic data.
@@ -30,7 +30,7 @@ export class ExaltedThirdActor extends Actor {
       tokenId: token?.uuid || null,
       item: item.system
     };
-    const html = await renderTemplate("systems/exaltedthird/templates/chat/item-card.html", templateData);
+    const html = await renderTemplate("systems/exalteddemake/templates/chat/item-card.html", templateData);
 
     // Create the ChatMessage data object
     const chatData = {
@@ -265,55 +265,55 @@ export class ExaltedThirdActor extends Actor {
 
 
     const charms = {
-      offensive: { name: 'Ex3.Offensive', visible: false, list: [] },
-      offsensive: { name: 'Ex3.Offensive', visible: false, list: [] },
-      defensive: { name: 'Ex3.Defensive', visible: false, list: [] },
-      social: { name: 'Ex3.Social', visible: false, list: [] },
-      mobility: { name: 'Ex3.Mobility', visible: false, list: [] },
-      strength: { name: 'Ex3.Strength', visible: false, list: [] },
-      dexterity: { name: 'Ex3.Dexterity', visible: false, list: [] },
-      stamina: { name: 'Ex3.Stamina', visible: false, list: [] },
-      charisma: { name: 'Ex3.Charisma', visible: false, list: [] },
-      manipulation: { name: 'Ex3.Manipulation', visible: false, list: [] },
-      appearance: { name: 'Ex3.Appearance', visible: false, list: [] },
-      perception: { name: 'Ex3.Perception', visible: false, list: [] },
-      intelligence: { name: 'Ex3.Intelligence', visible: false, list: [] },
-      wits: { name: 'Ex3.Wits', visible: false, list: [] },
-      archery: { name: 'Ex3.Archery', visible: false, list: [] },
-      athletics: { name: 'Ex3.Athletics', visible: false, list: [] },
-      awareness: { name: 'Ex3.Awareness', visible: false, list: [] },
-      brawl: { name: 'Ex3.Brawl', visible: false, list: [] },
-      bureaucracy: { name: 'Ex3.Bureaucracy', visible: false, list: [] },
-      craft: { name: 'Ex3.Craft', visible: false, list: [] },
-      dodge: { name: 'Ex3.Dodge', visible: false, list: [] },
-      integrity: { name: 'Ex3.Integrity', visible: false, list: [] },
-      investigation: { name: 'Ex3.Investigation', visible: false, list: [] },
-      larceny: { name: 'Ex3.Larceny', visible: false, list: [] },
-      linguistics: { name: 'Ex3.Linguistics', visible: false, list: [] },
-      lore: { name: 'Ex3.Lore', visible: false, list: [] },
-      martialarts: { name: 'Ex3.MartialArts', visible: false, list: [] },
-      medicine: { name: 'Ex3.Medicine', visible: false, list: [] },
-      melee: { name: 'Ex3.Melee', visible: false, list: [] },
-      occult: { name: 'Ex3.Occult', visible: false, list: [] },
-      performance: { name: 'Ex3.Performance', visible: false, list: [] },
-      presence: { name: 'Ex3.Presence', visible: false, list: [] },
-      resistance: { name: 'Ex3.Resistance', visible: false, list: [] },
-      ride: { name: 'Ex3.Ride', visible: false, list: [] },
-      sail: { name: 'Ex3.Sail', visible: false, list: [] },
-      socialize: { name: 'Ex3.Socialize', visible: false, list: [] },
-      stealth: { name: 'Ex3.Stealth', visible: false, list: [] },
-      survival: { name: 'Ex3.Survival', visible: false, list: [] },
-      thrown: { name: 'Ex3.Thrown', visible: false, list: [] },
-      war: { name: 'Ex3.War', visible: false, list: [] },
-      evocation: { name: 'Ex3.Evocation', visible: false, list: [] },
-      universal: { name: 'Ex3.Universal', visible: false, list: [] },
-      other: { name: 'Ex3.Other', visible: false, list: [] },
+      offensive: { name: 'ExD.Offensive', visible: false, list: [] },
+      offsensive: { name: 'ExD.Offensive', visible: false, list: [] },
+      defensive: { name: 'ExD.Defensive', visible: false, list: [] },
+      social: { name: 'ExD.Social', visible: false, list: [] },
+      mobility: { name: 'ExD.Mobility', visible: false, list: [] },
+      strength: { name: 'ExD.Strength', visible: false, list: [] },
+      dexterity: { name: 'ExD.Dexterity', visible: false, list: [] },
+      stamina: { name: 'ExD.Stamina', visible: false, list: [] },
+      charisma: { name: 'ExD.Charisma', visible: false, list: [] },
+      manipulation: { name: 'ExD.Manipulation', visible: false, list: [] },
+      appearance: { name: 'ExD.Appearance', visible: false, list: [] },
+      perception: { name: 'ExD.Perception', visible: false, list: [] },
+      intelligence: { name: 'ExD.Intelligence', visible: false, list: [] },
+      wits: { name: 'ExD.Wits', visible: false, list: [] },
+      archery: { name: 'ExD.Archery', visible: false, list: [] },
+      athletics: { name: 'ExD.Athletics', visible: false, list: [] },
+      awareness: { name: 'ExD.Awareness', visible: false, list: [] },
+      brawl: { name: 'ExD.Brawl', visible: false, list: [] },
+      bureaucracy: { name: 'ExD.Bureaucracy', visible: false, list: [] },
+      craft: { name: 'ExD.Craft', visible: false, list: [] },
+      dodge: { name: 'ExD.Dodge', visible: false, list: [] },
+      integrity: { name: 'ExD.Integrity', visible: false, list: [] },
+      investigation: { name: 'ExD.Investigation', visible: false, list: [] },
+      larceny: { name: 'ExD.Larceny', visible: false, list: [] },
+      linguistics: { name: 'ExD.Linguistics', visible: false, list: [] },
+      lore: { name: 'ExD.Lore', visible: false, list: [] },
+      martialarts: { name: 'ExD.MartialArts', visible: false, list: [] },
+      medicine: { name: 'ExD.Medicine', visible: false, list: [] },
+      melee: { name: 'ExD.Melee', visible: false, list: [] },
+      occult: { name: 'ExD.Occult', visible: false, list: [] },
+      performance: { name: 'ExD.Performance', visible: false, list: [] },
+      presence: { name: 'ExD.Presence', visible: false, list: [] },
+      resistance: { name: 'ExD.Resistance', visible: false, list: [] },
+      ride: { name: 'ExD.Ride', visible: false, list: [] },
+      sail: { name: 'ExD.Sail', visible: false, list: [] },
+      socialize: { name: 'ExD.Socialize', visible: false, list: [] },
+      stealth: { name: 'ExD.Stealth', visible: false, list: [] },
+      survival: { name: 'ExD.Survival', visible: false, list: [] },
+      thrown: { name: 'ExD.Thrown', visible: false, list: [] },
+      war: { name: 'ExD.War', visible: false, list: [] },
+      evocation: { name: 'ExD.Evocation', visible: false, list: [] },
+      universal: { name: 'ExD.Universal', visible: false, list: [] },
+      other: { name: 'ExD.Other', visible: false, list: [] },
     }
 
     const spells = {
-      terrestrial: { name: 'Ex3.Terrestrial', visible: false, list: [] },
-      celestial: { name: 'Ex3.Celestial', visible: false, list: [] },
-      solar: { name: 'Ex3.Solar', visible: false, list: [] },
+      terrestrial: { name: 'ExD.Terrestrial', visible: false, list: [] },
+      celestial: { name: 'ExD.Celestial', visible: false, list: [] },
+      solar: { name: 'ExD.Solar', visible: false, list: [] },
     }
 
     // Iterate through items, allocating to containers

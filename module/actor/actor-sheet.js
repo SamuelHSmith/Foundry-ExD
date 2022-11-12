@@ -10,7 +10,7 @@ import Importer from "../apps/importer.js";
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class ExaltedThirdActorSheet extends ActorSheet {
+export class ExaltedDemakeActorSheet extends ActorSheet {
 
   constructor(...args) {
     super(...args);
@@ -25,15 +25,15 @@ export class ExaltedThirdActorSheet extends ActorSheet {
  * @type {String}
  */
   get template() {
-    if (this.actor.type === "npc") return "systems/exaltedthird/templates/actor/npc-sheet.html";
-    return "systems/exaltedthird/templates/actor/actor-sheet.html";
+    if (this.actor.type === "npc") return "systems/exalteddemake/templates/actor/npc-sheet.html";
+    return "systems/exalteddemake/templates/actor/actor-sheet.html";
   }
 
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      classes: ["exaltedthird", "sheet", "actor"],
-      template: "systems/exaltedthird/templates/actor/actor-sheet.html",
+      classes: ["exalteddemake", "sheet", "actor"],
+      template: "systems/exalteddemake/templates/actor/actor-sheet.html",
       width: 800,
       height: 1061,
       tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "stats" }]
@@ -97,55 +97,55 @@ export class ExaltedThirdActorSheet extends ActorSheet {
 
 
     const charms = {
-      offensive: { name: 'Ex3.Offensive', visible: false, list: [] },
-      offsensive: { name: 'Ex3.Offensive', visible: false, list: [] },
-      defensive: { name: 'Ex3.Defensive', visible: false, list: [] },
-      social: { name: 'Ex3.Social', visible: false, list: [] },
-      mobility: { name: 'Ex3.Mobility', visible: false, list: [] },
-      strength: { name: 'Ex3.Strength', visible: false, list: [] },
-      dexterity: { name: 'Ex3.Dexterity', visible: false, list: [] },
-      stamina: { name: 'Ex3.Stamina', visible: false, list: [] },
-      charisma: { name: 'Ex3.Charisma', visible: false, list: [] },
-      manipulation: { name: 'Ex3.Manipulation', visible: false, list: [] },
-      appearance: { name: 'Ex3.Appearance', visible: false, list: [] },
-      perception: { name: 'Ex3.Perception', visible: false, list: [] },
-      intelligence: { name: 'Ex3.Intelligence', visible: false, list: [] },
-      wits: { name: 'Ex3.Wits', visible: false, list: [] },
-      archery: { name: 'Ex3.Archery', visible: false, list: [] },
-      athletics: { name: 'Ex3.Athletics', visible: false, list: [] },
-      awareness: { name: 'Ex3.Awareness', visible: false, list: [] },
-      brawl: { name: 'Ex3.Brawl', visible: false, list: [] },
-      bureaucracy: { name: 'Ex3.Bureaucracy', visible: false, list: [] },
-      craft: { name: 'Ex3.Craft', visible: false, list: [] },
-      dodge: { name: 'Ex3.Dodge', visible: false, list: [] },
-      integrity: { name: 'Ex3.Integrity', visible: false, list: [] },
-      investigation: { name: 'Ex3.Investigation', visible: false, list: [] },
-      larceny: { name: 'Ex3.Larceny', visible: false, list: [] },
-      linguistics: { name: 'Ex3.Linguistics', visible: false, list: [] },
-      lore: { name: 'Ex3.Lore', visible: false, list: [] },
-      martialarts: { name: 'Ex3.MartialArts', visible: false, list: [] },
-      medicine: { name: 'Ex3.Medicine', visible: false, list: [] },
-      melee: { name: 'Ex3.Melee', visible: false, list: [] },
-      occult: { name: 'Ex3.Occult', visible: false, list: [] },
-      performance: { name: 'Ex3.Performance', visible: false, list: [] },
-      presence: { name: 'Ex3.Presence', visible: false, list: [] },
-      resistance: { name: 'Ex3.Resistance', visible: false, list: [] },
-      ride: { name: 'Ex3.Ride', visible: false, list: [] },
-      sail: { name: 'Ex3.Sail', visible: false, list: [] },
-      socialize: { name: 'Ex3.Socialize', visible: false, list: [] },
-      stealth: { name: 'Ex3.Stealth', visible: false, list: [] },
-      survival: { name: 'Ex3.Survival', visible: false, list: [] },
-      thrown: { name: 'Ex3.Thrown', visible: false, list: [] },
-      war: { name: 'Ex3.War', visible: false, list: [] },
-      evocation: { name: 'Ex3.Evocation', visible: false, list: [] },
-      other: { name: 'Ex3.Other', visible: false, list: [] },
-      universal: { name: 'Ex3.Universal', visible: false, list: [] },
+      offensive: { name: 'ExD.Offensive', visible: false, list: [] },
+      offsensive: { name: 'ExD.Offensive', visible: false, list: [] },
+      defensive: { name: 'ExD.Defensive', visible: false, list: [] },
+      social: { name: 'ExD.Social', visible: false, list: [] },
+      mobility: { name: 'ExD.Mobility', visible: false, list: [] },
+      strength: { name: 'ExD.Strength', visible: false, list: [] },
+      dexterity: { name: 'ExD.Dexterity', visible: false, list: [] },
+      stamina: { name: 'ExD.Stamina', visible: false, list: [] },
+      charisma: { name: 'ExD.Charisma', visible: false, list: [] },
+      manipulation: { name: 'ExD.Manipulation', visible: false, list: [] },
+      appearance: { name: 'ExD.Appearance', visible: false, list: [] },
+      perception: { name: 'ExD.Perception', visible: false, list: [] },
+      intelligence: { name: 'ExD.Intelligence', visible: false, list: [] },
+      wits: { name: 'ExD.Wits', visible: false, list: [] },
+      archery: { name: 'ExD.Archery', visible: false, list: [] },
+      athletics: { name: 'ExD.Athletics', visible: false, list: [] },
+      awareness: { name: 'ExD.Awareness', visible: false, list: [] },
+      brawl: { name: 'ExD.Brawl', visible: false, list: [] },
+      bureaucracy: { name: 'ExD.Bureaucracy', visible: false, list: [] },
+      craft: { name: 'ExD.Craft', visible: false, list: [] },
+      dodge: { name: 'ExD.Dodge', visible: false, list: [] },
+      integrity: { name: 'ExD.Integrity', visible: false, list: [] },
+      investigation: { name: 'ExD.Investigation', visible: false, list: [] },
+      larceny: { name: 'ExD.Larceny', visible: false, list: [] },
+      linguistics: { name: 'ExD.Linguistics', visible: false, list: [] },
+      lore: { name: 'ExD.Lore', visible: false, list: [] },
+      martialarts: { name: 'ExD.MartialArts', visible: false, list: [] },
+      medicine: { name: 'ExD.Medicine', visible: false, list: [] },
+      melee: { name: 'ExD.Melee', visible: false, list: [] },
+      occult: { name: 'ExD.Occult', visible: false, list: [] },
+      performance: { name: 'ExD.Performance', visible: false, list: [] },
+      presence: { name: 'ExD.Presence', visible: false, list: [] },
+      resistance: { name: 'ExD.Resistance', visible: false, list: [] },
+      ride: { name: 'ExD.Ride', visible: false, list: [] },
+      sail: { name: 'ExD.Sail', visible: false, list: [] },
+      socialize: { name: 'ExD.Socialize', visible: false, list: [] },
+      stealth: { name: 'ExD.Stealth', visible: false, list: [] },
+      survival: { name: 'ExD.Survival', visible: false, list: [] },
+      thrown: { name: 'ExD.Thrown', visible: false, list: [] },
+      war: { name: 'ExD.War', visible: false, list: [] },
+      evocation: { name: 'ExD.Evocation', visible: false, list: [] },
+      other: { name: 'ExD.Other', visible: false, list: [] },
+      universal: { name: 'ExD.Universal', visible: false, list: [] },
     }
 
     const spells = {
-      terrestrial: { name: 'Ex3.Terrestrial', visible: false, list: [] },
-      celestial: { name: 'Ex3.Celestial', visible: false, list: [] },
-      solar: { name: 'Ex3.Solar', visible: false, list: [] },
+      terrestrial: { name: 'ExD.Terrestrial', visible: false, list: [] },
+      celestial: { name: 'ExD.Celestial', visible: false, list: [] },
+      solar: { name: 'ExD.Solar', visible: false, list: [] },
     }
 
     // Iterate through items, allocating to containers
@@ -226,7 +226,7 @@ export class ExaltedThirdActorSheet extends ActorSheet {
  */
   _prepareTraits(traits) {
     const map = {
-      "languages": CONFIG.exaltedthird.languages,
+      "languages": CONFIG.exalteddemake.languages,
     };
     for (let [t, choices] of Object.entries(map)) {
       const trait = traits[t];
@@ -254,13 +254,13 @@ export class ExaltedThirdActorSheet extends ActorSheet {
     const canConfigure = game.user.isGM || this.actor.isOwner;
     if (this.options.editable && canConfigure) {
       const settingsButton = {
-        label: game.i18n.localize('Ex3.Settings'),
+        label: game.i18n.localize('ExD.Settings'),
         class: 'sheet-settings',
         icon: 'fas fa-cog',
         onclick: () => this.sheetSettings(),
       };
       const helpButton = {
-        label: game.i18n.localize('Ex3.Help'),
+        label: game.i18n.localize('ExD.Help'),
         class: 'help-dialogue',
         icon: 'fas fa-question',
         onclick: () => this.helpDialogue(this.actor.type),
@@ -268,7 +268,7 @@ export class ExaltedThirdActorSheet extends ActorSheet {
       buttons = [settingsButton, helpButton, ...buttons];
       if (this.actor.type != 'npc') {
         const colorButton = {
-          label: game.i18n.localize('Ex3.DotColors'),
+          label: game.i18n.localize('ExD.DotColors'),
           class: 'set-color',
           icon: 'fas fa-palette',
           onclick: (ev) => this.pickColor(ev),
@@ -276,7 +276,7 @@ export class ExaltedThirdActorSheet extends ActorSheet {
         buttons = [colorButton, ...buttons];
       }
       const rollButton = {
-        label: game.i18n.localize('Ex3.Roll'),
+        label: game.i18n.localize('ExD.Roll'),
         class: 'roll-dice',
         icon: 'fas fa-dice-d10',
         onclick: (ev) => new RollForm(this.actor, { event: ev }, {}, { rollType: 'base' }).render(true),
@@ -803,9 +803,9 @@ export class ExaltedThirdActorSheet extends ActorSheet {
     }
 
 
-    var template = "systems/exaltedthird/templates/dialogues/calculate-health.html";
+    var template = "systems/exalteddemake/templates/dialogues/calculate-health.html";
     if (data.battlegroup && healthType === 'person') {
-      template = "systems/exaltedthird/templates/dialogues/calculate-battlegroup-health.html";
+      template = "systems/exalteddemake/templates/dialogues/calculate-battlegroup-health.html";
     }
 
     var templateData = {
@@ -900,7 +900,7 @@ export class ExaltedThirdActorSheet extends ActorSheet {
   }
 
   async showTags(type) {
-    const template = type === "weapons" ? "systems/exaltedthird/templates/dialogues/weapon-tags.html" : "systems/exaltedthird/templates/dialogues/armor-tags.html";
+    const template = type === "weapons" ? "systems/exalteddemake/templates/dialogues/weapon-tags.html" : "systems/exalteddemake/templates/dialogues/armor-tags.html";
     const html = await renderTemplate(template);
     new Dialog({
       title: `Tags`,
@@ -912,7 +912,7 @@ export class ExaltedThirdActorSheet extends ActorSheet {
   }
 
   async showCraft() {
-    const template = "systems/exaltedthird/templates/dialogues/craft-cheatsheet.html";
+    const template = "systems/exalteddemake/templates/dialogues/craft-cheatsheet.html";
     const html = await renderTemplate(template);
     new Dialog({
       title: `Craft`,
@@ -927,7 +927,7 @@ export class ExaltedThirdActorSheet extends ActorSheet {
     let confirmed = false;
     const actorData = duplicate(this.actor);
     const data = actorData.system;
-    const template = "systems/exaltedthird/templates/dialogues/color-picker.html"
+    const template = "systems/exalteddemake/templates/dialogues/color-picker.html"
     const html = await renderTemplate(template, { 'color': data.details.color });
     new Dialog({
       title: `Pick Color`,
@@ -952,7 +952,7 @@ export class ExaltedThirdActorSheet extends ActorSheet {
     let confirmed = false;
     const actorData = duplicate(this.actor);
     const data = actorData.system;
-    const template = "systems/exaltedthird/templates/dialogues/sheet-settings.html"
+    const template = "systems/exalteddemake/templates/dialogues/sheet-settings.html"
     const html = await renderTemplate(template, { 'charmmotepool': data.settings.charmmotepool, 'showWarstrider': data.settings.showwarstrider, 'showShip': data.settings.showship, 'showEscort': data.settings.showescort, 'maxAnima': data.anima.max, 'showZeroValues': data.settings.showzerovalues, 'useTenAttributes': data.settings.usetenattributes });
     new Dialog({
       title: `Settings`,
@@ -980,7 +980,7 @@ export class ExaltedThirdActorSheet extends ActorSheet {
     let confirmed = false;
     const actorData = duplicate(this.actor);
     const data = actorData.system;
-    const template = "systems/exaltedthird/templates/dialogues/help-dialogue.html"
+    const template = "systems/exalteddemake/templates/dialogues/help-dialogue.html"
     const html = await renderTemplate(template, { 'type': type });
     new Dialog({
       title: `ReadMe`,
@@ -1192,7 +1192,7 @@ export class ExaltedThirdActorSheet extends ActorSheet {
     event.preventDefault();
     const a = event.currentTarget;
     const label = a.parentElement.querySelector("label");
-    const choices = CONFIG.exaltedthird[a.dataset.options];
+    const choices = CONFIG.exalteddemake[a.dataset.options];
     const options = { name: a.dataset.target, title: label.innerText, choices };
     return new TraitSelector(this.actor, options).render(true)
   }
@@ -1243,7 +1243,7 @@ export class ExaltedThirdActorSheet extends ActorSheet {
       item: item,
       labels: this.labels,
     };
-    const html = await renderTemplate("systems/exaltedthird/templates/chat/item-card.html", templateData);
+    const html = await renderTemplate("systems/exalteddemake/templates/chat/item-card.html", templateData);
 
     // Create the ChatMessage data object
     const chatData = {

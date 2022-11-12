@@ -1,60 +1,60 @@
-<div class="sheet-body exaltedthird">
+<div class="sheet-body exalteddemake">
     <div class="flex-center resource-label" style="font-weight: bold;">
         Damage
     </div>
     <div>
         <div class="resource grid grid-2col flex-center">
             {{#ifEquals data.rollType 'damage'}}
-            <label class="resource-label">{{localize "Ex3.AttackType"}}</label>
+            <label class="resource-label">{{localize "ExD.AttackType"}}</label>
             <select name="object.attackType" value="{{data.attackType}}" data-type="String">
                 {{#select data.attackType}}
-                <option value="decisive">{{localize "Ex3.Decisive"}}</option>
-                <option value="withering">{{localize "Ex3.Withering"}}</option>
+                <option value="decisive">{{localize "ExD.Decisive"}}</option>
+                <option value="withering">{{localize "ExD.Withering"}}</option>
                 {{/select}}
             </select>
             {{#if data.showDefenseOnDamage}}
             <div>
-                <label class="resource-label">{{localize "Ex3.AttackSuccesses"}}</label>
+                <label class="resource-label">{{localize "ExD.AttackSuccesses"}}</label>
                 <input type="number" name="object.attackSuccesses" value="{{data.attackSuccesses}}">
             </div>
             <div>
-                <label class="resource-label">{{localize "Ex3.Defense"}} </label>
+                <label class="resource-label">{{localize "ExD.Defense"}} </label>
                 <input type="number" name="object.defense" value="{{data.defense}}">
             </div>
             {{/if}}
             {{/ifEquals}}
             <div>
-                <label class="resource-label">{{localize "Ex3.DamageDice"}} </label>
+                <label class="resource-label">{{localize "ExD.DamageDice"}} </label>
                 <input type="number" name="object.damage.damageDice" value="{{data.damage.damageDice}}">
             </div>
             <div>
-                <label class="resource-label">{{localize "Ex3.DamageSuccesses"}} </label>
+                <label class="resource-label">{{localize "ExD.DamageSuccesses"}} </label>
                 <input type="number" name="object.damage.damageSuccessModifier"
                     value="{{data.damage.damageSuccessModifier}}">
             </div>
         </div>
         <div class="resource grid grid-2col flex-center">
             <div>
-                <label class="resource-label">{{localize "Ex3.DoubleSuccess"}} + </label>
+                <label class="resource-label">{{localize "ExD.DoubleSuccess"}} + </label>
                 <input type="number" name="object.damage.doubleSuccess" value="{{data.damage.doubleSuccess}}">
             </div>
             <div>
-                <label class="resource-label">{{localize "Ex3.TargetNumber"}} </label>
+                <label class="resource-label">{{localize "ExD.TargetNumber"}} </label>
                 <input type="number" name="object.damage.targetNumber" value="{{data.damage.targetNumber}}">
             </div>
             {{#if data.showWithering }}
             <div>
-                <label class="resource-label">{{localize "Ex3.Overwhelming"}} </label>
+                <label class="resource-label">{{localize "ExD.Overwhelming"}} </label>
                 <input type="number" name="object.overwhelming" value="{{data.overwhelming}}">
             </div>
             <div>
-                <label class="resource-label">{{localize "Ex3.PostSoakDamage"}} </label>
+                <label class="resource-label">{{localize "ExD.PostSoakDamage"}} </label>
                 <input type="number" name="object.damage.postSoakDamage" value="{{data.damage.postSoakDamage}}">
             </div>
             {{/if}}
         </div>
         <div class="resource flex-center">
-            <label class="resource-label">{{localize "Ex3.Reroll"}}</label>
+            <label class="resource-label">{{localize "ExD.Reroll"}}</label>
         </div>
         <div class="resource d-flex flex-center">
             <div>
@@ -107,7 +107,7 @@
 
         <div class="d-flex flex-between mb-1 collapsable cursor-pointer">
             <div class="resource-label">
-                {{localize "Ex3.DamageModifiers"}}
+                {{localize "ExD.DamageModifiers"}}
             </div>
             <div>
                 <i class="fas fa-caret-down"></i>
@@ -115,16 +115,16 @@
         </div>
         <div style="display:none;">
             <div class="resource flex-center grid grid-2col">
-                <label class="resource-label">{{localize "Ex3.DamageType"}}</label>
+                <label class="resource-label">{{localize "ExD.DamageType"}}</label>
                 <select name="object.damage.type" value="{{data.damage.type}}" data-type="String">
                     {{#select data.damage.type}}
-                    <option value="bashing">{{localize "Ex3.Bashing"}}</option>
-                    <option value="lethal">{{localize "Ex3.Lethal"}}</option>
-                    <option value="aggravated">{{localize "Ex3.Aggravated"}}</option>
+                    <option value="bashing">{{localize "ExD.Bashing"}}</option>
+                    <option value="lethal">{{localize "ExD.Lethal"}}</option>
+                    <option value="aggravated">{{localize "ExD.Aggravated"}}</option>
                     {{/select}}
                 </select>
                 {{#ifNotEquals data.rollType 'withering'}}
-                <label class="resource-label">{{localize "Ex3.ThreshholdToDamage"}} </label>
+                <label class="resource-label">{{localize "ExD.ThreshholdToDamage"}} </label>
                 <div>
                     <input type="checkbox" name="object.damage.threshholdToDamage"
                         value="{{data.damage.threshholdToDamage}}" {{checked data.damage.threshholdToDamage}}>
@@ -136,8 +136,8 @@
 
         {{#if data.showWithering}}
         <div class="flex-center resource-label" style="font-weight: bold;">
-            {{localize "Ex3.Soak"}} ({{localize "Ex3.ArmoredSoak"}}: {{data.armoredSoak}} {{localize
-            "Ex3.NaturalSoak"}}: {{data.naturalSoak}})
+            {{localize "ExD.Soak"}} ({{localize "ExD.ArmoredSoak"}}: {{data.armoredSoak}} {{localize
+            "ExD.NaturalSoak"}}: {{data.naturalSoak}})
         </div>
         <div class="resource flex-center mb-2">
             <input placeholder="Soak" type="number" name="object.soak" value="{{data.soak}}">
@@ -146,7 +146,7 @@
 
         {{#ifEquals data.rollType 'gambit'}}
         <div class="flex-center resource-label" style="font-weight: bold;">
-            {{localize "Ex3.GambitDifficulty"}}
+            {{localize "ExD.GambitDifficulty"}}
         </div>
         <div class="resource flex-center mb-2">
             <input name="object.gambitDifficulty" value="{{data.gambitDifficulty}}" type="number">
@@ -175,7 +175,7 @@
             </p>
             <p>
                 <b>Grapple (2)</b>: If this gambit succeeds makle a contested control roll (Stength + Brawl/Martial
-                Arts) with the opponent to gain rounds of control. See page 200 of Ex3 Core for the full grapple
+                Arts) with the opponent to gain rounds of control. See page 200 of ExD Core for the full grapple
                 effects.
             </p>
 
