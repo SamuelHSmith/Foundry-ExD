@@ -13,7 +13,7 @@ Ability and Attack roller that should have options for most common bonuses.
 ## Credits
 
 This sheet was initially based on the boilerplate system by @asacolips#1867
-And then forked from Exalted Demake Edition module from @Aliharu (https://github.com/Aliharu/Foundry-Ex3)
+And then forked from Exalted Demake Edition module from @SamuelHSmith (https://github.com/SamuelHSmith/Foundry-Ex3)
 
 Code for dot/box counters taken from Foundry-V5 (credit to erizocosmico)
 

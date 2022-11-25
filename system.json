@@ -1,8 +1,8 @@
 {
   "id": "exalteddemake",
   "title": "Exalted Demake Edition",
-  "description": "Unofficial Exalted demake edition system module for FoundryVTT!  Portions of the materials are the copyrights and trademarks of Paradox Interactive AB, and are used with permission. All rights reserved. For more information please visit worldofdarkness.com.",
-  "url": "https://github.com/Aliharu/Foundry-ExD",
+  "description": "Unofficial Exalted Demake edition system module for FoundryVTT!",
+  "url": "https://github.com/SamuelHSmith/Foundry-ExD",
   "license": "LICENSE.txt",
   "version": "1.0.5",
   "compatibility": {
@@ -23,8 +23,8 @@
     }
   ],
   "relationships": [],
-  "manifest": "https://raw.githubusercontent.com/Aliharu/Foundry-ExD/master/system.json",
-  "download": "https://github.com/Aliharu/Foundry-ExD/releases/download/v1.0.5/release1.0.5.zip",
+  "manifest": "https://raw.githubusercontent.com/SamuelHSmith/Foundry-ExD/master/system.json",
+  "download": "https://github.com/SamuelHSmith/Foundry-ExD/releases/download/v1.0.5/release1.0.5.zip",
   "gridDistance": 5,
   "gridUnits": "ft",
   "primaryTokenAttribute": "health",
