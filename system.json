@@ -4,7 +4,7 @@
   "description": "Unofficial Exalted Demake edition system module for FoundryVTT!",
   "url": "https://github.com/SamuelHSmith/Foundry-ExD",
   "license": "LICENSE.txt",
-  "version": "1.0.5",
+  "version": "0.1",
   "compatibility": {
     "minimum": "10"
   },

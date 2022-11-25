@@ -49,9 +49,9 @@ export class RollForm extends FormApplication {
             this.object.supportedIntimacy = 0;
             this.object.opposedIntimacy = 0;
 
-            this.object.doubleSuccess = 10;
+            this.object.onesSubtract = true;
             this.object.rerollFailed = false;
-            this.object.targetNumber = 7;
+            this.object.difficulty = 6;
             this.object.rerollNumber = 0;
             this.object.attackSuccesses = 0;
 
@@ -71,8 +71,7 @@ export class RollForm extends FormApplication {
             this.object.damage = {
                 damageDice: data.damage || 0,
                 damageSuccessModifier: data.damageSuccessModifier || 0,
-                doubleSuccess: data.doubleSuccess || ((this.object.rollType === 'decisive' || this.actor?.system?.battlegroup) ? 11 : 10),
-                targetNumber: data.targetNumber || 7,
+                difficulty: data.difficulty || 6,
                 postSoakDamage: 0,
                 reroll: {
                     one: { status: false, number: 1 },
@@ -479,8 +478,8 @@ export class RollForm extends FormApplication {
             if (item.system.diceroller.doublesuccess < this.object.doubleSuccess) {
                 this.object.doubleSuccess = item.system.diceroller.doublesuccess;
             }
-            if (item.system.diceroller.targetnumber < this.object.damage.targetNumber) {
-                this.object.targetNumber = item.system.diceroller.targetnumber;
+            if (item.system.diceroller.difficulty < this.object.damage.difficulty) {
+                this.object.difficulty = item.system.diceroller.difficulty;
             }
             for (let [rerollKey, rerollValue] of Object.entries(item.system.diceroller.reroll)) {
                 if (rerollValue) {
@@ -498,8 +497,8 @@ export class RollForm extends FormApplication {
             if (item.system.diceroller.damage.doublesuccess < this.object.damage.doubleSuccess) {
                 this.object.damage.doubleSuccess = item.system.diceroller.damage.doublesuccess;
             }
-            if (item.system.diceroller.damage.targetnumber < this.object.damage.targetNumber) {
-                this.object.damage.targetNumber = item.system.diceroller.damage.targetnumber;
+            if (item.system.diceroller.damage.difficulty < this.object.damage.difficulty) {
+                this.object.damage.difficulty = item.system.diceroller.damage.difficulty;
             }
             this.object.overwhelming += item.system.diceroller.damage.overwhelming;
             this.object.damage.postSoakDamage += item.system.diceroller.damage.postsoakdamage;
@@ -719,7 +718,7 @@ export class RollForm extends FormApplication {
             }
         }
 
-        let roll = new Roll(`${dice}d10${rerollString}${this.object.rerollFailed ? `r<${this.object.targetNumber}` : ""}cs>=${this.object.targetNumber}`).evaluate({ async: false });
+        let roll = new Roll(`${dice}d10${rerollString}${this.object.rerollFailed ? `r<${this.object.difficulty}` : ""}cs>=${this.object.difficulty}`).evaluate({ async: false });
         let diceRoll = roll.dice[0].results;
         let getDice = "";
         let bonus = 0;
@@ -729,7 +728,7 @@ export class RollForm extends FormApplication {
 
         while (failedDice !== 0 && (rerolledDice < this.object.rerollNumber)) {
             rerolledDice += failedDice;
-            var failedDiceRoll = new Roll(`${failedDice}d10cs>=${this.object.targetNumber}`).evaluate({ async: false });
+            var failedDiceRoll = new Roll(`${failedDice}d10cs>=${this.object.difficulty}`).evaluate({ async: false });
             failedDice = Math.min(failedDice - failedDiceRoll.total, (this.object.rerollNumber - rerolledDice));
             diceRoll = diceRoll.concat(failedDiceRoll.dice[0].results);
             total += failedDiceRoll.total;
@@ -740,7 +739,7 @@ export class RollForm extends FormApplication {
                 bonus++;
                 getDice += `<li class="roll die d10 success double-success">${dice.result}</li>`;
             }
-            else if (dice.result >= this.object.targetNumber) { getDice += `<li class="roll die d10 success">${dice.result}</li>`; }
+            else if (dice.result >= this.object.difficulty) { getDice += `<li class="roll die d10 success">${dice.result}</li>`; }
             else if (dice.result == 1) { getDice += `<li class="roll die d10 failure">${dice.result}</li>`; }
             else { getDice += `<li class="roll die d10">${dice.result}</li>`; }
         }
@@ -1034,7 +1033,7 @@ export class RollForm extends FormApplication {
             }
         }
 
-        let roll = new Roll(`${dice}d10${rerollString}cs>=${this.object.damage.targetNumber}`).evaluate({ async: false });
+        let roll = new Roll(`${dice}d10${rerollString}cs>=${this.object.damage.difficulty}`).evaluate({ async: false });
         let diceRoll = roll.dice[0].results;
         let getDice = "";
         let soakResult = ``;
@@ -1046,7 +1045,7 @@ export class RollForm extends FormApplication {
                 bonus++;
                 getDice += `<li class="roll die d10 success double-success">${dice.result}</li>`;
             }
-            else if (dice.result >= this.object.damage.targetNumber) { getDice += `<li class="roll die d10 success">${dice.result}</li>`; }
+            else if (dice.result >= this.object.damage.difficulty) { getDice += `<li class="roll die d10 success">${dice.result}</li>`; }
             else if (dice.result == 1) { getDice += `<li class="roll die d10 failure">${dice.result}</li>`; }
             else { getDice += `<li class="roll die d10">${dice.result}</li>`; }
         }
