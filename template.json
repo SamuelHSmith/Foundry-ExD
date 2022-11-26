@@ -302,15 +302,10 @@
           "value": 0,
           "name": "ExD.Craft"
         },
-        "dodge": {
+        "empathy": {
           "favored": false,
           "value": 0,
-          "name": "ExD.Dodge"
-        },
-        "integrity": {
-          "favored": false,
-          "value": 0,
-          "name": "ExD.Integrity"
+          "name": "ExD.Empathy"
         },
         "investigation": {
           "favored": false,
@@ -567,7 +562,6 @@
       "charm",
       "spell",
       "intimacy",
-      "specialty",
       "martialart",
       "craft",
       "specialability",
@@ -720,12 +714,6 @@
         "base"
       ],
       "points": 0
-    },
-    "specialty": {
-      "templates": [
-        "base"
-      ],
-      "ability": "athletics"
     },
     "specialability": {
       "templates": [

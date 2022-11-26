@@ -258,7 +258,6 @@ export class ExaltedDemakeActor extends Actor {
     const initiations = [];
     const martialarts = [];
     const crafts = [];
-    const specialties = [];
     const specialAbilities = [];
     const craftProjects = [];
     const actions = [];
@@ -285,8 +284,7 @@ export class ExaltedDemakeActor extends Actor {
       brawl: { name: 'ExD.Brawl', visible: false, list: [] },
       bureaucracy: { name: 'ExD.Bureaucracy', visible: false, list: [] },
       craft: { name: 'ExD.Craft', visible: false, list: [] },
-      dodge: { name: 'ExD.Dodge', visible: false, list: [] },
-      integrity: { name: 'ExD.Integrity', visible: false, list: [] },
+      empathy: { name: 'ExD.Empathy', visible: false, list: [] },
       investigation: { name: 'ExD.Investigation', visible: false, list: [] },
       larceny: { name: 'ExD.Larceny', visible: false, list: [] },
       linguistics: { name: 'ExD.Linguistics', visible: false, list: [] },
@@ -344,9 +342,6 @@ export class ExaltedDemakeActor extends Actor {
       else if (i.type === 'initiation') {
         initiations.push(i);
       }
-      else if (i.type === 'specialty') {
-        specialties.push(i);
-      }
       else if (i.type === 'specialability') {
         specialAbilities.push(i);
       }
@@ -379,7 +374,6 @@ export class ExaltedDemakeActor extends Actor {
     actorData.crafts = crafts;
     actorData.initiations = initiations;
     actorData.intimacies = intimacies;
-    actorData.specialties = specialties;
     actorData.charms = charms;
     actorData.spells = spells;
     actorData.specialabilities = specialAbilities;

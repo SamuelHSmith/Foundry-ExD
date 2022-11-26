@@ -14,6 +14,7 @@ export class RollForm extends FormApplication {
             this.object.crashed = false;
             this.object.dice = data.dice || 0;
             this.object.successModifier = data.successModifier || 0;
+            this.object.casteRoll = data.casteRoll || false;
             this.object.rollType = data.rollType;
             this.object.craftType = data.craftType || 0;
             this.object.craftRating = data.craftRating || 0;
@@ -29,6 +30,7 @@ export class RollForm extends FormApplication {
             this.object.isMagic = data.isMagic || false;
             this.object.diceModifier = 0;
             this.object.accuracy = data.accuracy || 0;
+            this.object.botch = false;
 
             this.object.overwhelming = data.overwhelming || 0;
             this.object.soak = 0;
@@ -197,7 +199,6 @@ export class RollForm extends FormApplication {
             this.object.diceToSuccesses = 0;
         }
         if (this.object.rollType !== 'base') {
-            this.object.specialtyList = this.actor.specialties.filter((specialty) => specialty.system.ability === this.object.ability);
             this.object.target = Array.from(game.user.targets)[0] || null;
             this.object.targetCombatant = game.combat?.combatants?.find(c => c.actorId == this.object.target?.actor.id) || null;
             this.object.showDefenseOnDamage = game.settings.get("exalteddemake", "defenseOnDamage");
@@ -475,9 +476,6 @@ export class RollForm extends FormApplication {
             }
             this.object.diceModifier += item.system.diceroller.bonusdice;
             this.object.successModifier += item.system.diceroller.bonussuccesses;
-            if (item.system.diceroller.doublesuccess < this.object.doubleSuccess) {
-                this.object.doubleSuccess = item.system.diceroller.doublesuccess;
-            }
             if (item.system.diceroller.difficulty < this.object.damage.difficulty) {
                 this.object.difficulty = item.system.diceroller.difficulty;
             }
@@ -494,9 +492,6 @@ export class RollForm extends FormApplication {
 
             this.object.damage.damageDice += item.system.diceroller.damage.bonusdice;
             this.object.damage.damageSuccessModifier += item.system.diceroller.damage.bonussuccesses;
-            if (item.system.diceroller.damage.doublesuccess < this.object.damage.doubleSuccess) {
-                this.object.damage.doubleSuccess = item.system.diceroller.damage.doublesuccess;
-            }
             if (item.system.diceroller.damage.difficulty < this.object.damage.difficulty) {
                 this.object.damage.difficulty = item.system.diceroller.damage.difficulty;
             }
@@ -596,11 +591,6 @@ export class RollForm extends FormApplication {
             this.render();
         });
 
-        html.on("change", ".update-specialties", ev => {
-            this.object.specialtyList = this.actor.specialties.filter((specialty) => specialty.system.ability === this.object.ability);
-            this.render();
-        });
-
         html.find('#cancel').click((event) => {
             this.resolve(false);
             this.close();
@@ -693,9 +683,6 @@ export class RollForm extends FormApplication {
             if (this.object.diceModifier) {
                 dice += this.object.diceModifier;
             }
-            if (this.object.specialty) {
-                dice++;
-            }
             this.actor.update(actorData);
         }
 
@@ -722,6 +709,7 @@ export class RollForm extends FormApplication {
         let diceRoll = roll.dice[0].results;
         let getDice = "";
         let bonus = 0;
+        let botch = false;
         let total = 0;
         let rerolledDice = 0;
         var failedDice = Math.min(dice - roll.total, this.object.rerollNumber);
@@ -740,18 +728,26 @@ export class RollForm extends FormApplication {
                 getDice += `<li class="roll die d10 success double-success">${dice.result}</li>`;
             }
             else if (dice.result >= this.object.difficulty) { getDice += `<li class="roll die d10 success">${dice.result}</li>`; }
-            else if (dice.result == 1) { getDice += `<li class="roll die d10 failure">${dice.result}</li>`; }
+            else if (dice.result == 1) { 
+                if (!this.object.casteRoll){bonus--;}
+                getDice += `<li class="roll die d10 failure">${dice.result}</li>`; 
+            }
             else { getDice += `<li class="roll die d10">${dice.result}</li>`; }
         }
 
         total += roll.total;
-        if (bonus) total += bonus;
+        total += bonus;
         total += this.object.successModifier;
+
+        if (roll.total < 1 && bonus < 0){
+            botch = true;
+        }
 
         this.object.dice = dice;
         this.object.roll = roll;
         this.object.getDice = getDice;
         this.object.total = total;
+        this.object.botch = botch
         if (this.object.rollType !== 'base') {
             this._spendMotes();
         }
@@ -759,6 +755,7 @@ export class RollForm extends FormApplication {
 
     async _diceRoll() {
         this._baseAbilityDieRoll();
+        let successMessage = (this.object.botch)? "Botch!" : `${this.object.total} Successes`
         let messageContent = `<div class="chat-card">
                         <div class="card-content">Dice Roll</div>
                         <div class="card-buttons">
@@ -771,7 +768,7 @@ export class RollForm extends FormApplication {
                                                     <ol class="dice-rolls">${this.object.getDice}</ol>
                                                 </div>
                                             </div>
-                                            <h4 class="dice-total">${this.object.total} Successes</h4>
+                                            <h4 class="dice-total">${successMessage}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -821,6 +818,7 @@ export class RollForm extends FormApplication {
             }
             this.object.goalNumber = Math.max(this.object.goalNumber - threshholdSuccesses - 1, 0);
         }
+        let successMessage = (this.object.botch)? "Botch!" : `${this.object.total} Successes`
         let theContent = `
   <div class="chat-card">
       <div class="card-content">Dice Roll</div>
@@ -834,7 +832,7 @@ export class RollForm extends FormApplication {
                                   <ol class="dice-rolls">${this.object.getDice}</ol>
                               </div>
                           </div>
-                          <h4 class="dice-total">${this.object.total} Successes</h4>
+                          <h4 class="dice-total">${successMessage}</h4>
                           ${resultString}
                       </div>
                   </div>
@@ -1046,14 +1044,15 @@ export class RollForm extends FormApplication {
                 getDice += `<li class="roll die d10 success double-success">${dice.result}</li>`;
             }
             else if (dice.result >= this.object.damage.difficulty) { getDice += `<li class="roll die d10 success">${dice.result}</li>`; }
-            else if (dice.result == 1) { getDice += `<li class="roll die d10 failure">${dice.result}</li>`; }
+            else if (dice.result == 1) { 
+                if (!this.object.casteRoll){bonus--;}
+                getDice += `<li class="roll die d10 failure">${dice.result}</li>`; 
+            }
             else { getDice += `<li class="roll die d10">${dice.result}</li>`; }
         }
 
         let total = roll.total;
-        if (bonus) {
-            total += bonus;
-        }
+        total += bonus;
         total += this.object.damage.damageSuccessModifier;
         var characterDamage = total;
 
@@ -1498,7 +1497,7 @@ export class RollForm extends FormApplication {
                     return this.actor.system.abilities[this.object.ability].value + this.actor.system.attributes[this.object.attribute].value;
                 }
                 if (this.actor.system.details.exalt === "dragonblooded") {
-                    return this.actor.system.abilities[this.object.ability].value + (this.object.specialty ? 1 : 0);
+                    return this.actor.system.abilities[this.object.ability].value;
                 }
                 if (this.actor.system.details.exalt === "lunar") {
                     return `${this.actor.system.attributes[this.object.attribute].value} - ${this.actor.system.attributes[this.object.attribute].value + 5}`;

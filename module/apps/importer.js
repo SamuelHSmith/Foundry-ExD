@@ -160,8 +160,7 @@ export default class Importer extends FormApplication {
             var brawlFolder = await Folder.create({ name: 'Brawl', type: 'Item', parent: solarFolder });
             var bureaucracyFolder = await Folder.create({ name: 'Bureaucracy', type: 'Item', parent: solarFolder });
             var craftFolder = await Folder.create({ name: 'Craft', type: 'Item', parent: solarFolder });
-            var dodgeFolder = await Folder.create({ name: 'Dodge', type: 'Item', parent: solarFolder });
-            var integrityFolder = await Folder.create({ name: 'Integrity', type: 'Item', parent: solarFolder });
+            var empathyFolder = await Folder.create({ name: 'Empathy', type: 'Item', parent: solarFolder });
             var investigationFolder = await Folder.create({ name: 'Investigation', type: 'Item', parent: solarFolder });
             var larcenyFolder = await Folder.create({ name: 'Larceny', type: 'Item', parent: solarFolder });
             var linguisticsFolder = await Folder.create({ name: 'Linguistics', type: 'Item', parent: solarFolder });
@@ -186,8 +185,7 @@ export default class Importer extends FormApplication {
             var dragonBrawlFolder = await Folder.create({ name: 'Brawl', type: 'Item', parent: dragonBloodCharms });
             var dragonBureaucracyFolder = await Folder.create({ name: 'Bureaucracy', type: 'Item', parent: dragonBloodCharms });
             var dragonCraftFolder = await Folder.create({ name: 'Craft', type: 'Item', parent: dragonBloodCharms });
-            var dragonDodgeFolder = await Folder.create({ name: 'Dodge', type: 'Item', parent: dragonBloodCharms });
-            var dragonIntegrityFolder = await Folder.create({ name: 'Integrity', type: 'Item', parent: dragonBloodCharms });
+            var dragonEmpathyFolder = await Folder.create({ name: 'Empathy', type: 'Item', parent: dragonBloodCharms });
             var dragonInvestigationFolder = await Folder.create({ name: 'Investigation', type: 'Item', parent: dragonBloodCharms });
             var dragonLarcenyFolder = await Folder.create({ name: 'Larceny', type: 'Item', parent: dragonBloodCharms });
             var dragonLinguisticsFolder = await Folder.create({ name: 'Linguistics', type: 'Item', parent: dragonBloodCharms });
@@ -218,8 +216,7 @@ export default class Importer extends FormApplication {
                 'Brawl': brawlFolder,
                 'Bureaucracy': bureaucracyFolder,
                 'Craft': craftFolder,
-                'Dodge': dodgeFolder,
-                'Integrity': integrityFolder,
+                'Empathy': empathyFolder,
                 'Investigation': investigationFolder,
                 'Larceny': larcenyFolder,
                 'Linguistics': linguisticsFolder,
@@ -246,8 +243,7 @@ export default class Importer extends FormApplication {
                 'Brawl': dragonBrawlFolder,
                 'Bureaucracy': dragonBureaucracyFolder,
                 'Craft': dragonCraftFolder,
-                'Dodge': dragonDodgeFolder,
-                'Integrity': dragonIntegrityFolder,
+                'Empathy': dragonEmpathyFolder,
                 'Investigation': dragonInvestigationFolder,
                 'Larceny': dragonLarcenyFolder,
                 'Linguistics': dragonLinguisticsFolder,

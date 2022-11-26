@@ -29,8 +29,7 @@
         <option value="brawl">{{localize "ExD.Brawl"}}</option>
         <option value="bureaucracy">{{localize "ExD.Bureaucracy"}}</option>
         <option value="craft">{{localize "ExD.Craft"}}</option>
-        <option value="dodge">{{localize "ExD.Dodge"}}</option>
-        <option value="integrity">{{localize "ExD.Integrity"}}</option>
+        <option value="empathy">{{localize "ExD.Empathy"}}</option>
         <option value="investigation">{{localize "ExD.Investigation"}}</option>
         <option value="larceny">{{localize "ExD.Larceny"}}</option>
         <option value="linguistics">{{localize "ExD.Linguistics"}}</option>
@@ -49,16 +48,6 @@
         <option value="survival">{{localize "ExD.Survival"}}</option>
         <option value="thrown">{{localize "ExD.Thrown"}}</option>
         <option value="war">{{localize "ExD.War"}}</option>
-        {{/select}}
-    </select>
-
-    <label class="resource-label">{{localize "ExD.Specialty"}}: </label>
-    <select class="update-roller" name="object.specialty" value="{{data.specialty}}" data-type="String">
-        {{#select data.specialty}}
-        <option value=""></option>
-        {{#each data.specialtyList as |item id|}}
-        <option value="{{id}}">{{item.name}}</option>
-        {{/each}}
         {{/select}}
     </select>
 
@@ -128,8 +117,8 @@
         <input name="object.successModifier" value="{{data.successModifier}}" type="number">
     </div>
     <div>
-        <label class="resource-label">{{localize "ExD.DoubleSuccess"}} + </label>
-        <input name="object.doubleSuccess" value="{{data.doubleSuccess}}" type="number">
+        <label class="resource-label">{{localize "ExD.CasteRoll"}} + </label>
+        <input name="object.casteRoll" value="{{data.casteRoll}}" type="checkbox" {{checked data.casteroll}}>
     </div>
 
     {{#ifEquals data.rollType 'base'}}
@@ -140,51 +129,6 @@
     </div>
     {{/ifEquals}}
 
-</div>
-<div class="resource flex-center">
-    <label class="resource-label">{{localize "ExD.Reroll"}}</label>
-</div>
-<div class="resource d-flex flex-center">
-    <div>
-        <div>1</div>
-        <input name="object.reroll.one.status" type="checkbox" {{checked data.reroll.one.status}}>
-    </div>
-    <div>
-        <div>2</div>
-        <input name="object.reroll.two.status" type="checkbox" {{checked data.reroll.two.status}}>
-    </div>
-    <div>
-        <div>3</div>
-        <input name="object.reroll.three.status" type="checkbox" {{checked data.reroll.three.status}}>
-    </div>
-    <div>
-        <div>4</div>
-        <input name="object.reroll.four.status" type="checkbox" {{checked data.reroll.four.status}}>
-    </div>
-    <div>
-        <div>5</div>
-        <input name="object.reroll.five.status" type="checkbox" {{checked data.reroll.five.status}}>
-    </div>
-    <div>
-        <div>6</div>
-        <input name="object.reroll.six.status" type="checkbox" {{checked data.reroll.six.status}}>
-    </div>
-    <div>
-        <div>7</div>
-        <input name="object.reroll.seven.status" type="checkbox" {{checked data.reroll.seven.status}}>
-    </div>
-    <div>
-        <div>8</div>
-        <input name="object.reroll.eight.status" type="checkbox" {{checked data.reroll.eight.status}}>
-    </div>
-    <div>
-        <div>9</div>
-        <input name="object.reroll.nine.status" type="checkbox" {{checked data.reroll.nine.status}}>
-    </div>
-    <div>
-        <div>10</div>
-        <input name="object.reroll.ten.status" type="checkbox" {{checked data.reroll.ten.status}}>
-    </div>
 </div>
 
 {{#ifEquals data.rollType 'base'}}

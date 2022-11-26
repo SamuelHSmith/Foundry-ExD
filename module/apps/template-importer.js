@@ -304,15 +304,10 @@ export default class TemplateImporter extends Application {
               "value": 0,
               "name": "ExD.Craft"
             },
-            "dodge": {
+            "Empathy": {
               "favored": false,
               "value": 0,
-              "name": "ExD.Dodge"
-            },
-            "integrity": {
-              "favored": false,
-              "value": 0,
-              "name": "ExD.Integrity"
+              "name": "ExD.Empathy"
             },
             "investigation": {
               "favored": false,
@@ -1543,11 +1538,7 @@ export default class TemplateImporter extends Application {
       }
       var abilityArray = abilityString.split(/,|;/);
       for (let ability of abilityArray) {
-        var createSpecialty = false;
-        var specialtyText = ''
         if (ability.includes('(')) {
-          createSpecialty = true;
-          specialtyText = ability.match(/\(([^)]+)\)/)[1];
           ability = ability.replace(/\([^()]*\)/g, "").replace("  ", " ");
         }
         if(ability.toLowerCase().includes('martial arts')) {
@@ -1560,18 +1551,7 @@ export default class TemplateImporter extends Application {
           var value = parseInt(abilitySpecificArray[1].replace(/[^0-9]/g, ''));
         }
         actorData.system.abilities[trimmedName].value = value;
-        if (createSpecialty) {
-          itemData.push(
-            {
-              type: 'specialty',
-              img: this.getImageUrl('specialty'),
-              name: specialtyText.trim(),
-              system: {
-                ability: trimmedName,
-              }
-            }
-          );
-        }
+      
       }
       if (!textArray[index].includes("Attack")) {
         var meritString = textArray[index].replace('Merits:', '');
