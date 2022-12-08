@@ -720,7 +720,8 @@ export class ExaltedDemakeActorSheet extends ActorSheet {
           motearr = [6,8,10,11,12]
           break;
       }
-      data.motes.personal.max = motearr[data.essence.value-1]
+      let essVal = Math.min(4,Math.max(0,data.essence.value-1))
+      data.motes.personal.max = motearr[essVal];
       data.motes.personal.value = data.motes.personal.max;
     }
     else {

@@ -416,7 +416,7 @@ export default class TemplateImporter extends Application {
               },
               "four": {
                 "value": 1,
-                "penalty": 4
+                "penalty": 5
               },
               "inc": {
                 "value": 1,
@@ -634,7 +634,7 @@ export default class TemplateImporter extends Application {
             },
             "four": {
               "value": 1,
-              "penalty": 4
+              "penalty": 5
             },
             "inc": {
               "value": 1,
