@@ -18,8 +18,7 @@ export class RollForm extends FormApplication {
             this.object.rollType = data.rollType;
             this.object.craftType = data.craftType || 0;
             this.object.craftRating = data.craftRating || 0;
-            this.object.attackType = 'withering';
-            this.object.showPool = !this._isAttackRoll();
+            this.object.showPool = data.rollType === "attack";
             this.object.showWithering = data.rollType === 'withering' || data.rollType === 'damage';
             this.object.goalNumber = 0;
             this.object.woundPenalty = this.object.rollType === 'base' ? false : true;
@@ -30,6 +29,7 @@ export class RollForm extends FormApplication {
             this.object.accuracy = data.accuracy || 0;
             this.object.botch = false;
 
+            this.object.baseDamage = data.baseDamage || 0;
             this.object.overwhelming = data.overwhelming || 0;
             this.object.soak = 0;
             this.object.armoredSoak = 0;
@@ -153,7 +153,7 @@ export class RollForm extends FormApplication {
                     this.object.goalNumber = 5;
                 }
 
-                if (this._isAttackRoll()) {
+                if (this.object.rollType === 'attack') {
                     if (this.object.conditions.some(e => e.name === 'prone')) {
                         this.object.diceModifier -= 3;
                     }
@@ -263,7 +263,7 @@ export class RollForm extends FormApplication {
         if (this.object.rollType === 'base') {
             template = "systems/exalteddemake/templates/dialogues/dice-roll.html";
         }
-        else if (this._isAttackRoll()) {
+        else if (this.object.rollType === 'attack') {
             template = "systems/exalteddemake/templates/dialogues/attack-roll.html";
         }
         return template;
@@ -600,7 +600,7 @@ export class RollForm extends FormApplication {
     }
 
     async _roll() {
-        if (this._isAttackRoll()) {
+        if (this.object.rollType === 'attack') {
             await this._attackRoll();
         }
         else if (this.object.rollType === 'base') {
@@ -628,7 +628,7 @@ export class RollForm extends FormApplication {
                 let abilityDice = data.abilities[this.object.ability].value;
                 dice = attributeDice + abilityDice;
             }
-            else if (this.actor.type === 'npc' && !this._isAttackRoll()) {
+            else if (this.actor.type === 'npc' && !this.object.rollType === 'attack') {
                 if (this.object.rollType === 'action') {
                     dice = this.actor.actions.find(x => x._id === this.object.actionId).system.value;
                 }
@@ -668,7 +668,7 @@ export class RollForm extends FormApplication {
             this.actor.update(actorData);
         }
 
-        if (this._isAttackRoll()) {
+        if (this.object.rollType === 'attack') {
             dice += this.object.accuracy || 0;
             if (this.object.weaponType !== 'melee' && (this.actor.type === 'npc' || this.object.rollType === 'withering')) {
                 if (this.object.range !== 'short') {
@@ -835,393 +835,451 @@ export class RollForm extends FormApplication {
     }
 
     async _attackRoll() {
-        // Accuracy
-        if (this.object.rollType !== 'damage') {
-            this._accuracyRoll();
-        }
-        else {
-            this.object.thereshholdSuccesses = 0;
-        }
-        if ((this.object.thereshholdSuccesses >= 0 && this.object.rollType !== 'accuracy') || this.object.rollType === 'damage') {
-            this._damageRoll();
-        }
-        else {
-            if (this.object.thereshholdSuccesses < 0) {
-                if (this.object.rollType !== 'withering') {
-                    if (this.object.characterInitiative < 11) {
-                        this.object.characterInitiative = this.object.characterInitiative - 2;
-                    }
-                    else {
-                        this.object.characterInitiative = this.object.characterInitiative - 3;
-                    }
-                }
-                var messageContent = `
-                <div class="chat-card">
-                    <div class="card-content">Attack Roll</div>
-                    <div class="card-buttons">
-                        <div class="flexrow 1">
-                            <div>
-                                <div class="dice-roll">
-                                    <div class="dice-result">
-                                        <h4 class="dice-formula">${this.object.dice} Dice + ${this.object.successModifier} successes</h4>
-                                        <div class="dice-tooltip">
-                                            <div class="dice">
-                                                <ol class="dice-rolls">${this.object.getDice}</ol>
-                                            </div>
-                                        </div>
-                                        <h4 class="dice-formula">${this.object.total} Successes vs ${this.object.defense} Defense</h4>
-                                        <h4 class="dice-total">Attack Missed!</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-              `;
-                ChatMessage.create({
-                    user: game.user.id,
-                    speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-                    content: messageContent,
-                    type: CONST.CHAT_MESSAGE_TYPES.ROLL, roll: this.object.roll,
-                    flags: {
-                        "exalteddemake": {
-                            dice: this.object.dice,
-                            successModifier: this.object.successModifier,
-                            total: this.object.total,
-                            defense: this.object.defense,
-                            threshholdSuccesses: this.object.thereshholdSuccesses
-                        }
-                    }
-                });
-                this._addOnslaught();
-            }
-        }
-        if (this.object.rollType === 'accuracy') {
-            var messageContent = `
-            <div class="chat-card">
-                <div class="card-content">Accuracy Roll</div>
-                <div class="card-buttons">
-                    <div class="flexrow 1">
-                        <div>
-                            <div class="dice-roll">
-                                <div class="dice-result">
-                                    <h4 class="dice-formula">${this.object.dice} Dice + ${this.object.successModifier} successes</h4>
-                                    <div class="dice-tooltip">
-                                        <div class="dice">
-                                            <ol class="dice-rolls">${this.object.getDice}</ol>
-                                        </div>
-                                    </div>
-                                    <h4 class="dice-formula">${this.object.total} Successes vs ${this.object.defense} Defense</h4>
-                                    <h4 class="dice-formula">${this.object.thereshholdSuccesses} Threshhold Successes</h4>
-                                    ${this.object.thereshholdSuccesses < 0 ? '<h4 class="dice-total">Attack Missed!</h4>' : ''}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          `;
-            ChatMessage.create({
-                user: game.user.id,
-                speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-                content: messageContent,
-                type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-                roll: this.object.roll,
-                flags: {
-                    "exalteddemake": {
-                        dice: this.object.dice,
-                        successModifier: this.object.successModifier,
-                        total: this.object.total,
-                        defense: this.object.defense,
-                        threshholdSuccesses: this.object.thereshholdSuccesses
-                    }
-                }
-            });
-            if (this.object.thereshholdSuccesses < 0) {
-                this._addOnslaught();
-            }
-        }
-    }
-
-    async _accuracyRoll() {
         this._baseAbilityDieRoll();
-        this.object.thereshholdSuccesses = this.object.total - this.object.defense;
-    }
-
-    async _damageRoll() {
-        let baseDamage = this.object.damage.damageDice;
-        let dice = this.object.damage.damageDice;
-        if (this.object.rollType === 'damage' && this.object.attackType === 'withering' && game.settings.get("exalteddemake", "defenseOnDamage")) {
-            dice += this.object.attackSuccesses;
-            dice -= this.object.defense;
-        }
-        var damageResults = ``;
-
-        if(this._damageRollType('withering') || this.object.damage.threshholdToDamage) {
-            dice += this.object.thereshholdSuccesses;
-            baseDamage = dice;
-        }
-
-        if (this._damageRollType('decisive')) {
-            if (this.object.target && game.combat) {
-                if (this.object.targetCombatant !== null) {
-                    if (this.object.targetCombatant.actor.type === 'npc' || this.object.targetCombatant.actor.system.battlegroup) {
-                        dice += Math.floor(dice / 4);
-                        baseDamage = dice;
-                    }
-                }
-            }
-        }
-        else if (this._damageRollType('withering')) {
-            dice -= this.object.soak;
-            if (dice < this.object.overwhelming) {
-                dice = Math.max(dice, this.object.overwhelming);
-            }
-            if (dice < 0) {
-                dice = 0;
-            }
-            dice += this.object.damage.postSoakDamage;
-        }
-
+        this.object.thereshholdSuccesses = this.object.total;
+        let damageDiceText = '';
         let rerollString = '';
-        let rerolls = [];
+        let damageDoneText = "Miss";
+        let damageDiceCnt = 0;
 
-        for (var rerollValue in this.object.damage.reroll) {
-            if (this.object.damage.reroll[rerollValue].status) {
-                rerollString += `x${this.object.damage.reroll[rerollValue].number}`;
-                rerolls.push(this.object.damage.reroll[rerollValue].number);
-            }
-        }
+        // perform a damage roll automatically
+        if (this.object.total > 0) {
+            damageDiceCnt = this.object.thereshholdSuccesses + this.object.baseDamage;
+            let roll = new Roll(`${damageDiceCnt}d10${rerollString}${this.object.rerollFailed ? `r<6` : ""}cs>=6`).evaluate({ async: false });
+            let diceRoll = roll.dice[0].results;
 
-        let roll = new Roll(`${dice}d10${rerollString}cs>=${this.object.damage.difficulty}`).evaluate({ async: false });
-        let diceRoll = roll.dice[0].results;
-        let getDice = "";
-        let soakResult = ``;
-        let bonus = 0;
-        this.object.finalDamageDice = dice;
-
-        for (let dice of diceRoll) {
-            if (dice.result >= this.object.damage.doubleSuccess) {
-                bonus++;
-                getDice += `<li class="roll die d10 success double-success">${dice.result}</li>`;
-            }
-            else if (dice.result >= this.object.damage.difficulty) { getDice += `<li class="roll die d10 success">${dice.result}</li>`; }
-            else if (dice.result == 1) { 
-                if (!this.object.casteRoll){bonus--;}
-                getDice += `<li class="roll die d10 failure">${dice.result}</li>`; 
-            }
-            else { getDice += `<li class="roll die d10">${dice.result}</li>`; }
-        }
-
-        let total = roll.total;
-        total += bonus;
-        total += this.object.damage.damageSuccessModifier;
-        var characterDamage = total;
-
-        let typeSpecificResults = ``;
-
-        if (this._damageRollType('decisive')) {
-            typeSpecificResults = `<h4 class="dice-total">${total} ${this.object.damage.type.capitalize()} Damage!</h4>`;
-            this.object.characterInitiative = 3;
-            if (this._useLegendarySize('decisive')) {
-                typeSpecificResults = typeSpecificResults + `<h4 class="dice-formula">Legendary Size</h4><h4 class="dice-formula">Damage capped at ${3 + this.actor.system.attributes.strength.value} + Charm damage levels</h4>`;
-                characterDamage = Math.min(characterDamage, 3 + this.actor.system.attributes.strength.value);
-            }
-            this.dealHealthDamage(characterDamage);
-        }
-        else if (this.object.rollType === 'gambit') {
-            if (this.object.characterInitiative > 0 && (this.object.characterInitiative - this.object.gambitDifficulty - 1 <= 0)) {
-                this.object.characterInitiative -= 5;
-            }
-            this.object.characterInitiative = this.object.characterInitiative - this.object.gambitDifficulty - 1;
-            var resultsText = `<h4 class="dice-total">Gambit Success</h4>`;
-            if (this.object.gambitDifficulty > total) {
-                resultsText = `<h4 class="dice-total">Gambit Failed</h4>`
-            }
-            typeSpecificResults = `<h4 class="dice-formula">${total} Successes vs ${this.object.gambitDifficulty} Difficulty!</h4>${resultsText}`;
-        }
-        else {
-            let targetResults = ``;
-            if (this.object.target && game.combat) {
-                if (this.object.targetCombatant && this.object.targetCombatant.initiative !== null) {
-                    this.object.characterInitiative++;
-                    if (this.object.targetCombatant.actor.type !== 'npc' || this.object.targetCombatant.actor.system.battlegroup === false) {
-                        let newInitative = this.object.targetCombatant.initiative;
-                        newInitative -= total;
-                        this.object.characterInitiative += total;
-                        if ((newInitative <= 0 && this.object.targetCombatant.initiative > 0)) {
-                            if (this._useLegendarySize('withering')) {
-                                newInitative = 1;
-                            }
-                            else {
-                                this.object.crashed = true;
-                                this.object.characterInitiative += 5;
-                                targetResults = `<h4 class="dice-total">Target Crashed!</h4>`;
-                            }
-                        }
-                        game.combat.setInitiative(this.object.targetCombatant.id, newInitative);
-                    }
-                    else if (this.object.targetCombatant.actor.system.battlegroup) {
-                        var sizeDamaged = this.dealHealthDamage(total, true);
-                        if (sizeDamaged) {
-                            targetResults = `<h4 class="dice-total">Magnitude Filled!</h4>`;
-                            this.object.characterInitiative += 5;
-                        }
-                    }
+            for (let dice of diceRoll) {
+                if (dice.result >= this.object.doubleSuccess) {
+                    damageDiceText += `<li class="roll die d10 success double-success">${dice.result}</li>`;
                 }
+                else if (dice.result >= this.object.difficulty) { damageDiceText += `<li class="roll die d10 success">${dice.result}</li>`; }
+                else if (dice.result == 1) { 
+                    damageDiceText += `<li class="roll die d10 failure">${dice.result}</li>`; 
+                }
+                else { damageDiceText += `<li class="roll die d10">${dice.result}</li>`; }
             }
-            soakResult = `<h4 class="dice-formula">${this.object.soak} Soak!</h4><h4 class="dice-formula">${this.object.overwhelming} Overwhelming!</h4>`;
-            typeSpecificResults = `
-                                    <h4 class="dice-formula">${total} Damage!</h4>
-                                    <h4 class="dice-total">${total} Total Damage!</h4>
-                                    ${targetResults}
-                                    `;
 
+            damageDoneText = `${this.object.total} Damage`
         }
-        damageResults = `
-                                <h4 class="dice-total">${this.object.rollType === 'gambit' ? 'Gambit' : 'Damage'}</h4>
-                                <h4 class="dice-formula">${baseDamage} Dice + ${this.object.damage.damageSuccessModifier} successes</h4>
-                                ${soakResult}
-                                <div class="dice-tooltip">
-                                                    <div class="dice">
-                                                        <ol class="dice-rolls">${getDice}</ol>
-                                                    </div>
-                                                </div>${typeSpecificResults}`;
 
-        var title = "Decisive Attack";
-        if (this.object.rollType === 'withering') {
-            title = "Withering Attack";
-        }
-        if (this.object.rollType === 'gambit') {
-            title = "Gambit";
-        }
-        var messageContent = '';
-        if (this.object.rollType === 'damage') {
-            messageContent = `
-            <div class="chat-card">
-                <div class="card-content">Damage Roll</div>
-                <div class="card-buttons">
-                    <div class="flexrow 1">
-                        <div>
-                            <div class="dice-roll">
-                                <div class="dice-result">
-                                    ${damageResults}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          `;
-        }
-        else {
-            messageContent = `
-            <div class="chat-card">
-                <div class="card-content">${title}</div>
-                <div class="card-buttons">
-                    <div class="flexrow 1">
-                        <div>
-                            <div class="dice-roll">
-                                <div class="dice-result">
-                                    <h4 class="dice-formula">${this.object.dice} Dice + ${this.object.successModifier} successes</h4>
-                                    <div class="dice-tooltip">
-                                        <div class="dice">
-                                            <ol class="dice-rolls">${this.object.getDice}</ol>
+        let successMessage = (this.object.botch)? "Botch!" : `${this.object.total} Successes`
+        let messageContent = `<div class="chat-card">
+                        <div class="card-content">Dice Roll</div>
+                        <div class="card-buttons">
+                            <div class="flexrow 1">
+                                <div>Dice Roller - Number of Successes<div class="dice-roll">
+                                        <div class="dice-result">
+                                            <h4 class="dice-formula">${this.object.dice} Dice + ${this.object.successModifier} successes</h4>
+                                            <div class="dice-tooltip">
+                                                <div class="dice">
+                                                    <ol class="dice-rolls">${this.object.getDice}</ol>
+                                                </div>
+                                            </div>
+                                            <h4 class="dice-total">${successMessage}</h4>
+                                            <h4 class="dice-formula">${this.object.thereshholdSuccesses} Threshold Dice + ${this.object.baseDamage} Base Damage</h4>
+                                            <div class="dice-tooltip">
+                                                <div class="dice">
+                                                    <ol class="dice-rolls">${damageDiceText}</ol>
+                                                </div>
+                                            </div>
+                                            <h4 class="dice-total">${damageDoneText}</h4>
                                         </div>
                                     </div>
-                                    <h4 class="dice-formula">${this.object.total} Successes vs ${this.object.defense} Defense</h4>
-                                    ${damageResults}
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-          `;
-        }
-
-        ChatMessage.create({
-            user: game.user.id,
-            speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-            content: messageContent,
-            type: CONST.CHAT_MESSAGE_TYPES.ROLL,
-            roll: this.object.roll || roll,
-            flags: {
-                "exalteddemake": {
-                    dice: this.object.dice,
-                    successModifier: this.object.successModifier,
-                    total: this.object.total,
-                    defense: this.object.defense,
-                    threshholdSuccesses: this.object.thereshholdSuccesses,
-                    damage: {
-                        dice: baseDamage,
-                        successModifier: this.object.damage.damageSuccessModifier,
-                        soak: this.object.soak,
-                        totalDamage: total,
-                        crashed: this.object.crashed
-                    }
-                }
-            }
-        });
-
-        if (this.actor.type !== 'npc' || this.actor.system.battlegroup === false) {
-            let combat = game.combat;
-            if (this.object.target && combat) {
-                let combatant = combat.combatants.find(c => c.actorId == this.actor.id);
-                if (combatant && combatant.initiative != null) {
-                    combat.setInitiative(combatant.id, this.object.characterInitiative);
-                }
-            }
-        }
-        else if (this.actor.system.battlegroup) {
-            let combat = game.combat;
-            if (this.object.target) {
-                let combatant = combat.combatants.find(c => c.actorId == this.object.target.actor.id);
-                if (combatant && combatant.initiative != null && combatant.initiative <= 0) {
-                    this.dealHealthDamage(total);
-                }
-            }
-        }
-        this._addOnslaught();
+                    </div>`;
+                    ChatMessage.create({ user: game.user.id, speaker: this.actor !== null ? ChatMessage.getSpeaker({ actor: this.actor }) : null, content: messageContent, type: CONST.CHAT_MESSAGE_TYPES.ROLL, roll: this.object.roll });
     }
 
-    async _addOnslaught() {
-        if (this.object.target && game.settings.get("exalteddemake", "calculateOnslaught")) {
-            if (!this._useLegendarySize('onslaught')) {
-                const onslaught = this.object.target.actor.effects.find(i => i.label == "Onslaught");
-                if (onslaught) {
-                    let changes = duplicate(onslaught.changes);
-                    if (this.object.target.actor.system.dodge.value > 0) {
-                        changes[0].value = changes[0].value - 1;
-                    }
-                    if (this.object.target.actor.system.parry.value > 0) {
-                        changes[1].value = changes[1].value - 1;
-                    }
-                    onslaught.update({ changes });
-                }
-                else {
-                    this.object.target.actor.createEmbeddedDocuments('ActiveEffect', [{
-                        label: 'Onslaught',
-                        icon: 'systems/exalteddemake/assets/icons/surrounded-shield.svg',
-                        origin: this.object.target.actor.uuid,
-                        disabled: false,
-                        "changes": [
-                            {
-                                "key": "data.dodge.value",
-                                "value": -1,
-                                "mode": 2
-                            },
-                            {
-                                "key": "data.parry.value",
-                                "value": -1,
-                                "mode": 2
-                            }
-                        ]
-                    }]);
-                }
-            }
-        }
-    }
+    // async _attackRoll() {
+    //     // Accuracy
+    //     if (this.object.rollType !== 'damage') {
+    //         this._accuracyRoll();
+    //     }
+    //     else {
+    //         this.object.thereshholdSuccesses = 0;
+    //     }
+    //     if ((this.object.thereshholdSuccesses >= 0 && this.object.rollType !== 'accuracy') || this.object.rollType === 'damage') {
+    //         this._damageRoll();
+    //     }
+    //     else {
+    //         if (this.object.thereshholdSuccesses < 0) {
+    //             if (this.object.rollType !== 'withering') {
+    //                 if (this.object.characterInitiative < 11) {
+    //                     this.object.characterInitiative = this.object.characterInitiative - 2;
+    //                 }
+    //                 else {
+    //                     this.object.characterInitiative = this.object.characterInitiative - 3;
+    //                 }
+    //             }
+    //             var messageContent = `
+    //             <div class="chat-card">
+    //                 <div class="card-content">Attack Roll</div>
+    //                 <div class="card-buttons">
+    //                     <div class="flexrow 1">
+    //                         <div>
+    //                             <div class="dice-roll">
+    //                                 <div class="dice-result">
+    //                                     <h4 class="dice-formula">${this.object.dice} Dice + ${this.object.successModifier} successes</h4>
+    //                                     <div class="dice-tooltip">
+    //                                         <div class="dice">
+    //                                             <ol class="dice-rolls">${this.object.getDice}</ol>
+    //                                         </div>
+    //                                     </div>
+    //                                     <h4 class="dice-formula">${this.object.total} Successes vs ${this.object.defense} Defense</h4>
+    //                                     <h4 class="dice-total">Attack Missed!</h4>
+    //                                 </div>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //           `;
+    //             ChatMessage.create({
+    //                 user: game.user.id,
+    //                 speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+    //                 content: messageContent,
+    //                 type: CONST.CHAT_MESSAGE_TYPES.ROLL, roll: this.object.roll,
+    //                 flags: {
+    //                     "exalteddemake": {
+    //                         dice: this.object.dice,
+    //                         successModifier: this.object.successModifier,
+    //                         total: this.object.total,
+    //                         defense: this.object.defense,
+    //                         threshholdSuccesses: this.object.thereshholdSuccesses
+    //                     }
+    //                 }
+    //             });
+    //             this._addOnslaught();
+    //         }
+    //     }
+    //     if (this.object.rollType === 'accuracy') {
+    //         var messageContent = `
+    //         <div class="chat-card">
+    //             <div class="card-content">Accuracy Roll</div>
+    //             <div class="card-buttons">
+    //                 <div class="flexrow 1">
+    //                     <div>
+    //                         <div class="dice-roll">
+    //                             <div class="dice-result">
+    //                                 <h4 class="dice-formula">${this.object.dice} Dice + ${this.object.successModifier} successes</h4>
+    //                                 <div class="dice-tooltip">
+    //                                     <div class="dice">
+    //                                         <ol class="dice-rolls">${this.object.getDice}</ol>
+    //                                     </div>
+    //                                 </div>
+    //                                 <h4 class="dice-formula">${this.object.total} Successes vs ${this.object.defense} Defense</h4>
+    //                                 <h4 class="dice-formula">${this.object.thereshholdSuccesses} Threshhold Successes</h4>
+    //                                 ${this.object.thereshholdSuccesses < 0 ? '<h4 class="dice-total">Attack Missed!</h4>' : ''}
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //       `;
+    //         ChatMessage.create({
+    //             user: game.user.id,
+    //             speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+    //             content: messageContent,
+    //             type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+    //             roll: this.object.roll,
+    //             flags: {
+    //                 "exalteddemake": {
+    //                     dice: this.object.dice,
+    //                     successModifier: this.object.successModifier,
+    //                     total: this.object.total,
+    //                     defense: this.object.defense,
+    //                     threshholdSuccesses: this.object.thereshholdSuccesses
+    //                 }
+    //             }
+    //         });
+    //         if (this.object.thereshholdSuccesses < 0) {
+    //             this._addOnslaught();
+    //         }
+    //     }
+    // }
+
+    // async _accuracyRoll() {
+    //     this._baseAbilityDieRoll();
+    //     this.object.thereshholdSuccesses = this.object.total - this.object.defense;
+    // }
+
+    // async _damageRoll() {
+    //     let baseDamage = this.object.damage.damageDice;
+    //     let dice = this.object.damage.damageDice;
+    //     if (this.object.rollType === 'damage' && this.object.attackType === 'withering' && game.settings.get("exalteddemake", "defenseOnDamage")) {
+    //         dice += this.object.attackSuccesses;
+    //         dice -= this.object.defense;
+    //     }
+    //     var damageResults = ``;
+
+    //     if(this._damageRollType('withering') || this.object.damage.threshholdToDamage) {
+    //         dice += this.object.thereshholdSuccesses;
+    //         baseDamage = dice;
+    //     }
+
+    //     if (this._damageRollType('decisive')) {
+    //         if (this.object.target && game.combat) {
+    //             if (this.object.targetCombatant !== null) {
+    //                 if (this.object.targetCombatant.actor.type === 'npc' || this.object.targetCombatant.actor.system.battlegroup) {
+    //                     dice += Math.floor(dice / 4);
+    //                     baseDamage = dice;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     else if (this._damageRollType('withering')) {
+    //         dice -= this.object.soak;
+    //         if (dice < this.object.overwhelming) {
+    //             dice = Math.max(dice, this.object.overwhelming);
+    //         }
+    //         if (dice < 0) {
+    //             dice = 0;
+    //         }
+    //         dice += this.object.damage.postSoakDamage;
+    //     }
+
+    //     let rerollString = '';
+    //     let rerolls = [];
+
+    //     for (var rerollValue in this.object.damage.reroll) {
+    //         if (this.object.damage.reroll[rerollValue].status) {
+    //             rerollString += `x${this.object.damage.reroll[rerollValue].number}`;
+    //             rerolls.push(this.object.damage.reroll[rerollValue].number);
+    //         }
+    //     }
+
+    //     let roll = new Roll(`${dice}d10${rerollString}cs>=${this.object.damage.difficulty}`).evaluate({ async: false });
+    //     let diceRoll = roll.dice[0].results;
+    //     let getDice = "";
+    //     let soakResult = ``;
+    //     let bonus = 0;
+    //     this.object.finalDamageDice = dice;
+
+    //     for (let dice of diceRoll) {
+    //         if (dice.result >= this.object.damage.doubleSuccess) {
+    //             bonus++;
+    //             getDice += `<li class="roll die d10 success double-success">${dice.result}</li>`;
+    //         }
+    //         else if (dice.result >= this.object.damage.difficulty) { getDice += `<li class="roll die d10 success">${dice.result}</li>`; }
+    //         else if (dice.result == 1) { 
+    //             if (!this.object.casteRoll){bonus--;}
+    //             getDice += `<li class="roll die d10 failure">${dice.result}</li>`; 
+    //         }
+    //         else { getDice += `<li class="roll die d10">${dice.result}</li>`; }
+    //     }
+
+    //     let total = roll.total;
+    //     total += bonus;
+    //     total += this.object.damage.damageSuccessModifier;
+    //     var characterDamage = total;
+
+    //     let typeSpecificResults = ``;
+
+    //     if (this._damageRollType('decisive')) {
+    //         typeSpecificResults = `<h4 class="dice-total">${total} ${this.object.damage.type.capitalize()} Damage!</h4>`;
+    //         this.object.characterInitiative = 3;
+    //         if (this._useLegendarySize('decisive')) {
+    //             typeSpecificResults = typeSpecificResults + `<h4 class="dice-formula">Legendary Size</h4><h4 class="dice-formula">Damage capped at ${3 + this.actor.system.attributes.strength.value} + Charm damage levels</h4>`;
+    //             characterDamage = Math.min(characterDamage, 3 + this.actor.system.attributes.strength.value);
+    //         }
+    //         this.dealHealthDamage(characterDamage);
+    //     }
+    //     else if (this.object.rollType === 'gambit') {
+    //         if (this.object.characterInitiative > 0 && (this.object.characterInitiative - this.object.gambitDifficulty - 1 <= 0)) {
+    //             this.object.characterInitiative -= 5;
+    //         }
+    //         this.object.characterInitiative = this.object.characterInitiative - this.object.gambitDifficulty - 1;
+    //         var resultsText = `<h4 class="dice-total">Gambit Success</h4>`;
+    //         if (this.object.gambitDifficulty > total) {
+    //             resultsText = `<h4 class="dice-total">Gambit Failed</h4>`
+    //         }
+    //         typeSpecificResults = `<h4 class="dice-formula">${total} Successes vs ${this.object.gambitDifficulty} Difficulty!</h4>${resultsText}`;
+    //     }
+    //     else {
+    //         let targetResults = ``;
+    //         if (this.object.target && game.combat) {
+    //             if (this.object.targetCombatant && this.object.targetCombatant.initiative !== null) {
+    //                 this.object.characterInitiative++;
+    //                 if (this.object.targetCombatant.actor.type !== 'npc' || this.object.targetCombatant.actor.system.battlegroup === false) {
+    //                     let newInitative = this.object.targetCombatant.initiative;
+    //                     newInitative -= total;
+    //                     this.object.characterInitiative += total;
+    //                     if ((newInitative <= 0 && this.object.targetCombatant.initiative > 0)) {
+    //                         if (this._useLegendarySize('withering')) {
+    //                             newInitative = 1;
+    //                         }
+    //                         else {
+    //                             this.object.crashed = true;
+    //                             this.object.characterInitiative += 5;
+    //                             targetResults = `<h4 class="dice-total">Target Crashed!</h4>`;
+    //                         }
+    //                     }
+    //                     game.combat.setInitiative(this.object.targetCombatant.id, newInitative);
+    //                 }
+    //                 else if (this.object.targetCombatant.actor.system.battlegroup) {
+    //                     var sizeDamaged = this.dealHealthDamage(total, true);
+    //                     if (sizeDamaged) {
+    //                         targetResults = `<h4 class="dice-total">Magnitude Filled!</h4>`;
+    //                         this.object.characterInitiative += 5;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         soakResult = `<h4 class="dice-formula">${this.object.soak} Soak!</h4><h4 class="dice-formula">${this.object.overwhelming} Overwhelming!</h4>`;
+    //         typeSpecificResults = `
+    //                                 <h4 class="dice-formula">${total} Damage!</h4>
+    //                                 <h4 class="dice-total">${total} Total Damage!</h4>
+    //                                 ${targetResults}
+    //                                 `;
+
+    //     }
+    //     damageResults = `
+    //                             <h4 class="dice-total">${this.object.rollType === 'gambit' ? 'Gambit' : 'Damage'}</h4>
+    //                             <h4 class="dice-formula">${baseDamage} Dice + ${this.object.damage.damageSuccessModifier} successes</h4>
+    //                             ${soakResult}
+    //                             <div class="dice-tooltip">
+    //                                                 <div class="dice">
+    //                                                     <ol class="dice-rolls">${getDice}</ol>
+    //                                                 </div>
+    //                                             </div>${typeSpecificResults}`;
+
+    //     var title = "Decisive Attack";
+    //     if (this.object.rollType === 'withering') {
+    //         title = "Withering Attack";
+    //     }
+    //     if (this.object.rollType === 'gambit') {
+    //         title = "Gambit";
+    //     }
+    //     var messageContent = '';
+    //     if (this.object.rollType === 'damage') {
+    //         messageContent = `
+    //         <div class="chat-card">
+    //             <div class="card-content">Damage Roll</div>
+    //             <div class="card-buttons">
+    //                 <div class="flexrow 1">
+    //                     <div>
+    //                         <div class="dice-roll">
+    //                             <div class="dice-result">
+    //                                 ${damageResults}
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //       `;
+    //     }
+    //     else {
+    //         messageContent = `
+    //         <div class="chat-card">
+    //             <div class="card-content">${title}</div>
+    //             <div class="card-buttons">
+    //                 <div class="flexrow 1">
+    //                     <div>
+    //                         <div class="dice-roll">
+    //                             <div class="dice-result">
+    //                                 <h4 class="dice-formula">${this.object.dice} Dice + ${this.object.successModifier} successes</h4>
+    //                                 <div class="dice-tooltip">
+    //                                     <div class="dice">
+    //                                         <ol class="dice-rolls">${this.object.getDice}</ol>
+    //                                     </div>
+    //                                 </div>
+    //                                 <h4 class="dice-formula">${this.object.total} Successes vs ${this.object.defense} Defense</h4>
+    //                                 ${damageResults}
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //       `;
+    //     }
+
+    //     ChatMessage.create({
+    //         user: game.user.id,
+    //         speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+    //         content: messageContent,
+    //         type: CONST.CHAT_MESSAGE_TYPES.ROLL,
+    //         roll: this.object.roll || roll,
+    //         flags: {
+    //             "exalteddemake": {
+    //                 dice: this.object.dice,
+    //                 successModifier: this.object.successModifier,
+    //                 total: this.object.total,
+    //                 defense: this.object.defense,
+    //                 threshholdSuccesses: this.object.thereshholdSuccesses,
+    //                 damage: {
+    //                     dice: baseDamage,
+    //                     successModifier: this.object.damage.damageSuccessModifier,
+    //                     soak: this.object.soak,
+    //                     totalDamage: total,
+    //                     crashed: this.object.crashed
+    //                 }
+    //             }
+    //         }
+    //     });
+
+    //     if (this.actor.type !== 'npc' || this.actor.system.battlegroup === false) {
+    //         let combat = game.combat;
+    //         if (this.object.target && combat) {
+    //             let combatant = combat.combatants.find(c => c.actorId == this.actor.id);
+    //             if (combatant && combatant.initiative != null) {
+    //                 combat.setInitiative(combatant.id, this.object.characterInitiative);
+    //             }
+    //         }
+    //     }
+    //     else if (this.actor.system.battlegroup) {
+    //         let combat = game.combat;
+    //         if (this.object.target) {
+    //             let combatant = combat.combatants.find(c => c.actorId == this.object.target.actor.id);
+    //             if (combatant && combatant.initiative != null && combatant.initiative <= 0) {
+    //                 this.dealHealthDamage(total);
+    //             }
+    //         }
+    //     }
+    //     this._addOnslaught();
+    // }
+
+    // async _addOnslaught() {
+    //     if (this.object.target && game.settings.get("exalteddemake", "calculateOnslaught")) {
+    //         if (!this._useLegendarySize('onslaught')) {
+    //             const onslaught = this.object.target.actor.effects.find(i => i.label == "Onslaught");
+    //             if (onslaught) {
+    //                 let changes = duplicate(onslaught.changes);
+    //                 if (this.object.target.actor.system.dodge.value > 0) {
+    //                     changes[0].value = changes[0].value - 1;
+    //                 }
+    //                 if (this.object.target.actor.system.parry.value > 0) {
+    //                     changes[1].value = changes[1].value - 1;
+    //                 }
+    //                 onslaught.update({ changes });
+    //             }
+    //             else {
+    //                 this.object.target.actor.createEmbeddedDocuments('ActiveEffect', [{
+    //                     label: 'Onslaught',
+    //                     icon: 'systems/exalteddemake/assets/icons/surrounded-shield.svg',
+    //                     origin: this.object.target.actor.uuid,
+    //                     disabled: false,
+    //                     "changes": [
+    //                         {
+    //                             "key": "data.dodge.value",
+    //                             "value": -1,
+    //                             "mode": 2
+    //                         },
+    //                         {
+    //                             "key": "data.parry.value",
+    //                             "value": -1,
+    //                             "mode": 2
+    //                         }
+    //                     ]
+    //                 }]);
+    //             }
+    //         }
+    //     }
+    // }
 
     dealHealthDamage(characterDamage, targetBattlegroup = false) {
         if (this.object.target && game.combat && game.settings.get("exalteddemake", "autoDecisiveDamage") && characterDamage > 0) {
@@ -1391,10 +1449,6 @@ export class RollForm extends FormApplication {
         if (this.object.intervals > 0) {
             this.render();
         }
-    }
-
-    _isAttackRoll() {
-        return this.object.rollType === 'withering' || this.object.rollType === 'decisive' || this.object.rollType === 'gambit' || this.object.rollType === 'accuracy' || this.object.rollType === 'damage';
     }
 
     _damageRollType(rollType) {

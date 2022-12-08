@@ -433,13 +433,10 @@ export class ExaltedDemakeActorSheet extends ActorSheet {
       }
     });
 
-    html.find('.accuracy').mousedown(ev => {
-      new RollForm(this.actor, { event: ev }, {}, { rollType: 'accuracy' }).render(true);
+    html.find('.rollAttack').mousedown(ev => {
+      new RollForm(this.actor, { event: ev }, {}, { rollType: 'attack' }).render(true);
     });
 
-    html.find('.damage').mousedown(ev => {
-      new RollForm(this.actor, { event: ev }, {}, { rollType: 'damage' }).render(true);
-    });
 
     html.find('.rush').mousedown(ev => {
       if (this.actor.type === "npc") {

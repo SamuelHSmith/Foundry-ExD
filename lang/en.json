@@ -142,6 +142,7 @@
     "ExD.Weapons": "Weapons",
     "ExD.Accuracy": "Accuracy",
     "ExD.Damage": "Damage",
+    "ExD.BaseDamage": "Base Damage",
     "ExD.GrappleControl": "Grapple Control",
     "ExD.Overwhelming": "Overwhelming",
     "ExD.PostSoakDamage": "Post Soak Damage",
