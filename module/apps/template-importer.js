@@ -1038,8 +1038,8 @@ export default class TemplateImporter extends Application {
       if (health.includes('2x')) {
         actorData.system.health.levels.two.value = parseInt(health.replace('2x', '').replace(/[^0-9]/g, ''));
       }
-      if (health.includes('4x')) {
-        actorData.system.health.levels.four.value = parseInt(health.replace('4x', '').replace(/[^0-9]/g, ''));
+      if (health.includes('5x')) {
+        actorData.system.health.levels.five.value = parseInt(health.replace('5x', '').replace(/[^0-9]/g, ''));
       }
     }
   }

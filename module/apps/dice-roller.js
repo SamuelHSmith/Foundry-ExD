@@ -22,7 +22,6 @@ export class RollForm extends FormApplication {
             this.object.showPool = !this._isAttackRoll();
             this.object.showWithering = data.rollType === 'withering' || data.rollType === 'damage';
             this.object.hasDifficulty = data.rollType === 'ability' || data.rollType === 'readIntentions' || data.rollType === 'social' || data.rollType === 'craft' || data.rollType === 'working';
-            this.object.stunt = "none";
             this.object.goalNumber = 0;
             this.object.woundPenalty = this.object.rollType === 'base' ? false : true;
             this.object.intervals = 0;
@@ -95,7 +94,6 @@ export class RollForm extends FormApplication {
 
                 this.object.conditions = (this.actor.token && this.actor.token.actorData.effects) ? this.actor.token.actorData.effects : [];
                 if (this.actor.type === 'character') {
-                    this.object.stunt = "one";
                     this.object.attribute = data.attribute || this._getHighestAttribute();
                     this.object.ability = data.ability || "archery";
                     this.object.appearance = this.actor.system.attributes.appearance.value;
@@ -652,19 +650,6 @@ export class RollForm extends FormApplication {
                 this.object.successModifier++;
                 actorData.system.willpower.value--;
             }
-            if (this.object.stunt !== 'none') {
-                dice += 2;
-            }
-            if (this.object.stunt === 'two') {
-                if (actorData.system.willpower.value < actorData.system.willpower.max) {
-                    actorData.system.willpower.value++;
-                }
-                this.object.successModifier++;
-            }
-            if (this.object.stunt === 'three') {
-                actorData.system.willpower.value += 2;
-                this.object.successModifier += 2;
-            }
             if (this.object.diceToSuccesses > 0) {
                 this.object.successModifier += Math.min(dice, this.object.diceToSuccesses);
                 dice = Math.max(0, dice - this.object.diceToSuccesses);
@@ -780,7 +765,6 @@ export class RollForm extends FormApplication {
 
     async _abilityRoll() {
         if (this.actor.type === "npc") {
-            this.object.stunt = 'none';
             if (this.object.ability === "archery") {
                 this.object.ability = "primary";
             }
@@ -814,7 +798,7 @@ export class RollForm extends FormApplication {
                 }
             }
             else {
-                resultString = `<h4 class="dice-total">Difficulty: ${this.object.difficulty}</h4><h4 class="dice-total">${threshholdSuccesses} Threshhold Successes</h4>${extendedTest}`;
+                resultString = `<h4 class="dice-total">Difficulty: ${this.object.difficulty}</h4><h4 class="dice-total">`;
             }
             this.object.goalNumber = Math.max(this.object.goalNumber - threshholdSuccesses - 1, 0);
         }
@@ -907,7 +891,6 @@ export class RollForm extends FormApplication {
                                             </div>
                                         </div>
                                         <h4 class="dice-formula">${this.object.total} Successes vs ${this.object.defense} Defense</h4>
-                                        <h4 class="dice-formula">${this.object.thereshholdSuccesses} Threshhold Successes</h4>
                                         <h4 class="dice-total">Attack Missed!</h4>
                                     </div>
                                 </div>
@@ -1168,7 +1151,6 @@ export class RollForm extends FormApplication {
                                         </div>
                                     </div>
                                     <h4 class="dice-formula">${this.object.total} Successes vs ${this.object.defense} Defense</h4>
-                                    <h4 class="dice-formula">${this.object.thereshholdSuccesses} Threshhold Successes</h4>
                                     ${damageResults}
                                 </div>
                             </div>

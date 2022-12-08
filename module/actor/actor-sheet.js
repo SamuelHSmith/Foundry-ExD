@@ -698,30 +698,29 @@ export class ExaltedDemakeActorSheet extends ActorSheet {
     const data = actorData.system;
 
     if (type === 'personal') {
-      if (data.details.exalt === 'solar' || data.details.exalt === 'abyssal') {
-        data.motes.personal.max = 10 + (data.essence.value * 3);
+      let motearr = [];
+      switch (data.details.exalt) {
+        case "solar":
+        case "abyssal":
+        case "infernal":
+          motearr = [10,12,15,17,20]
+          break;
+        default:
+        case "lunar":
+        case "exgent":
+        case "sidereal":
+        case "hearteater":
+        case "alchemical":
+          motearr = [8,10,12,14,15]
+          break;
+        case "dragonblooded":
+          motearr = [5,6,7,8,10]
+          break;
+        case "liminal":
+          motearr = [6,8,10,11,12]
+          break;
       }
-      if (data.details.exalt === 'dragonblooded') {
-        data.motes.personal.max = 11 + data.essence.value;
-      }
-      if (data.details.exalt === 'lunar') {
-        data.motes.personal.max = 15 + data.essence.value;
-      }
-      if (data.details.exalt === 'exigent') {
-        data.motes.personal.max = 11 + data.essence.value;
-      }
-      if (data.details.exalt === 'sidereal') {
-        data.motes.personal.max = 9 + (data.essence.value * 2);
-      }
-      if (data.details.exalt === 'liminal') {
-        data.motes.personal.max = 10 + (data.essence.value * 3);
-      }
-      if (data.details.exalt === 'dreamsouled' || data.details.caste.toLowerCase() === 'sovereign' || data.details.caste.toLowerCase() === 'architect' || data.details.caste.toLowerCase() === 'puppeteer') {
-        data.motes.personal.max = 11 + data.essence.value;
-      }
-      if (data.details.caste.toLowerCase() === 'janest' || data.details.caste.toLowerCase() === 'strawmaiden' || data.details.exalt === 'hearteater' || data.details.exalt === 'umbral') {
-        data.motes.personal.max = 11 + (data.essence.value * 2);
-      }
+      data.motes.personal.max = motearr[data.essence.value-1]
       data.motes.personal.value = data.motes.personal.max;
     }
     else {
@@ -810,19 +809,19 @@ export class ExaltedDemakeActorSheet extends ActorSheet {
       templateData.zero = data.warstrider.health.levels.zero.value;
       templateData.one = data.warstrider.health.levels.one.value;
       templateData.two = data.warstrider.health.levels.two.value;
-      templateData.four = data.warstrider.health.levels.four.value;
+      templateData.five = data.warstrider.health.levels.five.value;
     }
     else if (healthType === 'ship') {
       templateData.zero = data.ship.health.levels.zero.value;
       templateData.one = data.ship.health.levels.one.value;
       templateData.two = data.ship.health.levels.two.value;
-      templateData.four = data.ship.health.levels.four.value;
+      templateData.five = data.ship.health.levels.five.value;
     }
     else {
       templateData.zero = data.health.levels.zero.value;
       templateData.one = data.health.levels.one.value;
       templateData.two = data.health.levels.two.value;
-      templateData.four = data.health.levels.four.value;
+      templateData.five = data.health.levels.five.value;
     }
 
     const html = await renderTemplate(template, templateData);
@@ -839,7 +838,7 @@ export class ExaltedDemakeActorSheet extends ActorSheet {
           let zero = parseInt(html.find('#zero').val()) || 0;
           let one = parseInt(html.find('#one').val()) || 0;
           let two = parseInt(html.find('#two').val()) || 0;
-          let four = parseInt(html.find('#four').val()) || 0;
+          let five = parseInt(html.find('#five').val()) || 0;
           if (healthType === 'warstrider') {
             data.warstrider.health.bashing = 0;
             data.warstrider.health.lethal = 0;
@@ -847,7 +846,7 @@ export class ExaltedDemakeActorSheet extends ActorSheet {
             data.warstrider.health.levels.zero.value = zero;
             data.warstrider.health.levels.one.value = one;
             data.warstrider.health.levels.two.value = two;
-            data.warstrider.health.levels.four.value = four;
+            data.warstrider.health.levels.five.value = five;
           }
           else if (healthType === 'ship') {
             data.ship.health.bashing = 0;
@@ -856,7 +855,7 @@ export class ExaltedDemakeActorSheet extends ActorSheet {
             data.ship.health.levels.zero.value = zero;
             data.ship.health.levels.one.value = one;
             data.ship.health.levels.two.value = two;
-            data.ship.health.levels.four.value = four;
+            data.ship.health.levels.five.value = five;
           }
           else {
             data.health.bashing = 0;
@@ -865,7 +864,7 @@ export class ExaltedDemakeActorSheet extends ActorSheet {
             data.health.levels.zero.value = zero;
             data.health.levels.one.value = one;
             data.health.levels.two.value = two;
-            data.health.levels.four.value = four;
+            data.health.levels.five.value = five;
           }
           this.actor.update(actorData);
         }

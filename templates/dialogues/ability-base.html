@@ -93,17 +93,6 @@
     {{/if}}
     {{/ifEquals}}
     {{/if}}
-
-
-    <label class="resource-label">{{localize "ExD.StuntLevel"}}:</label>
-    <select name="object.stunt" value="{{data.stunt}}" data-type="String">
-        {{#select data.stunt}}
-        <option value="none">None</option>
-        <option value="one">One</option>
-        <option value="two">Two</option>
-        <option value="three">Three</option>
-        {{/select}}
-    </select>
 </div>
 {{/ifEquals}}
 
@@ -327,16 +316,4 @@
     </div>
 </div>
 {{/ifEquals}}
-
-{{#if data.hasDifficulty}}
-<div class="resource grid grid-2col flex-center">
-    <div>
-        <label class="resource-label">{{localize data.difficultyString}}</label>
-        <input type="number" name="object.difficulty" value="{{data.difficulty}}">
-    </div>
-    <div>
-        <label class="resource-label">{{localize "ExD.GoalNumber"}} </label>
-        <input type="number" name="object.goalNumber" value="{{data.goalNumber}}">
-    </div>
-</div>
 {{/if}}

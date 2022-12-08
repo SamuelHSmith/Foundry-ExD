@@ -20,7 +20,7 @@
               "value": 2,
               "penalty": 2
             },
-            "four": {
+            "five": {
               "value": 1,
               "penalty": 4
             },
@@ -148,7 +148,7 @@
                 "value": 1,
                 "penalty": 2
               },
-              "four": {
+              "five": {
                 "value": 1,
                 "penalty": 4
               },
@@ -188,7 +188,7 @@
                 "value": 10,
                 "penalty": 2
               },
-              "four": {
+              "five": {
                 "value": 10,
                 "penalty": 4
               },
