@@ -673,10 +673,10 @@ export class ExaltedDemakeActorSheet extends ActorSheet {
     const data = actorData.system;
     if (type === 'parry') {
       var highestAbility = Math.max(data.abilities.melee.value, data.abilities.brawl.value, data.abilities.martialarts.value);
-      data.parry.value = Math.ceil((data.attributes.dexterity.value + highestAbility) / 2);
+      data.parry.value = (3 + highestAbility);
     }
     if (type === 'dodge') {
-      var newDodgeValue = Math.ceil((data.attributes.dexterity.value + data.abilities.dodge.value) / 2);
+      var newDodgeValue = (3 + data.abilities.athletics.value);
       for (let armor of this.actor.armor) {
         if (armor.system.equiped) {
           newDodgeValue = newDodgeValue - Math.abs(armor.system.penalty);

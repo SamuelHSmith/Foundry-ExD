@@ -687,6 +687,8 @@ export class RollForm extends FormApplication {
             }
         }
 
+        dice = Math.max(1,dice);
+
         let roll = new Roll(`${dice}d10${rerollString}${this.object.rerollFailed ? `r<${this.object.difficulty}` : ""}cs>=${this.object.difficulty}`).evaluate({ async: false });
         let diceRoll = roll.dice[0].results;
         let getDice = "";
