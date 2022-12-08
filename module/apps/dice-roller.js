@@ -21,7 +21,6 @@ export class RollForm extends FormApplication {
             this.object.attackType = 'withering';
             this.object.showPool = !this._isAttackRoll();
             this.object.showWithering = data.rollType === 'withering' || data.rollType === 'damage';
-            this.object.hasDifficulty = data.rollType === 'ability' || data.rollType === 'readIntentions' || data.rollType === 'social' || data.rollType === 'craft' || data.rollType === 'working';
             this.object.goalNumber = 0;
             this.object.woundPenalty = this.object.rollType === 'base' ? false : true;
             this.object.intervals = 0;
@@ -220,14 +219,14 @@ export class RollForm extends FormApplication {
                         this.object.difficulty = this.object.target.actor.system.resolve.value;
                     }
                 }
-                if (this.object.target.actor.system.parry.value >= this.object.target.actor.system.evasion.value) {
+                if (this.object.target.actor.system.parry.value >= this.object.target.actor.system.dodge.value) {
                     this.object.defense = this.object.target.actor.system.parry.value;
                     if (this.object.target.actor.effects && this.object.target.actor.effects.some(e => e.name === 'prone')) {
                         this.object.defense -= 1;
                     }
                 }
                 else {
-                    this.object.defense = this.object.target.actor.system.evasion.value;
+                    this.object.defense = this.object.target.actor.system.dodge.value;
                     if (this.object.target.actor.effects && this.object.target.actor.effects.some(e => e.name === 'prone')) {
                         this.object.defense -= 2;
                     }
@@ -647,7 +646,7 @@ export class RollForm extends FormApplication {
                 }
             }
             if (this.object.willpower) {
-                this.object.successModifier++;
+                this.object.difficulty--;
                 actorData.system.willpower.value--;
             }
             if (this.object.diceToSuccesses > 0) {
@@ -662,12 +661,10 @@ export class RollForm extends FormApplication {
                     dice -= data.health.penalty;
                 }
             }
-            if (this.object.isFlurry) {
-                dice -= 3;
-            }
             if (this.object.diceModifier) {
                 dice += this.object.diceModifier;
             }
+            this.object.difficulty = Math.min(9,Math.max(1,this.object.difficulty));
             this.actor.update(actorData);
         }
 
@@ -781,26 +778,6 @@ export class RollForm extends FormApplication {
 
         if (this.object.rollType === "joinBattle") {
             resultString = `<h4 class="dice-total">${this.object.total + 3} Initiative</h4>`;
-        }
-        if (this.object.hasDifficulty) {
-            let extendedTest = ``;
-            const threshholdSuccesses = this.object.total - this.object.difficulty;
-            goalNumberLeft = Math.max(this.object.goalNumber - threshholdSuccesses - 1, 0);
-            if (this.object.goalNumber > 0) {
-                extendedTest = `<h4 class="dice-total">Goal Number: ${this.object.goalNumber}</h4><h4 class="dice-total">Goal Number Left: ${goalNumberLeft}</h4>`;
-            }
-            if (this.object.total < this.object.difficulty) {
-                resultString = `<h4 class="dice-total">Difficulty: ${this.object.difficulty}</h4><h4 class="dice-total">Check Failed</h4>${extendedTest}`;
-                for (let dice of this.object.roll.dice[0].results) {
-                    if (dice.result === 1 && this.object.total === 0) {
-                        resultString = `<h4 class="dice-total">Difficulty: ${this.object.difficulty}</h4><h4 class="dice-total">Botch</h4>${extendedTest}`;
-                    }
-                }
-            }
-            else {
-                resultString = `<h4 class="dice-total">Difficulty: ${this.object.difficulty}</h4><h4 class="dice-total">`;
-            }
-            this.object.goalNumber = Math.max(this.object.goalNumber - threshholdSuccesses - 1, 0);
         }
         let successMessage = (this.object.botch)? "Botch!" : `${this.object.total} Successes`
         let theContent = `
@@ -1212,7 +1189,7 @@ export class RollForm extends FormApplication {
                 const onslaught = this.object.target.actor.effects.find(i => i.label == "Onslaught");
                 if (onslaught) {
                     let changes = duplicate(onslaught.changes);
-                    if (this.object.target.actor.system.evasion.value > 0) {
+                    if (this.object.target.actor.system.dodge.value > 0) {
                         changes[0].value = changes[0].value - 1;
                     }
                     if (this.object.target.actor.system.parry.value > 0) {
@@ -1228,7 +1205,7 @@ export class RollForm extends FormApplication {
                         disabled: false,
                         "changes": [
                             {
-                                "key": "data.evasion.value",
+                                "key": "data.dodge.value",
                                 "value": -1,
                                 "mode": 2
                             },

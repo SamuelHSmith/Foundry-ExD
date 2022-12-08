@@ -364,8 +364,8 @@ export class ExaltedDemakeActorSheet extends ActorSheet {
       this.calculateDerivedStats('parry');
     });
 
-    html.find('.calculate-evasion').mousedown(ev => {
-      this.calculateDerivedStats('evasion');
+    html.find('.calculate-dodge').mousedown(ev => {
+      this.calculateDerivedStats('dodge');
     });
 
     html.find('.calculate-resolve').mousedown(ev => {
@@ -675,14 +675,14 @@ export class ExaltedDemakeActorSheet extends ActorSheet {
       var highestAbility = Math.max(data.abilities.melee.value, data.abilities.brawl.value, data.abilities.martialarts.value);
       data.parry.value = Math.ceil((data.attributes.dexterity.value + highestAbility) / 2);
     }
-    if (type === 'evasion') {
-      var newEvasionValue = Math.ceil((data.attributes.dexterity.value + data.abilities.dodge.value) / 2);
+    if (type === 'dodge') {
+      var newDodgeValue = Math.ceil((data.attributes.dexterity.value + data.abilities.dodge.value) / 2);
       for (let armor of this.actor.armor) {
         if (armor.system.equiped) {
-          newEvasionValue = newEvasionValue - Math.abs(armor.system.penalty);
+          newDodgeValue = newDodgeValue - Math.abs(armor.system.penalty);
         }
       }
-      data.evasion.value = newEvasionValue;
+      data.dodge.value = newDodgeValue;
     }
     if (type === 'resolve') {
       data.resolve.value = Math.ceil((data.attributes.wits.value + data.abilities.empathy.value) / 2);

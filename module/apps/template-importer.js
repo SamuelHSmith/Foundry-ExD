@@ -458,7 +458,7 @@ export default class TemplateImporter extends Application {
               "committed": 0
             }
           },
-          "evasion": {
+          "dodge": {
             "value": 0
           },
           "parry": {
@@ -676,7 +676,7 @@ export default class TemplateImporter extends Application {
             "committed": 0
           }
         },
-        "evasion": {
+        "dodge": {
           "value": 0
         },
         "parry": {
@@ -984,12 +984,12 @@ export default class TemplateImporter extends Application {
       var defenseLine = textArray[index].replace(/ *\([^)]*\) */g, "");
       if (defenseLine.includes(',')) {
         var defenseArray = defenseLine.split(',');
-        actorData.system.evasion.value = parseInt(defenseArray[0].replace(/[^0-9]/g, ''));
+        actorData.system.dodge.value = parseInt(defenseArray[0].replace(/[^0-9]/g, ''));
         actorData.system.parry.value = parseInt(defenseArray[1].replace(/[^0-9]/g, ''));
       }
       else if (defenseLine.includes(';')) {
         var defenseArray = defenseLine.split(';');
-        actorData.system.evasion.value = parseInt(defenseArray[0].replace(/[^0-9]/g, ''));
+        actorData.system.dodge.value = parseInt(defenseArray[0].replace(/[^0-9]/g, ''));
         actorData.system.parry.value = parseInt(defenseArray[1].replace(/[^0-9]/g, ''));
       }
       index++;
@@ -1649,7 +1649,7 @@ export default class TemplateImporter extends Application {
         if (combatStat.includes('(')) {
           var armor = combatStat.match(/\(([^)]+)\)/)[1];
           armorStat = parseInt(armor.replace(/[^0-9]/g, ''));
-          if (combatName.toLowerCase().trim() === 'soak' || combatName.toLowerCase().trim() === 'hardness' || combatName.toLowerCase().trim() === 'evasion') {
+          if (combatName.toLowerCase().trim() === 'soak' || combatName.toLowerCase().trim() === 'hardness' || combatName.toLowerCase().trim() === 'dodge') {
             createArmor = true;
             armorName = armor;
           }
@@ -1669,8 +1669,8 @@ export default class TemplateImporter extends Application {
             armorHardness = armorStat;
           }
         }
-        if (combatName.toLowerCase().trim() === 'evasion') {
-          actorData.system.evasion.value = combatValue;
+        if (combatName.toLowerCase().trim() === 'dodge') {
+          actorData.system.dodge.value = combatValue;
           if (armorStat) {
             armorPenalty = armorStat;
           }
